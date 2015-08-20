@@ -81,12 +81,12 @@ default: &default
 development:
   <<: *default
   adapter: postgresql
-  host: ec2-54-197-255-248.compute-1.amazonaws.com
+  host: ec2-23-23-199-181.compute-1.amazonaws.com
   port: 5432
-  database: dbsh860rl6gfo3
+  database: d6l0e7f7o42pbs
   pool: 5
-  user: qsvwuexvfolorp
-  password: 0akSpAaMmpBWZ670SkRy9QgTiC
+  user: cdlwnazjmvxegd
+  password: qsok6whnrbaIczS3BwmQzv8im3
   sslmode: require
 
 
