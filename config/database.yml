@@ -21,9 +21,9 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
-development:
-  <<: *default
-  database: salehub_development
+# development:
+#   <<: *default
+#   database: salehub_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -55,9 +55,9 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: salehub_test
+# test:
+#   <<: *default
+#   database: salehub_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -78,8 +78,15 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
+development:
   <<: *default
-  database: salehub_production
-  username: salehub
-  password: <%= ENV['SALEHUB_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  host: ec2-54-197-255-248.compute-1.amazonaws.com
+  port: 5432
+  database: dbsh860rl6gfo3
+  pool: 5
+  user: qsvwuexvfolorp
+  password: 0akSpAaMmpBWZ670SkRy9QgTiC
+  sslmode: require
+
+
