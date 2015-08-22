@@ -21,9 +21,9 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
-development:
-  <<: *default
-  database: salehub_development
+# development:
+#   <<: *default
+#   database: salehub_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,15 +80,15 @@ development:
 #
 
 
-# development:
-#   <<: *default
-#   adapter: postgresql
-#   host: ec2-23-23-199-181.compute-1.amazonaws.com
-#   port: 5432
-#   database: d6l0e7f7o42pbs
-#   pool: 5
-#   user: cdlwnazjmvxegd
-#   password: qsok6whnrbaIczS3BwmQzv8im3
-#   sslmode: require
+development:
+  <<: *default
+  adapter: postgresql
+  host: ec2-23-23-199-181.compute-1.amazonaws.com
+  port: 5432
+  database: d6l0e7f7o42pbs
+  pool: 5
+  user: cdlwnazjmvxegd
+  password: qsok6whnrbaIczS3BwmQzv8im3
+  sslmode: require
 
 
