@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Kwikpost</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+
+    <script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
+
+<script>
+$( document ).ready(function() {
+    $('#btnToggle').click(function(){
+  if ($(this).hasClass('on')) {
+    $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
+    $(this).removeClass('on');
+  }
+  else {
+    $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
+    $(this).addClass('on');
+  }
+});
+  });
+</script>
+<script>
+// external js: masonry.pkgd.js, imagesloaded.pkgd.js
+$(document).ready( function() {
+  // init Masonry after all images have loaded
+  var $grid = $('.grid').imagesLoaded( function() {
+    $grid.masonry({
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      columnWidth: '.grid-sizer'
+    }); 
+  });
+
+});
+</script>
+<script>
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 400) {
+        $( ".navbar #background" ).fadeIn();
+        console.log('fade in');
+    } else {
+        console.log('there');
+        $( ".navbar #background" ).fadeOut();
+    }
+});
+</script>
+</head>
+
+
+
+<body>
+
+<!--main-->
+  <div id="pic"></div>
+<div class="container" id="main">
+   <div class="row">
+    <div class="col-md-2 col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
+        <div class="panel-body">
+              <div class="list-group">
+                  <a href="#">Antiques</a> <br>
+                  <a href="#">Appliances</a> <br>
+                  <a href="#">Auto Parts</a> <br>
+                  <a href="#">Bicycles</a> <br>
+                  <a href="#">Boats & Marine</a> <br>
+                  <a href="#">Beauty & Health</a> <br>
+                  <a href="#">Clothes</a> <br>
+                  <a href="#">Electronics</a> <br>
+                  <a href="#">Games</a> <br>
+                  <a href="#">Jewelry</a> <br>
+              </div>
+            </div>
+      </div>
+    </div>
+    <div class="col-md-10">
+   <div class="col-md-12 col-sm-8">
+        <div class="panel panel-default">
+        <div class="grid">
+  <div class="grid-sizer"></div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/bwy74ok.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/bAZWoqx.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/PgmEBSB.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/aboaFoB.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/LkmcILl.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/q9zO6tw.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/hODreXI.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/UORFJ3w.jpg" />
+    <p>Product Title:</p>
+  </div>
+    <div class="grid-item">
+    <img src="http://i.imgur.com/bwy74ok.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/bAZWoqx.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/PgmEBSB.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/aboaFoB.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/LkmcILl.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/q9zO6tw.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/hODreXI.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/UORFJ3w.jpg" />
+    <p>Product Title:</p>
+  </div>
+    <div class="grid-item">
+    <img src="http://i.imgur.com/bwy74ok.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/bAZWoqx.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/PgmEBSB.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/aboaFoB.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/LkmcILl.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/q9zO6tw.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/hODreXI.jpg" />
+    <p>Product Title:</p>
+  </div>
+  <div class="grid-item">
+    <img src="http://i.imgur.com/UORFJ3w.jpg" />
+    <p>Product Title:</p>
+  </div>
+</div>
+
+</div>
+
+<!--login modal-->
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h2 class="text-center"><img src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"><br>Login</h2>
+      </div>
+      <div class="modal-body">
+          <form class="form col-md-12 center-block">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+              <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+            <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-lg" %>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>  
+      </div>
+  </div>
+  </div>
+</div>
+  <!-- script references -->
+  </body>
+</html>
