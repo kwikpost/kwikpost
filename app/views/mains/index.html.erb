@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Kwikpost</title>
-    <meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<html>
+<head>
+
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
-
     <script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
-
-<script>
-$( document ).ready(function() {
-    $('#btnToggle').click(function(){
-  if ($(this).hasClass('on')) {
-    $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
-    $(this).removeClass('on');
-  }
-  else {
-    $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
-    $(this).addClass('on');
-  }
-});
-  });
-</script>
 <script>
 // external js: masonry.pkgd.js, imagesloaded.pkgd.js
 $(document).ready( function() {
@@ -43,26 +18,29 @@ $(document).ready( function() {
 
 });
 </script>
+
+
+<!--infiniteScroll -->
 <script>
-$(window).scroll(function() {
-    if ($(this).scrollTop() > 400) {
-        $( ".navbar #background" ).fadeIn();
-        console.log('fade in');
-    } else {
-        console.log('there');
-        $( ".navbar #background" ).fadeOut();
-    }
-});
+$('#scroll').infinitescroll({
+ 
+    navSelector  : "div.navigation",            
+                   // selector for the paged navigation (it will be hidden)
+    nextSelector : "div.navigation a:first",    
+                   // selector for the NEXT link (to page 2)
+    itemSelector : "#content div.post"          
+                   // selector for all items you'll retrieve
+  });
 </script>
+
+
 </head>
 
 
 
-<body>
-
 <!--main-->
   <div id="pic"></div>
-<div class="container" id="main">
+<!-- <div class="container" id="main"> -->
    <div class="row">
     <div class="col-md-2 col-sm-6">
         <div class="panel panel-default">
@@ -83,119 +61,208 @@ $(window).scroll(function() {
             </div>
       </div>
     </div>
-    <div class="col-md-10">
-   <div class="col-md-12 col-sm-8">
-        <div class="panel panel-default">
-        <div class="grid">
-  <div class="grid-sizer"></div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/bwy74ok.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/bAZWoqx.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/PgmEBSB.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/aboaFoB.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/LkmcILl.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/q9zO6tw.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/hODreXI.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/UORFJ3w.jpg" />
-    <p>Product Title:</p>
-  </div>
-    <div class="grid-item">
-    <img src="http://i.imgur.com/bwy74ok.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/bAZWoqx.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/PgmEBSB.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/aboaFoB.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/LkmcILl.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/q9zO6tw.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/hODreXI.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/UORFJ3w.jpg" />
-    <p>Product Title:</p>
-  </div>
-    <div class="grid-item">
-    <img src="http://i.imgur.com/bwy74ok.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/bAZWoqx.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/PgmEBSB.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/aboaFoB.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/LkmcILl.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/q9zO6tw.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/hODreXI.jpg" />
-    <p>Product Title:</p>
-  </div>
-  <div class="grid-item">
-    <img src="http://i.imgur.com/UORFJ3w.jpg" />
-    <p>Product Title:</p>
-  </div>
+<div class="col-md-10">
+
+  <div class="scroll panel panel-default">
+    <div class="grid">
+      <div class="grid-sizer">
+        <div class="grid-item">
+          <img src="http://i.imgur.com/bwy74ok.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/bAZWoqx.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/PgmEBSB.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/aboaFoB.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/LkmcILl.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/q9zO6tw.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/hODreXI.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+          <div class="grid-item">
+          <img src="http://i.imgur.com/bwy74ok.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/bAZWoqx.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/PgmEBSB.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/aboaFoB.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/LkmcILl.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/q9zO6tw.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/hODreXI.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+          <div class="grid-item">
+          <img src="http://i.imgur.com/bwy74ok.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/bAZWoqx.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/PgmEBSB.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/aboaFoB.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/LkmcILl.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/q9zO6tw.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/hODreXI.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/q9zO6tw.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/hODreXI.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/q9zO6tw.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/hODreXI.jpg" />
+          <p>Product Title:</p>
+        </div>
+        <div class="grid-item">
+          <img src="http://i.imgur.com/UORFJ3w.jpg" />
+          <p>Product Title:</p>
+        </div>
+    </div>
 </div>
 
 </div>
@@ -232,5 +299,4 @@ $(window).scroll(function() {
   </div>
 </div>
   <!-- script references -->
-  </body>
-</html>
+ </html 
