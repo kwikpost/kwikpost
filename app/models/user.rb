@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   has_many :products
   has_many :watchlists
+  has_many :productchats
+  has_many :comments, :through => :productchat
   # has_many :products, :through => :watchlist
 
 
