@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="spacer"></div>
+  <div class="col-md-12">
+
+    <%= link_to new_conversation_path do %>
+        <span class="btn btn-success">
+        <em class="fa fa-pencil fa-lg"></em>
+        Compose</span>
+    <% end %>
+
+    <div class="spacer"></div>
+  </div>
+  
+  <div class="col-md-4" style="margin-top: 10px;">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'mailbox/folders' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8" style="margin-top: 10px;">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% if is_conversation %>
+            <%= render 'conversations/form' %>
+        <% else %>
+            <% if messages.any? %>
+            <%= render partial: 'conversations/conversation', collection: messages %>
+            <% else %>
+            <h4 class="text-center">Empty</h4>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
