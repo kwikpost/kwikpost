@@ -1,3 +1,18 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 body {
   background-color:#e0e0e0;
@@ -22,14 +37,16 @@ body {
     width:100%;
     height:100%;
 }
-.container{
+/*.container{
 	margin-top:-100px;
-}
+}*/
 #pic{
 	height:400px;
 	background: url(http://s28.postimg.org/58udauatp/49ae2d61_f85d_486f_a0e5_936c4ea1b743.jpg) no-repeat;
 	-webkit-background-size: cover;
 	width:100%;
+  margin-top:-10px;
+  margin-bottom:10px;
 }
 .header {
 	border-width:0;
@@ -56,6 +73,9 @@ button {
 textarea {
  resize: none;
  outline: 0; 
+}
+p {
+  font-size:12px;
 }
 .panel .btn i,.btn span{
  color:#666666;
@@ -101,6 +121,10 @@ h3,h4,h5 {
  border-radius:0;
  margin-top:-1px;
 }
+
+.navbar{
+  margin-top:0px;
+}
 /* end theme */
 
 /* template layout*/
@@ -116,7 +140,9 @@ h3,h4,h5 {
 }
 
 #main {
- padding-top:120px;
+ padding-top:20px;
+ margin-right:10px;
+ padding-right:10px;
 }
 
 /* masonry CSS */
@@ -128,7 +154,7 @@ h3,h4,h5 {
 
 /* clear fix */
 .grid:after {
-
+  width:100%;
   content: '';
   display: block;
   clear: both;
@@ -139,17 +165,12 @@ h3,h4,h5 {
 
 .grid-sizer,
 
-.grid-item {
-  /* image margins on side for frame */
-  width: 31%;
-  margin: 10px;
-
-}
 
 .grid-item {
   float: left;
   background: white;
-
+  width:25%;
+  margin: 0px;
 }
 .grid-item p {
   padding: 10px;
