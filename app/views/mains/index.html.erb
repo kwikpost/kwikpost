@@ -1,9 +1,8 @@
-<html>
+<!-- <html>
 <head>
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
-    <script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
+   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+<script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
 
 <script>
 $( document ).ready(function() {
@@ -30,32 +29,15 @@ $(document).ready( function() {
       columnWidth: '.grid-sizer'
     }); 
   });
-
 });
 </script>
-
-<script>
-$(window).scroll(function() {
-    if ($(this).scrollTop() > 400) {
-        $( ".navbar #background" ).fadeIn();
-        console.log('fade in');
-    } else {
-        console.log('there');
-        $( ".navbar #background" ).fadeOut();
-    }
-});</script>
-</head>
-
-</head>
-
+<!-- </head> -->
 <body>
-
-<!--main-->
-  <div id="pic"></div>
-<!-- <div class="container" id="main"> -->
+<div id="pic"></div>
+<div class="container" id="main">
    <div class="row">
     <div class="col-md-2 col-sm-6">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="cat_back">
           <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
         <div class="panel-body">
               <div class="list-group">
@@ -278,6 +260,7 @@ $(window).scroll(function() {
 </div>
 
 </div>
+</div>
 
   <!-- script references -->
-</html>
+<!-- </html> -->
