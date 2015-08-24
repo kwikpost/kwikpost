@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   delete 'users/:id/follow' => 'users#unfollow'
   # =================================
 
-  get '/mains/posts' => 'mains#posts'
+  # :id is current user's id
+  get '/mains/:id/posts' => 'mains#posts'
+  post '/mains/newProduct' => 'mains#newProduct'
   resources :mains
 
 

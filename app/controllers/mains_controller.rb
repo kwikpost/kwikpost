@@ -1,5 +1,4 @@
 class MainsController < ApplicationController
-
 	def index
 	end
 
@@ -8,7 +7,10 @@ class MainsController < ApplicationController
 	end
 
 	def posts
-		puts "================================="
-		render 'mains/posts'
+
+	end
+
+	def newProduct
+		redirect_to '/mains'
 	end
 end

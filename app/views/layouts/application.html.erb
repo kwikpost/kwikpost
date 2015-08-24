@@ -63,8 +63,8 @@ $(document).ready(function() {
       </form>
       <ul class="nav navbar-nav navbar-right">
 
-        <li><a href="/mains/posts" role="button" data-toggle="modal" id="font_color">Posts</a></li>
         <% if user_signed_in? %>
+        <li><a href="/mains/<%= current_user.id %>/posts" role="button" data-toggle="modal" id="font_color">Posts</a></li>
           <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img class="profile-img" src="<%= current_user.image %>"> <b class="caret"></b></a>
@@ -88,7 +88,9 @@ $(document).ready(function() {
 </nav>
 </div>
 <body>
-<%= yield %>
+  <div id="master_container">
+    <%= yield %>
+  </div>
 <%= render 'layouts/signup' %>
 <%= render 'layouts/login' %>
 </body>
