@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   # get 'users/:id' => 'users#show'
 
   resources :products
-  resources :mains
   # root :to => 'products#index'
 
   # ======= THESE GO TOGETHER =======
@@ -15,6 +14,12 @@ Rails.application.routes.draw do
   post 'users/:id/follow' => 'users#follow', as: :follow_user
   delete 'users/:id/follow' => 'users#unfollow'
   # =================================
+
+  get '/mains/posts' => 'mains#posts'
+  resources :mains
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
