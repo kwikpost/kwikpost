@@ -40,6 +40,9 @@ body {
 	color:white;
 	background-color:transparent;
 }
+.form-control{
+  display:block;
+}
 .row{
   width:1200px;
 }
@@ -47,7 +50,7 @@ body {
   position:fixed;
   width:100%;
   z-index:10;
-  margin-top: -100px;
+/*  margin-top: -100px;*/
 }
 #pic{
   height:475px;
@@ -178,7 +181,4 @@ h3,h4,h5 {
 .grid-item img {
   display: block;
   max-width: 100%;
-}
-#master_container{
-  margin-top: 100px;
 }
