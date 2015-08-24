@@ -1,9 +1,23 @@
-<html>
+<!-- <html>
 <head>
+   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+<script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
 
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
-    <script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
+<script>
+$( document ).ready(function() {
+    $('#btnToggle').click(function(){
+  if ($(this).hasClass('on')) {
+    $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
+    $(this).removeClass('on');
+  }
+  else {
+    $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
+    $(this).addClass('on');
+  }
+});
+  });
+</script>
 <script>
 // external js: masonry.pkgd.js, imagesloaded.pkgd.js
 $(document).ready( function() {
@@ -15,35 +29,15 @@ $(document).ready( function() {
       columnWidth: '.grid-sizer'
     }); 
   });
-
 });
 </script>
-
-
-<!--infiniteScroll -->
-<script>
-$('#scroll').infinitescroll({
- 
-    navSelector  : "div.navigation",            
-                   // selector for the paged navigation (it will be hidden)
-    nextSelector : "div.navigation a:first",    
-                   // selector for the NEXT link (to page 2)
-    itemSelector : "#content div.post"          
-                   // selector for all items you'll retrieve
-  });
-</script>
-
-
-</head>
-
-
-
-<!--main-->
-  <div id="pic"></div>
-<!-- <div class="container" id="main"> -->
+<!-- </head> -->
+<body>
+<div id="pic"></div>
+<div class="container" id="main">
    <div class="row">
     <div class="col-md-2 col-sm-6">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="cat_back">
           <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
         <div class="panel-body">
               <div class="list-group">
@@ -266,6 +260,7 @@ $('#scroll').infinitescroll({
 </div>
 
 </div>
+</div>
 
   <!-- script references -->
-</html>
+<!-- </html> -->
