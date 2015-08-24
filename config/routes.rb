@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # ======= THESE GO TOGETHER =======
   devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
     registrations: 'registrations' }
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit]
   # =================================
 
   # The priority is based upon order of creation: first created -> highest priority.

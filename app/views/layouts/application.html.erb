@@ -66,6 +66,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <li><a href="#">Posts</a></li>
+        <li><a href="/mains/show" role="button" data-toggle="modal" id="font_color">About</a></li>
         <% if user_signed_in? %>
           <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -73,7 +74,7 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", user_path(current_user) %></li>
                 <li><%= link_to "Inbox", mailbox_inbox_path %></li>
-                <li><%= link_to "Settings", '#' %></li>
+                <li><%= link_to "Settings", edit_user_registration_path %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
@@ -84,7 +85,6 @@
             <li><a href="#loginModal" role="button" data-toggle="modal" id="font_color">Login</a></li>
             <li><a href="#signupModal" role="button" data-toggle="modal" id="font_color">Sign up</a></li>
         <% end %>
-        <li><a href="/mains/show" role="button" data-toggle="modal" id="font_color">About</a></li>
       </ul>
     </div>
   </div>
