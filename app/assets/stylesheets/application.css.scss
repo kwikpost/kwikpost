@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap/theme';
-
+@import 'mains';
 /* PROFILE IMAGE ON NAV BAR */
 .profile-img {
     -moz-border-radius: 50%;
@@ -26,7 +26,7 @@ body {
 #height_nav{
   height:65px;
 }
-.navbar #background{
+.navbar .header{
 	background-color:#000033;
 	color:white !important;
     display:none;
@@ -34,6 +34,11 @@ body {
     position:absolute;
     top:0px;
     width:100%;
+}
+.header {
+	border-width:0;
+	color:white;
+	background-color:transparent;
 }
 .row{
   width:1200px;
@@ -44,10 +49,10 @@ body {
   z-index:10;
 }
 #pic{
-	height:475px;
-	background: url(http://s28.postimg.org/58udauatp/49ae2d61_f85d_486f_a0e5_936c4ea1b743.jpg) no-repeat;
-	-webkit-background-size: cover;
-	width:100%;
+  height:475px;
+  background: url(http://s28.postimg.org/58udauatp/49ae2d61_f85d_486f_a0e5_936c4ea1b743.jpg) no-repeat;
+  -webkit-background-size: cover;
+  width:100%;
   margin-bottom:10px;
 }
 .col-md-2{
@@ -59,11 +64,6 @@ body {
 }
 .navbar{
   opacity:.9;
-}
-.header {
-	border-width:0;
-	color:white;
-	background-color:transperent;
 }
 .navbar .navbar-fixed-top .header
 .btn,.form-control,.panel,.list-group,.well {border-radius:1px;box-shadow:0 0 0;}

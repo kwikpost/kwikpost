@@ -26,20 +26,20 @@
   });
 </script>
 <script>
-$( document ).ready(function() {
+$(document).ready(function() {
   $(window).scroll(function() {
     if ($(this).scrollTop() > 400) {
-      $( ".navbar #background" ).fadeIn();
+      $(".navbar .header").fadeIn();
       console.log('fade in');
     } else {
       console.log('there');
-      $( ".navbar #background" ).fadeOut();
+      $(".navbar .header").fadeOut();
     }
   });
 });
 </script>
 </head>
-<div id="top_nav">
+<div id="top_nav" class="header">
 <nav class="navbar navbar-default" id="height_nav">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
