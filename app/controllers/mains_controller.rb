@@ -8,5 +8,7 @@ class MainsController < ApplicationController
 	end
 
 	def posts
+		puts "================================="
+		render 'mains/posts'
 	end
 end

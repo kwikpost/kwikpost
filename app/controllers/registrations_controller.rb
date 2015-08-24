@@ -168,10 +168,4 @@ class RegistrationsController < Devise::RegistrationsController
     'devise.registrations'
   end
 
-
-
-
-
-
-  
 end 

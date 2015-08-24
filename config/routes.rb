@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
 
   
+  # get 'users/:id' => 'users#show'
+
   resources :products
   # root :to => 'products#index'
 
-
+  # ======= THESE GO TOGETHER =======
   devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
     registrations: 'registrations' }
-  get 'mains/posts' => 'mains#posts'
+  resources :users, only: [:show]
+  # =================================
+
+  get '/mains/posts' => 'mains#posts'
   resources :mains
+
 
 
 
