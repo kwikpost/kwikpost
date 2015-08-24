@@ -18,6 +18,14 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 
+/* PROFILE IMAGE ON NAV BAR */
+.profile-img {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+/* ======================== */
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 body {
   background-color:#e0e0e0;
