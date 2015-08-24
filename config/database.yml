@@ -78,6 +78,8 @@ default: &default
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+
 development:
   <<: *default
   adapter: postgresql

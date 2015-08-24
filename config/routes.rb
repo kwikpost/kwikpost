@@ -1,11 +1,35 @@
 Rails.application.routes.draw do
+
+  
+  resources :products
+  # root :to => 'products#index'
+
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
+    registrations: 'registrations' }
   resources :mains
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'mains#index'
 
+
+
+  # mailbox
+  get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
+  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+  get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
+
+  # conversations
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
