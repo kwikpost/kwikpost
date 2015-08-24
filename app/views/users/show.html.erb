@@ -1,2 +1,74 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>Current User:</h2>
+    <table class="table">
+      <tr>
+        <td class="">
+          <img src="<%=  @user.image %>" alt="<%=  @user.name %>" />
+        </td>
+        <td>
+          <h4><%=  @user.name %></h4>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row">
+    <h2>All Other Users:</h2>
+    <table class="table">
+    <% @users.each do |u| %>
+      <% if u.id != @user.id %>
+        <tr>
+          <td>
+            <img src="<%= u.image %>" alt="<%= u.name %>" />
+          </td>
+          <td>
+            <h4>
+              <%= link_to u.name, user_path(u)%>
+            </h4>
+          </td>
+          <td>
+            <% if @follows and @follows.exists?(id: u.id) %>
+              <%= link_to 'Unfollow', follow_user_path(:follow => u), method: :delete, class:"btn btn-danger"%>
+            <% else %>
+              <%= link_to 'Follow', follow_user_path(:follow => u), method: :post, class:"btn btn-primary"%>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    </table>
+  </div>
+
+  <div class="row">
+    <h2>Following:</h2>
+    <table class="table">
+    <% @follows.each do |u| %>
+      <tr>
+        <td>
+          <img src="<%= u.image %>" alt="<%= u.name %>" />
+        </td>
+        <td>
+          <h4><%= u.name %></h4>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+
+  <div class="row">
+    <h2>Who Followed Me:</h2>
+    <table class="table">
+    <% @followmes.each do |u| %>
+      <tr>
+        <td>
+          <img src="<%= u.user.image %>" alt="<%= u.user.name %>" />
+        </td>
+        <td>
+          <h4><%= u.user.name %></h4>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
