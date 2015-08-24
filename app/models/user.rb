@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :watchlists
 
   has_many :user_follows, dependent: :destroy
-  has_many :follows, through: :user_follows, source: :user
+  has_many :follows, through: :user_follows, source: :follow
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

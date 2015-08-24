@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   # get 'users/:id' => 'users#show'
 
   resources :products
@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
     registrations: 'registrations' }
   resources :users, only: [:show]
+
+  post 'users/:id/follow' => 'users#follow', as: :follow_user
+  delete 'users/:id/follow' => 'users#unfollow'
   # =================================
 
   get '/mains/posts' => 'mains#posts'
