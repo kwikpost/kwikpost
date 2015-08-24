@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   # =================================
 
-  get '/mains/posts' => 'mains#posts'
+  # :id is current user's id
+  get '/mains/:id/posts' => 'mains#posts'
   resources :mains
 
 
