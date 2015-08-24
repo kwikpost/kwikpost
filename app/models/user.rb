@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_many :products
   has_many :watchlists
 
+  has_many :user_follows, dependent: :destroy
+  has_many :follows, through: :user_follows, source: :user
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
