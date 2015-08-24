@@ -1,50 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-  <title>Kwikpost</title>
-
-  <meta name="generator" content="Bootply" />
+    <title>Kwikpost</title>
+    <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
     <script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+     <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <script>
+      $( document ).ready(function() {
+        $('#btnToggle').click(function(){
+          if ($(this).hasClass('on')) {
+            $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
+            $(this).removeClass('on');
+          }
+          else {
+            $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
+            $(this).addClass('on');
+          }
+        });
+      });
+    </script>
 
-
-<script>
-$( document ).ready(function() {
-    $('#btnToggle').click(function(){
-  if ($(this).hasClass('on')) {
-    $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
-    $(this).removeClass('on');
-  }
-  else {
-    $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
-    $(this).addClass('on');
-  }
-});
-  });
-</script>
-
-<script>
-$(window).scroll(function() {
-    if ($(this).scrollTop() > 400) {
-        $( ".navbar #background" ).fadeIn();
-        console.log('fade in');
-    } else {
-        console.log('there');
-        $( ".navbar #background" ).fadeOut();
-    }
-});
-</script>
+    <script>
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 400) {
+          $( ".navbar #background" ).fadeIn();
+          console.log('fade in');
+        } else {
+          console.log('there');
+          $( ".navbar #background" ).fadeOut();
+        }
+      });
+    </script>
 </head>
 
 <body>
@@ -90,8 +82,8 @@ $(window).scroll(function() {
             <li><%= link_to "Inbox", mailbox_inbox_path %></li>
         <li> <%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
 <% else %>
-
         <li><a href="#loginModal" role="button" data-toggle="modal" id="font_color">Login</a></li>
+        <li><a href="#signupModal" role="button" data-toggle="modal" id="font_color">Sign up</a></li>
 <% end %>
         <li><a href="/mains/show" role="button" data-toggle="modal" id="font_color">About</a></li>
 
@@ -100,7 +92,11 @@ $(window).scroll(function() {
   </div>
 </nav>
 
-	<%= yield %>
+<%= yield %>
+
+<%= render 'layouts/signup' %>
+<%= render 'layouts/login' %>
+
 
 </div>
 </body>

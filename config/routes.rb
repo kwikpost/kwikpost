@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # root :to => 'products#index'
 
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "sessions" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
+    registrations: 'registrations' }
   resources :mains
 
   # The priority is based upon order of creation: first created -> highest priority.

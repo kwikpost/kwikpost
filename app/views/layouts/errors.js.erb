@@ -1,0 +1,6 @@
+<% if !resource.errors.full_messages.empty? %>
+$("#errors_div").html("<%= resource.errors.full_messages %>");
+<% else %>
+$('#signupModal').modal('hide');
+location.reload();
+<% end %>
