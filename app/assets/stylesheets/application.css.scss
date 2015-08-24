@@ -4,9 +4,11 @@
 @import 'mains';
 /* PROFILE IMAGE ON NAV BAR */
 .profile-img {
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
 }
 /* ======================== */
 

@@ -19,4 +19,7 @@ class UsersController < ApplicationController
 		@user.user_follows.find_by(follow_id: params[:follow]).destroy
 		redirect_to user_path(@user.id)
 	end
+
+	def edit
+	end
 end
