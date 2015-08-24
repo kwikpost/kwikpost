@@ -9,4 +9,8 @@ class MainsController < ApplicationController
 	def posts
 
 	end
+
+	def newProduct
+		redirect_to '/mains'
+	end
 end

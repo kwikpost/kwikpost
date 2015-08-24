@@ -13,19 +13,19 @@
 
 <script type="text/javascript">
 	$("#new").click(function(){
-		$("#partials").html("<%= render 'partials/new' %>");
+		$("#partials").html("<%= escape_javascript(render partial: 'partials/new') %>");
 		return false;
 	})
 	$("#selling").click(function(){
-		$("#partials").html("<%= render 'partials/selling' %>");
+		$("#partials").html("<%= escape_javascript(render partial: 'partials/selling') %>");
 		return false;
 	})
 	$("#buying").click(function(){
-		$("#partials").html("<%= render 'partials/buying' %>");
+		$("#partials").html("<%= escape_javascript(render partial: 'partials/buying') %>");
 		return false;
 	})
 	$("#watching").click(function(){
-		$("#partials").html("<%= render 'partials/watching' %>");
+		$("#partials").html("<%= escape_javascript(render partial: 'partials/watching') %>");
 		return false;
 	})
 </script>
