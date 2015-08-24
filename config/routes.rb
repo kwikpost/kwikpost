@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
   
+  # get 'users/:id' => 'users#show'
+
   resources :products
+  resources :mains
   # root :to => 'products#index'
 
-
+  # ======= THESE GO TOGETHER =======
   devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
     registrations: 'registrations' }
-  resources :mains
+  resources :users, only: [:show]
+  # =================================
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
