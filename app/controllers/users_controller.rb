@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
 		@users = User.all
 		@follows = @user.follows
+		@followmes = UserFollow.includes(:user).where(follow_id: params[:id])
 	end
 
 	def follow
