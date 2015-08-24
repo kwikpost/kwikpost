@@ -1,47 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-  <title>Kwikpost</title>
-
-  <meta name="generator" content="Bootply" />
+    <title>Kwikpost</title>
+    <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
     <script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+     <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <script>
+      $( document ).ready(function() {
+        $('#btnToggle').click(function(){
+          if ($(this).hasClass('on')) {
+            $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
+            $(this).removeClass('on');
+          }
+          else {
+            $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
+            $(this).addClass('on');
+          }
+        });
+      });
+    </script>
 
-
-<script>
-$( document ).ready(function() {
-    $('#btnToggle').click(function(){
-  if ($(this).hasClass('on')) {
-    $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
-    $(this).removeClass('on');
-  }
-  else {
-    $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
-    $(this).addClass('on');
-  }
-});
-  });
-</script>
-
-<script>
-$(window).scroll(function() {
-    if ($(this).scrollTop() > 400) {
-        $( ".navbar #background" ).fadeIn();
-        console.log('fade in');
-    } else {
-        console.log('there');
-        $( ".navbar #background" ).fadeOut();
-    }
-});
-</script>
+    <script>
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 400) {
+          $( ".navbar #background" ).fadeIn();
+          console.log('fade in');
+        } else {
+          console.log('there');
+          $( ".navbar #background" ).fadeOut();
+        }
+      });
+    </script>
 </head>
 
 <body>
@@ -87,8 +82,8 @@ $(window).scroll(function() {
             <li><%= link_to "Inbox", mailbox_inbox_path %></li>
         <li> <%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
 <% else %>
-
         <li><a href="#loginModal" role="button" data-toggle="modal" id="font_color">Login</a></li>
+        <li><a href="#signupModal" role="button" data-toggle="modal" id="font_color">Sign up</a></li>
 <% end %>
         <li><a href="/mains/show" role="button" data-toggle="modal" id="font_color">About</a></li>
 
@@ -97,69 +92,10 @@ $(window).scroll(function() {
   </div>
 </nav>
 
-	<%= yield %>
+<%= yield %>
 
-
-<!--login modal-->
-<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      </div>
-      <div class="modal-body">
-          <!-- <form class="form col-md-12 center-block">
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-              <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
-            </div>
-          </form> -->
-
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
-  <%= devise_error_messages! %>
-  <div id="errors_div"></div>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: 'form-control',autofocus: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Sign up", class: 'btn btn-primary form-control' %>
-  </div>
-<% end %>
-
-      </div>
-      <div class="modal-footer">
-          <div class="col-md-12">
-            <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-lg" %>
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-          </div>  
-      </div>
-  </div>
-  </div>
-</div>
-
-
-
+<%= render 'layouts/signup' %>
+<%= render 'layouts/login' %>
 
 
 </div>
