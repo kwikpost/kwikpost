@@ -1,1 +1,31 @@
 <h1>NEW</h1>
+<form action='/mains/newProduct' method='post'>
+  <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" placeholder="title">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control" id="price" placeholder="price">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" name="description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="condition">Condition</label>
+    <select id="condition" name="condition">
+    	<option>New</option>
+    	<option>Used</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select id="category" name="category">
+    	<option>Automotive</option>
+    	<option>Electric</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

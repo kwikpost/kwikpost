@@ -4,9 +4,11 @@
 
 /* PROFILE IMAGE ON NAV BAR */
 .profile-img {
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
 }
 /* ======================== */
 
@@ -42,6 +44,7 @@ body {
   position:fixed;
   width:100%;
   z-index:10;
+  margin-top: -100px;
 }
 #pic{
 	height:475px;
@@ -179,7 +182,13 @@ h3,h4,h5 {
   max-width: 100%;
 }
 
+
 .img-center {
   margin: 0 auto;
+}
+
+
+#master_container{
+  margin-top: 100px;
 }
 
