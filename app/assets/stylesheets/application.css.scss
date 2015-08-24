@@ -11,10 +11,12 @@
  * file per style scope.
  *
  *= require_self
+ *= require chosen
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap/theme';
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 body {

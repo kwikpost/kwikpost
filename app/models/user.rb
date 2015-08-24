@@ -2,8 +2,6 @@ class User < ActiveRecord::Base
 
   has_many :products
   has_many :watchlists
-  # has_many :products, :through => :watchlist
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -27,5 +25,15 @@ class User < ActiveRecord::Base
 			end
 		end
 	end
+
+	acts_as_messageable
+
+	def mailboxer_name
+    	self.name
+  	end
+
+  	def mailboxer_email(object)
+    	self.email
+  	end
 
 end
