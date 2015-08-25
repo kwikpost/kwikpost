@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   has_many :products
   has_many :watchlists
+  has_many :productchats, dependent: :destroy
+  has_many :chats, through: :productchat
 
   has_many :user_follows, dependent: :destroy
   has_many :follows, through: :user_follows, source: :follow

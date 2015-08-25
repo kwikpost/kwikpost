@@ -2,7 +2,10 @@ class Product < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :condition
-  has_many :watchlists
+  has_many :watchlists, dependent: :destroy
+  has_many :productchats, dependent: :destroy
+  has_many :chats, through: :productchat
+
   has_attached_file :avatar
 
   validates :title, :price, :description, :condition_id, :category_id, presence: true
