@@ -1,4 +1,4 @@
-AWS.config(access_key_id:     AKIAJ5FPE6QDWA3WEPMA,
-           secret_access_key: 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 )
+# AWS.config(access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+#            secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] )
 
-S3_BUCKET = AWS::S3.new.buckets[kwikpost]
+# S3_BUCKET = AWS::S3.new.buckets[ENV['S3_BUCKET']]
