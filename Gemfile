@@ -26,12 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'compass-rails', '~> 2.0.2'
 gem 'hirb'
-gem "paperclip", "~> 4.3"
+gem "paperclip"
 gem 'gravatar-ultimate'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'mailboxer'
 gem 'chosen-rails'
+
+gem 'aws-sdk'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -43,11 +45,17 @@ gem 'imagesLoaded_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+gem 'meta_request'
+gem 'rails_serve_static_assets'
+
+group :production do
+  gem 'thin'
+end
+
+group :development, :production, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  gem 'meta_request'
   
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

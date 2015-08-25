@@ -33,23 +33,16 @@ $( document ).ready(function() {
           <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
         <div class="panel-body">
               <div class="list-group">
-                  <a href="#">Antiques</a> <br>
-                  <a href="#">Appliances</a> <br>
-                  <a href="#">Auto Parts</a> <br>
-                  <a href="#">Bicycles</a> <br>
-                  <a href="#">Boats & Marine</a> <br>
-                  <a href="#">Beauty & Health</a> <br>
-                  <a href="#">Clothes</a> <br>
-                  <a href="#">Electronics</a> <br>
-                  <a href="#">Games</a> <br>
-                  <a href="#">Jewelry</a> <br>
+                <% @categories.each do |category| %>
+                  <a href="#"><%= category.name %></a> <br>
+                <% end %>
               </div>
             </div>
       </div>
     </div>
 <div class="col-md-10">
-
   <div class="scroll panel panel-default">
+
     <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 
     <div class="box col3">
@@ -157,6 +150,7 @@ $( document ).ready(function() {
     );
     
   });
+
 
 </script>
   <!-- script references -->

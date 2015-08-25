@@ -5,7 +5,6 @@
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
      <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -25,14 +24,21 @@
     });
   });
 </script>
-
+<script>
+$(document).ready(function() {
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 400) {
+      $(".navbar .header").fadeIn();
+      console.log('fade in');
+    } else {
+      console.log('there');
+      $(".navbar .header").fadeOut();
+    }
+  });
+});
+</script>
 </head>
-
-<body>
-
-
 <div id="top_nav" class="header">
-
 <nav class="navbar navbar-default" id="height_nav">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -83,10 +89,14 @@
 
 
 
-    <%= yield %>
+
+ 
   
 
 
+
+<body>
+    <%= yield %>
 
 <%= render 'layouts/signup' %>
 <%= render 'layouts/login' %>
