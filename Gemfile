@@ -33,6 +33,8 @@ gem 'omniauth-facebook'
 gem 'mailboxer'
 gem 'chosen-rails'
 
+gem 'aws-sdk'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate'
@@ -42,7 +44,12 @@ gem 'will_paginate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-  gem 'meta_request'
+gem 'meta_request'
+gem 'rails_serve_static_assets'
+
+group :production do
+  gem 'thin'
+end
 
 group :development, :production, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
