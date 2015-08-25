@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
 
+  get 'chats/new'
+
+  get 'chats/create'
+
+  get 'chats/update'
+
+  get 'chats/destroy'
+
+  get 'chats/show'
+
   # get 'users/:id' => 'users#show'
 
   resources :products
