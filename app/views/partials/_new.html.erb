@@ -1,58 +1,35 @@
 <%= form_for @product, :url => mains_path, :html => {:multipart => true} do |f| %>
   <div class="form-group">
 	  <%= f.label :avatar %>
-	  <div class="form_control">
-		  <%= f.file_field :avatar %>
-	  </div>
+		  <%= f.file_field :avatar%>
   </div>
   <div class="form-group">
 	  <%= f.label :title %>
-	  <div class="form_control">
-		  <%= f.text_field :title %>
-	  </div>
+		  <%= f.text_field :title, class: "form-control" %>
   </div>
   <div class="form-group">
 	  <%= f.label :price %>
-	  <div class="form_control">
-		  <%= f.text_field :price %>
-	  </div>
+		  <%= f.text_field :price, class: "form-control" %>
   </div>
   <div class="form-group">
 	  <%= f.label :description %>
-	  <div class="form_control">
-		  <%= f.text_field :description %>
-	  </div>
+		  <%= f.text_field :description, class: "form-control" %>
   </div>
   <div class="form-group">
 	  <%= f.label :price_fixed %>
-	  <div class="form_control">
-		  <%= select_tag(:price_fixed, options_for_select([
-		    [ 'Yes', true],
-		    [ 'No', false]
-		    ], true)) %>
-	  </div>
+		  <%= f.select :price_fixed,
+        options_for_select([ [ 'Yes', true], [ 'No', false] ], true),
+        {}, class: 'form-control'%>
   </div>
   <div class="form-group">
 	  <%= f.label :category_id %>
-	  <div class="form_control">
-	  	<%= f.select(:category_id) do %>
-		  <% @categories.each do |c| -%>
-		    <%= content_tag(:option, c.name, value: c.id) %>
-		  <% end %>
-		<% end %>
-	  </div>
+  	<%= f.select :category_id, options_for_select(categories_option), {}, class: 'form-control'  %>
   </div>
   <div class="form-group">
 	  <%= f.label :condition_id %>
-	  <div class="form_control">
-		  <%= f.select(:condition_id) do %>
-		  <% @conditions.each do |c| -%>
-		    <%= content_tag(:option, c.name, value: c.id) %>
-		  <% end %>
-		<% end %>
-	  </div>
+		<%= f.select :condition_id, options_for_select(conditions_option), {}, class: 'form-control' %>
   </div>
-  <button type="submit" name="commit" class="btn btn-default">Submit</button>
+  <button type="submit" name="commit" class="btn btn-primary form-control">Submit</button>
 <% end %>
 <% if flash[:errors] %>
 	<% flash[:errors].each do |error| %>
