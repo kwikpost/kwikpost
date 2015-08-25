@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   # get 'users/:id' => 'users#show'
-
+  get 'pages/:id' => 'pages#index'
   resources :products
   # root :to => 'products#index'
 

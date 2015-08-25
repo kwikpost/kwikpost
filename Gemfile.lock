@@ -112,6 +112,8 @@ GEM
     hike (1.2.3)
     hirb (0.7.3)
     i18n (0.7.0)
+    imagesLoaded_rails (3.1.8)
+      railties (>= 3.1)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -129,6 +131,8 @@ GEM
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
       rails (>= 3.2.0)
+    masonry-rails (0.2.4)
+      railties
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -257,9 +261,11 @@ DEPENDENCIES
   devise
   gravatar-ultimate
   hirb
+  imagesLoaded_rails
   jbuilder (~> 2.0)
   jquery-rails
   mailboxer
+  masonry-rails
   meta_request
   omniauth-facebook
   paperclip (~> 4.3)

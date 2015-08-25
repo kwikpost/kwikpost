@@ -38,7 +38,8 @@ gem 'chosen-rails'
 gem 'will_paginate'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'masonry-rails'
+gem 'imagesLoaded_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,8 +1,10 @@
 <!-- <html>
 <head>
    -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
-<script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+<script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script> -->
+
 
 <script>
 $( document ).ready(function() {
@@ -18,19 +20,9 @@ $( document ).ready(function() {
 });
   });
 </script>
-<script>
-// external js: masonry.pkgd.js, imagesloaded.pkgd.js
-$(document).ready( function() {
-  // init Masonry after all images have loaded
-  var $grid = $('.grid').imagesLoaded( function() {
-    $grid.masonry({
-      itemSelector: '.grid-item',
-      percentPosition: true,
-      columnWidth: '.grid-sizer'
-    }); 
-  });
-});
-</script>
+
+
+
 <!-- </head> -->
 <!-- <body> -->
 <div id="pic"></div>
@@ -58,209 +50,114 @@ $(document).ready( function() {
 <div class="col-md-10">
 
   <div class="scroll panel panel-default">
-    <div class="grid">
-      <div class="grid-sizer">
-        <div class="grid-item">
-          <img src="http://i.imgur.com/bwy74ok.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/bAZWoqx.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/PgmEBSB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/aboaFoB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/LkmcILl.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-          <div class="grid-item">
-          <img src="http://i.imgur.com/bwy74ok.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/bAZWoqx.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/PgmEBSB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/aboaFoB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/LkmcILl.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-          <div class="grid-item">
-          <img src="http://i.imgur.com/bwy74ok.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/bAZWoqx.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/PgmEBSB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/aboaFoB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/LkmcILl.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
+    <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+
+    <div class="box col3">
+      <p>
+        <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
+      </p>
     </div>
-</div>
 
-</div>
-</div>
+    <div class="box col1">
+      <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
+    </div>
 
+    <div class="box col2">
+      <p>
+        <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
+      </p>
+    </div>
+
+    <div class="box col3">
+        <p>
+          <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
+        </p>
+      </div>
+
+      <div class="box col1">
+        <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
+      </div>
+
+      <div class="box col2">
+        <p>
+          <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
+        </p>
+      </div>
+
+      <div class="box col3">
+      <p>
+        <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
+      </p>
+      </div>
+
+      <div class="box col1">
+        <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
+      </div>
+
+      <div class="box col2">
+        <p>
+          <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
+        </p>
+      </div>
+
+     <!--  <div class="box col3">
+          <p>
+            <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
+          </p>
+        </div> -->
+
+       <!--  <div class="box col1">
+          <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
+        </div> -->
+
+        <div class="box col2">
+          <p>
+            <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
+          </p>
+        </div>
+<nav id="page-nav">
+  <a href="pages/2"></a>
+</nav>
+
+    </div>
+  </div>
+</div>
+<script>
+  $(function(){
+    
+    var $container = $('#masonry-container');
+    
+    $container.imagesLoaded(function(){
+      $container.masonry({
+        itemSelector: '.box',
+        columnWidth: 100
+      });
+    });
+    
+    $container.infinitescroll({
+      navSelector  : '#page-nav',    // selector for the paged navigation 
+      nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
+      itemSelector : '.box',     // selector for all items you'll retrieve
+      loading: {
+          finishedMsg: 'No more pages to load.',
+          img: 'http://i.imgur.com/6RMhx.gif'
+        }
+      },
+      // trigger Masonry as a callback
+      function( newElements ) {
+        // hide new items while they are loading
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        // ensure that images load before adding to masonry layout
+        $newElems.imagesLoaded(function(){
+          // show elems now they're ready
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true ); 
+        });
+      }
+    );
+    
+  });
+
+</script>
   <!-- script references -->
 <!-- </html> -->
