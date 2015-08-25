@@ -17,7 +17,7 @@ class MainsController < ApplicationController
 
 	def create
 		product = Product.new(product_params)
-		product.price_fixed = params[:price_fixed]
+		# product.price_fixed = params.require(:product)[:price_fixed]
 		product.status = true
 		product.user_id = current_user.id
 
