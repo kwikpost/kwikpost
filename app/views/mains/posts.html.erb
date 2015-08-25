@@ -12,6 +12,7 @@
 </div>
 
 <script type="text/javascript">
+	$("#partials").html("<%= escape_javascript(render partial: 'partials/new') %>");
 	$("#new").click(function(){
 		$("#partials").html("<%= escape_javascript(render partial: 'partials/new') %>");
 		return false;

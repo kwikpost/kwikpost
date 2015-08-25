@@ -1,1 +1,6 @@
 <h1>Selling</h1>
+<% @products.each do |product| %>
+	<p><%= product.title %></p>
+	<p>$<%= product.price %>0</p>
+	<%= image_tag product.avatar.url %>
+<% end %>
