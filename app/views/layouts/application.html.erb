@@ -25,29 +25,14 @@
     });
   });
 </script>
-<script>
-$(document).ready(function() {
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 400) {
-      $(".navbar .header").fadeIn();
-      console.log('fade in');
-    } else {
-      console.log('there');
-      $(".navbar .header").fadeOut();
-    }
-  });
-});
-</script>
-</head>
-<<<<<<< HEAD
 
+</head>
 
 <body>
 
-<div id="top_nav">
-=======
+
 <div id="top_nav" class="header">
->>>>>>> ce5df1a3dc52841fc445ab45c15bd91344d88dec
+
 <nav class="navbar navbar-default" id="height_nav">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -95,7 +80,7 @@ $(document).ready(function() {
     </div>
 </nav>
 </div>
-<<<<<<< HEAD
+
 
 
   <div id="master_container">
@@ -103,10 +88,7 @@ $(document).ready(function() {
   </div>
 
 
-=======
-<body>
-    <%= yield %>
->>>>>>> ce5df1a3dc52841fc445ab45c15bd91344d88dec
+
 <%= render 'layouts/signup' %>
 <%= render 'layouts/login' %>
 </body>
