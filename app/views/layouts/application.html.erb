@@ -39,8 +39,10 @@ $( document ).ready(function() {
 });
 </script>
 </head>
+
+
 <body>
-<div class="container">
+
 <div id="top_nav">
 <nav class="navbar navbar-default" id="height_nav">
     <div class="navbar-header">
@@ -90,13 +92,13 @@ $( document ).ready(function() {
 </nav>
 </div>
 
-<body>
+
   <div id="master_container">
     <%= yield %>
   </div>
 
+
 <%= render 'layouts/signup' %>
 <%= render 'layouts/login' %>
-</div>
 </body>
 </html>
