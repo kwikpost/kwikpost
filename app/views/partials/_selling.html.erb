@@ -4,7 +4,7 @@
 	<% @products.each do |product| %>
         <div class="grid-item">
 		  <%= image_tag product.avatar.url %>
-          <p>Product Title: <%= product.title %></p>
+          <p><%= product.title %></p>
         </div>
 	<% end %>
   </div>

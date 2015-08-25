@@ -1,5 +1,7 @@
 class MainsController < ApplicationController
 	def index
+		@products = Product.all
+		@categories = Category.all
 	end
 
 	def show
@@ -7,7 +9,7 @@ class MainsController < ApplicationController
 	end
 
 	def posts
-		@product = Product.new()
+		@product = Product.new
 		@products = Product.where(user_id: current_user.id)
 		@conditions = Condition.all
 		@categories = Category.all

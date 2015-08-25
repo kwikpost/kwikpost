@@ -41,226 +41,28 @@ $(document).ready( function() {
           <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
         <div class="panel-body">
               <div class="list-group">
-                  <a href="#">Antiques</a> <br>
-                  <a href="#">Appliances</a> <br>
-                  <a href="#">Auto Parts</a> <br>
-                  <a href="#">Bicycles</a> <br>
-                  <a href="#">Boats & Marine</a> <br>
-                  <a href="#">Beauty & Health</a> <br>
-                  <a href="#">Clothes</a> <br>
-                  <a href="#">Electronics</a> <br>
-                  <a href="#">Games</a> <br>
-                  <a href="#">Jewelry</a> <br>
+                <% @categories.each do |category| %>
+                  <a href="#"><%= category.name %></a> <br>
+                <% end %>
               </div>
             </div>
       </div>
     </div>
 <div class="col-md-10">
-
   <div class="scroll panel panel-default">
     <div class="grid">
       <div class="grid-sizer">
+        <% @products.each do |product| %>
         <div class="grid-item">
-          <img src="http://i.imgur.com/bwy74ok.jpg" />
-          <p>Product Title:</p>
+          <%= image_tag product.avatar.url %>
+          <p><%= product.title %></p>
         </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/bAZWoqx.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/PgmEBSB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/aboaFoB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/LkmcILl.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-          <div class="grid-item">
-          <img src="http://i.imgur.com/bwy74ok.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/bAZWoqx.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/PgmEBSB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/aboaFoB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/LkmcILl.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-          <div class="grid-item">
-          <img src="http://i.imgur.com/bwy74ok.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/bAZWoqx.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/PgmEBSB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/aboaFoB.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/LkmcILl.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/octocat-de-los-muertos.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="https://octodex.github.com/images/foundingfather_v2.png" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/q9zO6tw.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/r8p3Xgq.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/hODreXI.jpg" />
-          <p>Product Title:</p>
-        </div>
-        <div class="grid-item">
-          <img src="http://i.imgur.com/UORFJ3w.jpg" />
-          <p>Product Title:</p>
-        </div>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>
 
-</div>
-</div>
 
   <!-- script references -->
 <!-- </html> -->

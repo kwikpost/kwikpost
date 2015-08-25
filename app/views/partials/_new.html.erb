@@ -1,6 +1,6 @@
 <%= form_for @product, :url => mains_path, :html => {:multipart => true} do |f| %>
   <div class="form-group">
-	  <%= f.label :avatar %>
+	  <%= f.label :avatar, "Picture" %>
 	  <div class="form_control">
 		  <%= f.file_field :avatar %>
 	  </div>
