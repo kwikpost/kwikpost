@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'compass-rails', '~> 2.0.2'
 gem 'hirb'
+gem 'aws-sdk', '< 2.0'
+gem 'aws-s3'
 gem "paperclip"
 gem 'cocaine'
 gem 'gravatar-ultimate'
@@ -34,7 +36,6 @@ gem 'omniauth-facebook'
 gem 'mailboxer'
 gem 'chosen-rails'
 
-gem 'aws-sdk', '< 2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
