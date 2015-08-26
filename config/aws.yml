@@ -1,0 +1,7 @@
+development:
+  access_key_id: AKIAJ5FPE6QDWA3WEPMA
+  secret_access_key: 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
+
+production:
+  access_key_id: AKIAJ5FPE6QDWA3WEPMA
+  secret_access_key: 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
