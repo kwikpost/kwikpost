@@ -6,8 +6,7 @@ class Product < ActiveRecord::Base
   has_many :productchats, dependent: :destroy
   has_many :chats, through: :productchat
 
-  has_attached_file :avatar
-
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>", large: "600x600" }
   validates :title, :price, :description, :condition_id, :category_id, presence: true
   validates :price_fixed, inclusion: [true, false]
   validates :avatar, attachment_presence: true

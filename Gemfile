@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'compass-rails', '~> 2.0.2'
 gem 'hirb'
 gem "paperclip"
+gem 'cocaine'
 gem 'gravatar-ultimate'
 gem 'devise'
 gem 'omniauth-facebook'

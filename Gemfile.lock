@@ -268,6 +268,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.5)
   byebug
   chosen-rails
+  cocaine
   coffee-rails (~> 4.1.0)
   compass-rails (~> 2.0.2)
   devise
