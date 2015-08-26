@@ -2,11 +2,12 @@
 <div class="grid">
   <div class="grid-sizer">
 	<% @products.each do |product| %>
-        <div>
+        <div class="grid-item">
         <a href="/products/show/<%= product.id %>">
-		  <%= image_tag product.avatar.url(:thumb) %>
+		  <div class="image"><%= image_tag product.avatar.url(:thumb) %></div>
         <p><%= product.title %></p></a>  
         </div>
 	<% end %>
   </div>
+</div>
 </div>
