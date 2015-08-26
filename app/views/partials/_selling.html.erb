@@ -4,7 +4,7 @@
 	<% @products.each do |product| %>
         <div>
         <a href="/products/show/<%= product.id %>">
-		  <%= image_tag product.avatar.url(:thumb) %>
+		  <%= image_tag product.avatar.url(:medium) %>
         <p><%= product.title %></p></a>  
         </div>
 	<% end %>
