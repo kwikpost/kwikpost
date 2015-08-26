@@ -6,20 +6,7 @@
 <script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script> -->
 
 
-<script>
-$( document ).ready(function() {
-    $('#btnToggle').click(function(){
-  if ($(this).hasClass('on')) {
-    $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
-    $(this).removeClass('on');
-  }
-  else {
-    $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
-    $(this).addClass('on');
-  }
-});
-  });
-</script>
+
 
 
 
@@ -48,72 +35,21 @@ $( document ).ready(function() {
 
     <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 
+
+<% @products.each do |product|%>
     <div class="box col3">
-      <p>
-        <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
-      </p>
+      
+        <a href="/products/show/<%= product.id %>"><%= image_tag product.avatar.url(:medium) %></a>
+      <p><%= product.title %></p>
     </div>
+<% end %>
 
-    <div class="box col1">
-      <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
-    </div>
 
-    <div class="box col2">
-      <p>
-        <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
-      </p>
-    </div>
 
-    <div class="box col3">
-        <p>
-          <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
-        </p>
-      </div>
 
-      <div class="box col1">
-        <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
-      </div>
-
-      <div class="box col2">
-        <p>
-          <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
-        </p>
-      </div>
-
-      <div class="box col3">
-      <p>
-        <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
-      </p>
-      </div>
-
-      <div class="box col1">
-        <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
-      </div>
-
-      <div class="box col2">
-        <p>
-          <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
-        </p>
-      </div>
-
-     <!--  <div class="box col3">
-          <p>
-            <a href="http://www.flickr.com/photos/nemoorange/3318887645/" title="Clarendon Metro by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3619/3318887645_1f33364338.jpg" alt="Clarendon Metro"  /></a>
-          </p>
-        </div> -->
-
-       <!--  <div class="box col1">
-          <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
-        </div> -->
-
-        <div class="box col2">
-          <p>
-            <a href="http://www.flickr.com/photos/nemoorange/3319714470/" title="Whitlow's on Wilson by nemoorange, on Flickr"><img src="http://farm4.static.flickr.com/3008/3319714470_c05a5cb5a8_m.jpg" alt="Whitlow's on Wilson" /></a>
-          </p>
-        </div>
-<nav id="page-nav">
-  <a href="pages/2"></a>
-</nav>
+<div id="infinite-scrolling">
+  <%= will_paginate %>
+</div>
 
     </div>
   </div>
