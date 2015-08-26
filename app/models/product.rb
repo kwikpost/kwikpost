@@ -12,6 +12,6 @@ class Product < ActiveRecord::Base
   validates :avatar, attachment_presence: true
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  self.per_page = 20
-  
+  self.per_page = 10
+
 end

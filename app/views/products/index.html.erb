@@ -33,30 +33,33 @@
 <div class="col-md-10">
   <div class="scroll panel panel-default">
 
-    <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+    <div id="masonry-container" class="transitions-enabled clearfix">
 
 
-<% @products.each do |product|%>
-    <div class="box col3">
-      
-        <a href="/products/show/<%= product.id %>"><%= image_tag product.avatar.url(:medium) %></a>
-      <p><%= product.title %></p>
-    </div>
-<% end %>
+      <div class="page-header">
+      <h1>My products</h1>
+      </div>
 
+      <div id="static-pagination">
+      <%= will_paginate %>
+      </div>
 
-<div id="my-products">
-  <%= render @products %>
-</div>
+      <div id="my-products">
+      <div class="page-delimiter first-page" data-page="<%= params[:page] || 1 %>"></div>
+      <%= render @products %>
+      </div>
 
-<div id="infinite-scrolling">
-  <%= will_paginate %>
-</div>  
+      <% if @products.next_page %>
+      <div id="infinite-scrolling">
+        <%= will_paginate %>
+      </div>
+      <% end %>
 
     </div>
   </div>
 </div>
 <script>
+
   $(function(){
     
     var $container = $('#masonry-container');

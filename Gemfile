@@ -36,7 +36,7 @@ gem 'omniauth-facebook'
 gem 'mailboxer'
 gem 'chosen-rails'
 
-
+gem 'bootstrap-will_paginate'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate'

@@ -1,12 +1,13 @@
 class MainsController < ApplicationController
 	def index
-		@categories = Category.all
-		@products = Product.paginate(page: params[:page], per_page: 20).order('created_at DESC')
-		respond_to do |format|
-			format.html
-			format.js
-		end
-		# Product.all.order(created_at: :desc)
+		# @categories = Category.all
+		# @products = Product.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+		# respond_to do |format|
+		# 	format.html
+		# 	format.js
+		# end
+		# # Product.all.order(created_at: :desc)
+		
 	end
 
 	def show
