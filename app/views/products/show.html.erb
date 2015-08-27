@@ -1,88 +1,160 @@
-<div class="row">
-	<div id="master_container" class="col-sm-6 col-md-offset-1">
-		<p><%= image_tag @product.avatar.url(:large), class: "image"  %></p>
-		<h3><%= @product.title  %></h3>
-		<h4>Description: <%= @product.description %></h4>
-		<h4>Condition: <%= @product.condition.name %></h4>
-		<div class="panel panel-default">
-		  <div class="panel-body">
-			  <h4>My Other Offers</h4>
-		  </div>
+<div id="master_container" class="col-sm-6 col-md-offset-1">
+	<div class="col-sm-10" id="alert_message">
+	<% if flash[:notice] %>
+		<div class="row">
+			<div class="col-md-4 col-xs-12	alert alert-<%= flash[:color]%>">
+				<p><%= flash[:notice]  %></p>
+			</div>
 		</div>
-		<% @products.each do |product| %>
-			<% if product.id != @product.id %>
-		        <div class="grid-item">
-		        <a href="/products/<%= product.id %>">
-				  <%= image_tag product.avatar.url(:medium) %>
-		        <p><%= product.title %></p></a>  
-		        </div>
-	        <% end %>
-		<% end %>
+	<% end %>
 	</div>
-	<div id="master_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 id="asking" class="panel-title text-center">Asking</h3>
-		  </div>
-		  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
-		  <div class="panel-body">
+
+	<p><%= image_tag @product.avatar.url(:large), class: "image"  %></p>
+	<h3><%= @product.title  %></h3>
+	<h4>Description: <%= @product.description %></h4>
+	<h4>Condition: <%= @product.condition.name %></h4>
+	<div class="panel panel-default">
+	  <div class="panel-body">
+		  <h4>My Other Offers</h4>
+	  </div>
+	</div>
+	  <div class="scroll panel panel-default">
+
+	    <div id="masonry-container" class="transitions-enabled clearfix">
+	       
+	          <%= render @products %>
+	        
+	    </div>
+
+	          
+	  </div>
 
 
-			  <button type="button" class="btn btn-success btn-lg btn-block">Buy</button>
-			   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
-			  
-		  </div>
-		</div>
+<script>
+$(function(){
+
+var $container = $('#masonry-container');
+
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector: '.box',
+    columnWidth: 100
+  });
+});
+
+$container.infinitescroll({
+  navSelector  : '.pagination',    // selector for the paged navigation 
+  nextSelector : '.pagination .next_page a',  // selector for the NEXT link (to page 2)
+  itemSelector : '.box',     // selector for all items you'll retrieve
+  loading: {
+      finishedMsg: 'No more pages to load.',
+      img: 'http://i.imgur.com/6RMhx.gif'
+    }
+  },
+  // trigger Masonry as a callback
+  function( newElements ) {
+    // hide new items while they are loading
+    var $newElems = $( newElements ).css({ opacity: 0 });
+    // ensure that images load before adding to masonry layout
+    $newElems.imagesLoaded(function(){
+      // show elems now they're ready
+      $newElems.animate({ opacity: 1 });
+      $container.masonry( 'appended', $newElems, true ); 
+    });
+  }
+);
+
+});
+</script>
+
+</div>
+<div id="master_container" class="col-sm-3 col-sm-offset-1">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 id="asking" class="panel-title text-center">Asking</h3>
+	  </div>
+
+	  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
+	  <div class="panel-body">
+
+		  <button type="button" class="btn btn-success btn-lg btn-block">Buy</button>
+		   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
+		  
+	  </div>
 	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-		  <div class="panel-body">
-			  <button type="button" class="btn btn-lg btn-block">Watching</button>
-		  </div>
-		</div>
-	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			    <h3 id="asking" class="panel-title text-center">Seller</h3>
-			</div>
-			<div class="panel-body">
-				<img src="<%= @seller.image %>" alt="<%= @seller.name %>" />
-				<h3><%= @seller.name %></h3>
-			</div>
-		</div>
-	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			    <h3 id="asking" class="panel-title text-center">Location</h3>
-			</div>
-			<div class="panel-body">
-				<h3>MAP</h3>
-			</div>
-		</div>
-	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			    <h3 class="panel-title">Followers (<%= @followers.count %>)</h3>
-		 	</div>
-			<div class="panel-body">
-			    <% @followers.each do |follower| %>
-				    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
-			    <% end %>
-		  </div>
-		  <div class="panel-body">
-			  	<% if @following %>
-				  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
-			    <% else %>
-				  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
+</div>
+<div id="right_container" class="col-sm-3 col-sm-offset-1">
+	<div class="panel panel-default">
+	  <div class="panel-body">
+		<% if product_watch(@product.id, current_user.id)  %>
+			<%= form_for(:watch, :url=>{:controller => 'products', :action=>'unwatch'}, :html=>{:style => "display:inline"}) do |f|   %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.hidden_field :product_id, :value => @product.id  %>
+				<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
+				  <i class="fa fa-star-o"></i> Unwatch 
+				<% end %>			
+			<% end %>
+
+		<% else %>
+		  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.hidden_field :product_id, :value => @product.id  %>
+				<%= button_tag( :class => "btn btn-lg btn-default btn-block") do %>
+				  <i class="fa fa-star"></i> Watch 
 				<% end %>
-		  </div>
+			<% end %>
+		<% end %>
+	  </div>
+	</div>
+</div>
+<div id="right_container" class="col-sm-3 col-sm-offset-1">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		    <h3 id="asking" class="panel-title text-center">Seller</h3>
 		</div>
+		<div class="panel-body">
+			<img src="<%= @seller.image %>" alt="<%= @seller.name %>" />
+			<h3><%= @seller.name %></h3>
+		</div>
+	</div>
+</div>
+<div id="right_container" class="col-sm-3 col-sm-offset-1">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		    <h3 id="asking" class="panel-title text-center">Location</h3>
+		</div>
+		<div class="panel-body">
+			<h3>MAP</h3>
+		</div>
+	</div>
+</div>
+<div id="right_container" class="col-sm-3 col-sm-offset-1">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		    <h3 class="panel-title">Followers (<%= @followers.count %>)</h3>
+	 	</div>
+		<div class="panel-body">
+		    <% @followers.each do |follower| %>
+			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+		    <% end %>
+	  </div>
+	  <div class="panel-body">
+		  	<% if @following %>
+			  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
+		    <% else %>
+			  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
+			<% end %>
+	  </div>
 	</div>
 </div>
 
 <%= render 'products/ask' %>
 
-
+<!-- remove flash notice automatically -->
+<script>
+window.setTimeout(function() {
+$("#alert_message").fadeTo(300, 0).slideUp(300, function(){
+$(this).remove(); 
+});
+}, 800);
+</script>

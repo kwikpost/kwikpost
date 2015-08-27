@@ -158,48 +158,12 @@ h3,h4,h5 {
 }
 /* end theme */
 
-/* masonry CSS */
 
-.grid {
-  background: #DDD;
-  width:100%;
-}
-
-/* clear fix */
-.grid:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-/* ---- .grid-item ---- */
-
-.grid-sizer{
-  width:100%;
-}
-
-.grid-item {
-  /* image margins on side for frame */
-  width: 31%;
-  margin: 10px;
-
-}
-
-.grid-item {
-  float: left;
-  background: white;
-
-}
-.grid-item p {
-  padding: 10px;
-}
-.grid-item{
-  max-width:100%;
-}
-.grid-item img {
-  display: block;
-  width: 100%;
-}
 #master_container{
   margin-top: 100px;
+
 }
+
+
+
+

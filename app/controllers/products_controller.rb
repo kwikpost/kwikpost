@@ -7,11 +7,7 @@ class ProductsController < ApplicationController
   def index 
     # @products = Product.all
     @categories = Category.all
-    @products = Product.paginate(page: params[:page], per_page: 10).order('created_at DESC')
-    respond_to do |format|
-      format.html 
-      format.js
-    end
+    @products = Product.paginate(:page => params[:page], :per_page => 20)
   end
 
   def edit
@@ -50,9 +46,32 @@ class ProductsController < ApplicationController
     end
   end
 
+  def watch
+    @watchlist = Watchlist.new(watch_params)
+    @watchlist.save
+    flash[:notice] = "You successfully added this item to Watchlist"
+    flash[:color] = "info"
+    redirect_to "/products/#{watch_params[:product_id]}"
+  end
+
+  def unwatch
+    @user = User.find(current_user.id)
+    @watchlist = @user.watchlists.find_by(product_id: watch_params[:product_id])
+    @watchlist.destroy
+    flash[:notice] = "You successfully removed this item from Watchlist"
+    flash[:color] = "info"
+    redirect_to "/products/#{watch_params[:product_id]}"
+  end
+
+
+
   private
   def product_params
     params.require(:product).permit(:title, :price, :description, :price_fixed, :category_id, :condition_id, :avatar)
+  end
+
+  def watch_params
+    params.require(:watch).permit(:product_id, :user_id)
   end
 
 end
