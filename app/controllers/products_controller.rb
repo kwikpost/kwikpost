@@ -7,11 +7,7 @@ class ProductsController < ApplicationController
   def index 
     # @products = Product.all
     @categories = Category.all
-    @products = Product.paginate(page: params[:page], per_page: 10).order('created_at DESC')
-    respond_to do |format|
-      format.html 
-      format.js
-    end
+    @products = Product.paginate(:page => params[:page], :per_page => 20)
   end
 
   def edit

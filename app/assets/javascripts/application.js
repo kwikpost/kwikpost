@@ -16,7 +16,14 @@
 //= require turbolinks
 //= require bootstrap
 //= require masonry/jquery.masonry
-//= require waypoints
-//= require pagination
+
 
 //= require_tree .
+
+
+
+
+//infinite scroll
+
+
+
