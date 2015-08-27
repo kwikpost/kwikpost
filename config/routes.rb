@@ -26,14 +26,19 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
     registrations: 'registrations' }
   resources :users, only: [:show, :edit]
+  
+  get '/users/:id/index' => 'users#index'
 
   post 'users/:id/follow' => 'users#follow', as: :follow_user
   delete 'users/:id/follow' => 'users#unfollow'
+
+  post 'users/:id/review' => 'users#review', as: :review_user
   # =================================
 
   # :id is current user's id
   get '/mains/:id/posts' => 'mains#posts'
   resources :mains
+
 
 
 

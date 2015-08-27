@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <head>
     <title>Kwikpost</title>
     <meta name="generator" content="Bootply" />
@@ -26,16 +24,14 @@
 </script>
 
 </head>
-<div id="top_nav" class="header">
-
-<%= render 'layouts/nav' %>
-
-</div>
 
 <body>
+  <div id="top_nav" class="header">
+    <%= render 'layouts/nav' %>
+  </div>
+  <div style="padding-top: 75px;">
     <%= yield %>
-
-<%= render 'layouts/signup' %>
-<%= render 'layouts/login' %>
+  </div>
+  <%= render 'layouts/signup' %>
+  <%= render 'layouts/login' %>
 </body>
-</html>

@@ -5,13 +5,19 @@ class ProductsController < ApplicationController
   end
 
   def index 
-    # @products = Product.all
     @categories = Category.all
 
-    if params[:search].present?
-      @products = Product.near(params[:search], 50).paginate(:page => params[:page], :per_page => 20)
+    if params[:search_location].present?
+      @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
     else
-      @products = Product.paginate(:page => params[:page], :per_page => 20)
+      if params[:category_id]
+        @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
+        flash[:notice] = Category.find(params[:category_id]).name
+
+      else
+        flash[:notice] = nil
+        @products = Product.paginate(:page => params[:page], :per_page => 20)
+      end
     end
   end
 
@@ -47,8 +53,10 @@ class ProductsController < ApplicationController
     @seller = Product.find(params[:id]).user
     @product = Product.find(params[:id])
     @products = User.find(@seller.id).products
-    @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
     @followers = UserFollow.where(follow_id: @seller.id)
+    if current_user
+      @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
+    end
   end
 
   def watch
@@ -78,5 +86,4 @@ class ProductsController < ApplicationController
   def watch_params
     params.require(:watch).permit(:product_id, :user_id)
   end
-
 end
