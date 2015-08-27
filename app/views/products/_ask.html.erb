@@ -6,28 +6,31 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group">
-            <%= f.label :email %>
-            <%= f.email_field :email, class: 'form-control', autofocus: true %>
-          </div>
+      <h3>
+        <%= image_tag @product.user.image  %>
+        <strong><%= @product.user.name  %></strong>
+      </h3>
+       <h3>Ask about <strong><%= @product.title %></strong></h3>
+      
+      <%= form_for(:chat, :url=>{:controller => 'chats', :action=>'create'}, method: :post, :html => {:class => "form-horizontal"}) do |f|   %>
 
-          <div class="form-group">
-            <%= f.label :password %>
-            <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
-          </div>
+      <div class="form-group">
+        <div class="col-md-12 col-xs-12">
+          <%= f.text_area :message, class: "form-control"  %>
+          <%= f.hidden_field :product_id, :value => @product.id %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+        </div>
 
-          <% if devise_mapping.rememberable? -%>
-            <div class="form-group">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
-          <% end -%>
+      </div>
 
-          <div class="form-group">
-            <%= f.submit "Ask", class: 'btn btn-primary form-control' %>
-          </div>
-        <% end %>
+      <div class="form-group">
+        <div class="col-md-6 col-md-offset-6 col-xs-12">
+        <%= f.submit :Send, class: "btn btn-primary pull-right col-md-6"  %>
+        </div>
+      </div>
+        
+      <% end %>
+
       </div>
   </div>
   </div>
