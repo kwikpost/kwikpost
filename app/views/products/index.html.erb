@@ -1,0 +1,62 @@
+<!-- <html>
+<head>
+   -->
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+<script src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.js"></script> -->
+
+
+
+
+
+
+<!-- </head> -->
+<!-- <body> -->
+<div id="pic"></div>
+
+
+
+<div class="container" id="main">
+   <div class="row">
+    <div class="col-md-2 col-sm-6">
+        <div class="panel panel-default" id="cat_back">
+          <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
+        <div class="panel-body">
+              <div class="list-group">
+                <% @categories.each do |category| %>
+                  <a href="#"><%= category.name %></a> <br>
+                <% end %>
+              </div>
+            </div>
+      </div>
+    </div>
+<div class="col-md-10">
+  <div class="scroll panel panel-default">
+
+    <div id="masonry-container" class="transitions-enabled clearfix">
+
+
+      <div class="page-header">
+      <h1>My products</h1>
+      </div>
+
+      <div id="static-pagination">
+      <%= will_paginate %>
+      </div>
+
+      <div id="my-products">
+      <div class="page-delimiter first-page" data-page="<%= params[:page] || 1 %>"></div>
+      <%= render @products %>
+      </div>
+
+      <% if @products.next_page %>
+      <div id="infinite-scrolling">
+        <%= will_paginate %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+  <!-- script references -->
+<!-- </html> -->

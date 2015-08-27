@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'pages/:id' => 'pages#index'
   resources :products
 
-  get 'products/show/:id' => 'products#show'
+  get 'products/:id' => 'products#show'
   # root :to => 'products#index'
 
   # ======= THESE GO TOGETHER =======
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
 
   # :id is current user's id
   get '/mains/:id/posts' => 'mains#posts'
-  post '/mains/newProduct' => 'mains#newProduct'
   resources :mains
 
 
@@ -39,7 +38,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'mains#index'
+  root 'products#index'
 
 
 

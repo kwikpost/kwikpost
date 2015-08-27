@@ -1,7 +1,13 @@
 class MainsController < ApplicationController
 	def index
-		@products = Product.all.order(created_at: :desc)
-		@categories = Category.all
+		# @categories = Category.all
+		# @products = Product.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+		# respond_to do |format|
+		# 	format.html
+		# 	format.js
+		# end
+		# # Product.all.order(created_at: :desc)
+		
 	end
 
 	def show
@@ -15,20 +21,5 @@ class MainsController < ApplicationController
 		@categories = Category.all
 	end
 
-	def create
-		product = Product.new(product_params)
-		# product.price_fixed = params.require(:product)[:price_fixed]
-		product.status = true
-		product.user_id = current_user.id
 
-		if product.save
-			flash[:errors] = ["Successfully added a new product!"]
-		else
-			flash[:errors] = product.errors.full_messages
-		end
-		redirect_to "/mains/#{current_user.id}/posts"
-	end
-	def product_params
-		params.require(:product).permit(:title, :price, :description, :price_fixed, :category_id, :condition_id, :avatar)
-	end
 end

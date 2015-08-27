@@ -1,10 +1,10 @@
 <h1>Selling</h1>
-<div class="grid">
-  <div class="grid-sizer">
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+	<div class="box col3">
 	<% @products.each do |product| %>
         <div>
         <a href="/products/show/<%= product.id %>">
-		  <%= image_tag product.avatar.url(:thumb) %>
+		  <%= image_tag product.avatar.url(:medium) %>
         <p><%= product.title %></p></a>  
         </div>
 	<% end %>
