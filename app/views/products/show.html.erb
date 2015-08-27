@@ -1,30 +1,42 @@
 <div class="row">
-	<div id="master_container" class="col-sm-7 col-md-offset-1">
-		<p><%= image_tag @product.avatar.url(:large)  %></p>
+	<div id="master_container" class="col-sm-6 col-md-offset-1">
+		<p><%= image_tag @product.avatar.url(:large), class: "image"  %></p>
 		<h3><%= @product.title  %></h3>
-		<p></p>
+		<h4>Description: <%= @product.description %></h4>
+		<h4>Condition: <%= @product.condition.name %></h4>
 		<div id='partials'></div>
 	</div>
 	<div id="master_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Asking</h3>
+		    <h3 id="asking" class="panel-title text-center">Asking</h3>
 		  </div>
+		  <h4 class="text-center"><%= @product.price %></h4>
 		  <div class="panel-body">
-		  <div class="btn-group-vertical btn-group-lg" role="group" aria-label="...">
-			  <button type="button" class="btn btn-default">Buy</button>
-			  <button type="button" class="btn btn-default">Ask</button>
-		  </div>
+			  <button type="button" class="btn btn-primary btn-lg btn-block">Buy</button>
+			  <button type="button" class="btn btn-lg btn-block">Ask</button>
 		  </div>
 		</div>
 	</div>
-	<div id="master_container" class="col-sm-3 col-sm-offset-1">
+	<div id="right_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
 		  <div class="panel-body">
-		  <div class="btn-group-vertical btn-group-lg" role="group" aria-label="...">
-			  <button type="button" class="btn btn-default">Watching</button>
+			  <button type="button" class="btn btn-lg btn-block">Watching</button>
 		  </div>
-		  </div>
+		</div>
+	</div>
+	<div id="right_container" class="col-sm-3 col-sm-offset-1">
+		<div class="panel panel-default">
+			<div class="panel-body">
+
+			</div>
+		</div>
+	</div>
+	<div id="right_container" class="col-sm-3 col-sm-offset-1">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2 class="text-center">FOLLOWERS</h2>
+			</div>
 		</div>
 	</div>
 </div>

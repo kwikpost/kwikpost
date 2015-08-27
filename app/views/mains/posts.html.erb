@@ -1,29 +1,37 @@
 <div class="row">
 	<div id="master_container" class="col-sm-7 col-md-offset-1">
 		<h1>My Offers</h1>
-		<div id="product_nav" class="well col-md-12">
+		<div id="product_nav" class="well col-sm-12">
 			<a id="new" href="">New</a> | 
 			<a id="selling" href="">Selling</a> | 
 			<a id="buying" href="">Buying</a> | 
 			<a id="watching" href="">Watching</a>
 		</div>
-		<div id='partials'></div>
+		<div class="col-sm-6">
+			<div id='partials'></div>
+		</div>
 	</div>
 	<div id="master_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Followers (3)</h3>
+		    <h3 class="panel-title">Followers (<%= @followers.count %>)</h3>
 		  </div>
 		  <div class="panel-body">
-		    Panel content
+		    <% @followers.each do |follower| %>
+			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+		    <% end %>
 		  </div>
 		</div>
+	</div>
+	<div id="master_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Following (4)</h3>
+		    <h3 class="panel-title">Following (<%= @followings.count %>)</h3>
 		  </div>
 		  <div class="panel-body">
-		    Panel content
+		    <% @followings.each do |following| %>
+			    <img src="<%= following.follow.image %>" alt="<%= following.follow.name %>" />
+		    <% end %>
 		  </div>
 		</div>
 	</div>

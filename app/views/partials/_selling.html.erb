@@ -2,11 +2,13 @@
 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 	<div class="box col3">
 	<% @products.each do |product| %>
-        <div>
+        <div class="grid-item">
         <a href="/products/show/<%= product.id %>">
+		  <div class="image"><%= image_tag product.avatar.url(:thumb) %></div>
 		  <%= image_tag product.avatar.url(:medium) %>
         <p><%= product.title %></p></a>  
         </div>
 	<% end %>
   </div>
+</div>
 </div>
