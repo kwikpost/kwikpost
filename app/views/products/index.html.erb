@@ -2,32 +2,28 @@
 <div id="pic"></div>
 
 <div class="container" id="main">
-   <div class="row">
+  <div class="row">
     <div class="col-md-2 col-sm-6">
       <div class="panel panel-default" id="cat_back">
-          <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
-            <div class="panel-body">
-              <div class="list-group">
-                <% @categories.each do |category| %>
-                  <a href="#"><%= category.name %></a> <br>
-                <% end %>
-              </div>
-            </div>
+        <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
+        <div class="panel-body">
+          <div class="list-group">
+          <% @categories.each do |category| %>
+            <a href="#"><%= category.name %></a> <br>
+          <% end %>
+          </div>
+        </div>
       </div>
     </div>
-<div class="col-md-10">
-  <div class="scroll panel panel-default">
-
-    <div id="masonry-container" class="transitions-enabled clearfix">
-       
-          <%= render @products %>
-        
+    <div class="col-md-10">
+      <div class="scroll panel panel-default">
+        <div id="masonry-container" class="transitions-enabled clearfix">
+        <%= render @products %> 
+        </div>
+      <%= will_paginate @products %>   
+      </div>
     </div>
-
-          <%= will_paginate @products %>
-          
   </div>
-
 </div>
 
 <script>

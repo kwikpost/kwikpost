@@ -140,10 +140,10 @@ $container.infinitescroll({
 	  </div>
 	  <div class="panel-body">
 		  	<% if @following %>
-			  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
-		    <% else %>
-			  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
-			<% end %>
+              <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger"%>
+            <% else %>
+              <%= link_to 'Follow', follow_user_path(product_id: @product.id ,:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary"%>
+            <% end %>
 	  </div>
 	</div>
 </div>
