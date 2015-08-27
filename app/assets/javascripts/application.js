@@ -19,11 +19,7 @@
 
 
 
-
 //= require_tree .
-
-
-
 
 //infinite scroll
 

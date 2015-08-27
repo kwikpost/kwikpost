@@ -7,7 +7,12 @@ class ProductsController < ApplicationController
   def index 
     # @products = Product.all
     @categories = Category.all
-    @products = Product.paginate(:page => params[:page], :per_page => 20)
+
+    if params[:search].present?
+      @products = Product.near(params[:search], 50).paginate(:page => params[:page], :per_page => 20)
+    else
+      @products = Product.paginate(:page => params[:page], :per_page => 20)
+    end
   end
 
   def edit
