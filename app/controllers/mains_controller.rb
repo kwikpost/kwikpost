@@ -17,6 +17,7 @@ class MainsController < ApplicationController
 	def posts
 		@product = Product.new
 		@products = Product.where(user_id: current_user.id)
+		@user_chats = Productchat.where(user_id: current_user.id)
 		@conditions = Condition.all
 		@categories = Category.all
 		@followings = UserFollow.where(user_id:current_user.id)
