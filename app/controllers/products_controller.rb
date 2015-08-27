@@ -5,9 +5,15 @@ class ProductsController < ApplicationController
   end
 
   def index 
-    # @products = Product.all
     @categories = Category.all
-    @products = Product.paginate(:page => params[:page], :per_page => 20)
+    if params[:category_id]
+      @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
+      flash[:notice] = Category.find(params[:category_id]).name
+
+    else
+      flash[:notice] = nil
+      @products = Product.paginate(:page => params[:page], :per_page => 20)
+    end
   end
 
   def edit
