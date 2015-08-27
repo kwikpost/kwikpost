@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-
+	def index
+		@products = User.find(params[:id]).products
+		@seller = User.find(params[:id])
+		@products = User.find(@seller.id).products
+		@following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
+        @followers = UserFollow.where(follow_id: @seller.id)
+	end
 	def show
 		# Testing purpose
 		@user = User.find(params[:id])
