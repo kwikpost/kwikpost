@@ -39,8 +39,14 @@
 		  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
 		  <div class="panel-body">
 
-			  <button type="button" class="btn btn-success btn-lg btn-block">Buy</button>
+			  <!-- <button type="button" class="btn btn-success btn-lg btn-block">Buy</button> -->
+			  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
+ 			 	Buy
+				</button>
 			   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
+			   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
+ 			 	Ask
+				</button>
 			  
 		  </div>
 		</div>
@@ -48,6 +54,7 @@
 	<div id="right_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
 		  <div class="panel-body">
+		  <% if user_signed_in? %>
 			<% if product_watch(@product.id, current_user.id)  %>
 				<%= form_for(:watch, :url=>{:controller => 'products', :action=>'unwatch'}, :html=>{:style => "display:inline"}) do |f|   %>
 					<%= f.hidden_field :user_id, :value => current_user.id %>
@@ -65,6 +72,9 @@
 					  <i class="fa fa-star"></i> Watch 
 					<% end %>
 				<% end %>
+			<% end %>
+			<% else %>
+			<a href="#loginModal" role="button" data-toggle="modal" id="font_color" class="btn btn-lg btn-default btn-block">Watch</a>
 			<% end %>
 		  </div>
 		</div>
@@ -112,6 +122,8 @@
 </div>
 
 <%= render 'products/ask' %>
+<%= render 'products/buy' %>
+<%= render 'layouts/login' %>
 
 <!-- remove flash notice automatically -->
 <script>
