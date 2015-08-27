@@ -54,6 +54,8 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
     builder (3.2.2)
     byebug (6.0.2)
     callsite (0.0.11)
@@ -272,6 +274,7 @@ DEPENDENCIES
   aws-s3
   aws-sdk (< 2.0)
   bootstrap-sass (~> 3.3.5)
+  bootstrap-will_paginate
   byebug
   chosen-rails
   cocaine
