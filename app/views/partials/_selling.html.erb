@@ -3,9 +3,9 @@
 	<div class="box col3">
 	<% @products.each do |product| %>
         <div class="grid-item">
-        <a href="/products/show/<%= product.id %>">
-		  <div class="image"><%= image_tag product.avatar.url(:thumb) %></div>
-		  <%= image_tag product.avatar.url(:medium) %>
+        <a href="/products/<%= product.id %>">
+		  <div><%= image_tag product.avatar.url(:medium) %></div>
+		  
         <p><%= product.title %></p></a>  
         </div>
 	<% end %>
