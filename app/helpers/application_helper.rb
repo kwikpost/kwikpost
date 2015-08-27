@@ -41,4 +41,16 @@ module ApplicationHelper
     end
     return options
   end
+
+
+  def product_watch(product_id, user_id)
+    product = Product.find(product_id)
+    product_watch = Watchlist.where product_id: product
+    if product_watch.find_by user_id: user_id
+      return true
+    else
+      return false
+    end
+  end
+  
 end
