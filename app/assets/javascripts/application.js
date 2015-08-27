@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require bootstrap
 //= require masonry/jquery.masonry
-//= require pagination
+
 
 //= require_tree .
+
+
