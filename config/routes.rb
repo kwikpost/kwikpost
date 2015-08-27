@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'chats/new'
 
-  get 'chats/create'
+  post '/chats' => 'chats#create'
 
   get 'chats/update'
 

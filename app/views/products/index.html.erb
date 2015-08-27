@@ -1,8 +1,6 @@
 
 <div id="pic"></div>
 
-
-
 <div class="container" id="main">
    <div class="row">
     <div class="col-md-2 col-sm-6">
@@ -21,16 +19,17 @@
   <div class="scroll panel panel-default">
 
     <div id="masonry-container" class="transitions-enabled clearfix">
-
        
           <%= render @products %>
         
     </div>
-          
+
           <%= will_paginate @products %>
+          
   </div>
 
 </div>
+
 <script>
   $(function(){
     
@@ -68,5 +67,4 @@
   });
 </script>
 
-  <!-- script references -->
-<!-- </html> -->
+

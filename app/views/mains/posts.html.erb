@@ -21,6 +21,9 @@
 			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
 		    <% end %>
 		  </div>
+		  <% @products.each do |product| %>
+		  	<p><%= product.title %></p>
+		  <% end %>
 		</div>
 	</div>
 	<div id="master_container" class="col-sm-3 col-sm-offset-1">
@@ -30,7 +33,7 @@
 		  </div>
 		  <div class="panel-body">
 		    <% @followings.each do |following| %>
-			    <img src="<%= following.follow.image %>" alt="<%= following.follow.name %>" />
+			    <img id='seller' src="<%= following.follow.image %>" alt="<%= following.follow.name %>" />
 		    <% end %>
 		  </div>
 		</div>
