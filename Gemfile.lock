@@ -114,6 +114,7 @@ GEM
     ffi (1.9.10)
     foreigner (1.7.4)
       activerecord (>= 3.0.0)
+    geocoder (1.2.9)
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -285,6 +286,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   compass-rails (~> 2.0.2)
   devise
+  geocoder
   gravatar-ultimate
   hirb
   imagesLoaded_rails
@@ -308,3 +310,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   will_paginate
+
+BUNDLED WITH
+   1.10.6

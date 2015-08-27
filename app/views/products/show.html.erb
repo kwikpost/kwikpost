@@ -25,7 +25,6 @@
 	          <%= render @products %>
 	        
 	    </div>
-
 	          
 	  </div>
 
@@ -77,34 +76,45 @@ $container.infinitescroll({
 	  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
 	  <div class="panel-body">
 
-		  <button type="button" class="btn btn-success btn-lg btn-block">Buy</button>
-		   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
-		  
-	  </div>
+			  <!-- <button type="button" class="btn btn-success btn-lg btn-block">Buy</button> -->
+			  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
+ 			 	Buy
+				</button>
+			   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
+			   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
+ 			 	Ask
+				</button>
+			  
+		  </div>
+		</div>
 	</div>
-</div>
-<div id="right_container" class="col-sm-3 col-sm-offset-1">
-	<div class="panel panel-default">
-	  <div class="panel-body">
-		<% if product_watch(@product.id, current_user.id)  %>
-			<%= form_for(:watch, :url=>{:controller => 'products', :action=>'unwatch'}, :html=>{:style => "display:inline"}) do |f|   %>
-				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.hidden_field :product_id, :value => @product.id  %>
-				<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
-				  <i class="fa fa-star-o"></i> Unwatch 
-				<% end %>			
-			<% end %>
+	<div id="right_container" class="col-sm-3 col-sm-offset-1">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		  <% if user_signed_in? %>
+			<% if product_watch(@product.id, current_user.id)  %>
+				<%= form_for(:watch, :url=>{:controller => 'products', :action=>'unwatch'}, :html=>{:style => "display:inline"}) do |f|   %>
+					<%= f.hidden_field :user_id, :value => current_user.id %>
+					<%= f.hidden_field :product_id, :value => @product.id  %>
+					<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
+					  <i class="fa fa-star-o"></i> Unwatch 
+					<% end %>			
+				<% end %>
 
-		<% else %>
-		  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
-				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.hidden_field :product_id, :value => @product.id  %>
-				<%= button_tag( :class => "btn btn-lg btn-default btn-block") do %>
-				  <i class="fa fa-star"></i> Watch 
+			<% else %>
+			  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
+					<%= f.hidden_field :user_id, :value => current_user.id %>
+					<%= f.hidden_field :product_id, :value => @product.id  %>
+					<%= button_tag( :class => "btn btn-lg btn-default btn-block") do %>
+					  <i class="fa fa-star"></i> Watch 
+					<% end %>
 				<% end %>
 			<% end %>
-		<% end %>
-	  </div>
+		<% else %>
+			<a href="#loginModal" role="button" data-toggle="modal" id="font_color" class="btn btn-lg btn-default btn-block">Watch</a>
+			<% end %>
+		  </div>
+		</div>
 	</div>
 </div>
 <div id="right_container" class="col-sm-3 col-sm-offset-1">
@@ -149,6 +159,8 @@ $container.infinitescroll({
 </div>
 
 <%= render 'products/ask' %>
+<%= render 'products/buy' %>
+<%= render 'layouts/login' %>
 
 <!-- remove flash notice automatically -->
 <script>
