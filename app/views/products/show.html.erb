@@ -15,16 +15,29 @@
 		<h3><%= @product.title  %></h3>
 		<h4>Description: <%= @product.description %></h4>
 		<h4>Condition: <%= @product.condition.name %></h4>
-		<div id='partials'></div>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+			  <h4>My Other Offers</h4>
+		  </div>
+		</div>
+		<% @products.each do |product| %>
+			<% if product.id != @product.id %>
+		        <div class="grid-item">
+		        <a href="/products/<%= product.id %>">
+				  <%= image_tag product.avatar.url(:medium) %>
+		        <p><%= product.title %></p></a>  
+		        </div>
+	        <% end %>
+		<% end %>
 	</div>
 	<div id="master_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 		    <h3 id="asking" class="panel-title text-center">Asking</h3>
 		  </div>
-		  <h4 class="text-center">$ <%= @product.price %></h4>
-		  <div class="panel-body">
 
+		  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
+		  <div class="panel-body">
 
 			  <button type="button" class="btn btn-success btn-lg btn-block">Buy</button>
 			   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
@@ -58,16 +71,42 @@
 	</div>
 	<div id="right_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
+			<div class="panel-heading">
+			    <h3 id="asking" class="panel-title text-center">Seller</h3>
+			</div>
 			<div class="panel-body">
-
+				<img src="<%= @seller.image %>" alt="<%= @seller.name %>" />
+				<h3><%= @seller.name %></h3>
 			</div>
 		</div>
 	</div>
 	<div id="right_container" class="col-sm-3 col-sm-offset-1">
 		<div class="panel panel-default">
-			<div class="panel-body">
-				<h2 class="text-center">FOLLOWERS</h2>
+			<div class="panel-heading">
+			    <h3 id="asking" class="panel-title text-center">Location</h3>
 			</div>
+			<div class="panel-body">
+				<h3>MAP</h3>
+			</div>
+		</div>
+	</div>
+	<div id="right_container" class="col-sm-3 col-sm-offset-1">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			    <h3 class="panel-title">Followers (<%= @followers.count %>)</h3>
+		 	</div>
+			<div class="panel-body">
+		    <% @followers.each do |follower| %>
+			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+		    <% end %>
+		  </div>
+		  <div class="panel-body">
+		  	<% if @following %>
+			  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
+		    <% else %>
+			  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
+			<% end %>
+		  </div>
 		</div>
 	</div>
 </div>

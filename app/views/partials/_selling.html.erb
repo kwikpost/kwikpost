@@ -4,8 +4,7 @@
 	<% @products.each do |product| %>
         <div class="grid-item">
         <a href="/products/<%= product.id %>">
-		  <div><%= image_tag product.avatar.url(:medium) %></div>
-		  
+		  <%= image_tag product.avatar.url(:medium) %>
         <p><%= product.title %></p></a>  
         </div>
 	<% end %>
