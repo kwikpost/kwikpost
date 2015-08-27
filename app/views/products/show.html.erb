@@ -26,8 +26,11 @@
 		  </div>
 		  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
 		  <div class="panel-body">
-			  <button type="button" class="btn btn-primary btn-lg btn-block">Buy</button>
-			  <button type="button" class="btn btn-lg btn-block">Ask</button>
+
+
+			  <button type="button" class="btn btn-success btn-lg btn-block">Buy</button>
+			   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
+			  
 		  </div>
 		</div>
 	</div>
@@ -79,5 +82,7 @@
 		</div>
 	</div>
 </div>
+
+<%= render 'products/ask' %>
 
 
