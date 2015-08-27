@@ -2,7 +2,7 @@
 <div id="pic"></div>
 
 <div class="container" id="main">
-   <div class="row">
+  <div class="row">
     <div class="col-md-2 col-sm-6">
       <div class="panel panel-default" id="cat_back">
           <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
@@ -26,11 +26,10 @@
           <%= render @products %>
         
     </div>
-
-          <%= will_paginate @products %>
-          
+      <%= will_paginate @products %>   
   </div>
-
+  </div>
+</div>
 </div>
 
 <script>
