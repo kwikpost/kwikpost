@@ -24,16 +24,15 @@
 </script>
 
 </head>
-<div id="top_nav" class="header">
-
-  <%= render 'layouts/nav' %>
-
-</div>
 
 <body>
+  <div id="top_nav" class="header">
+    <%= render 'layouts/nav' %>
+  </div>
+  <div class="container" style="padding-top: 75px;">
     <%= yield %>
-
-<%= render 'layouts/signup' %>
-<%= render 'layouts/login' %>
+  </div>
+  <%= render 'layouts/signup' %>
+  <%= render 'layouts/login' %>
 </body>
 
