@@ -71,8 +71,6 @@ class ProductsController < ApplicationController
     redirect_to "/products/#{watch_params[:product_id]}"
   end
 
-
-
   private
   def product_params
     params.require(:product).permit(:title, :price, :description, :price_fixed, :category_id, :condition_id, :avatar)
