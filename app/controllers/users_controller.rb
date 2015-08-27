@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	def index
 		@products = User.find(params[:id]).products
 		@seller = User.find(params[:id])
+		@products = User.find(@seller.id).products
 		@following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
         @followers = UserFollow.where(follow_id: @seller.id)
 	end
@@ -16,13 +17,27 @@ class UsersController < ApplicationController
 	def follow
 		@user = User.find(params[:id])
 		@user.user_follows.create(follow: User.find(params[:follow]))
-		redirect_to user_path(@user.id)
+		puts "original_url"
+		puts request.original_url
+		if params[:product_id]
+			puts "product"
+			redirect_to product_path(params[:product_id])
+		else
+			redirect_to user_path(@user.id)
+		end
 	end
 
 	def unfollow
 		@user = User.find(params[:id])
+		puts "original_url"
+		puts request.original_url
 		@user.user_follows.find_by(follow_id: params[:follow]).destroy
-		redirect_to user_path(@user.id)
+		if params[:product_id]
+			puts "product"
+			redirect_to product_path(params[:product_id])
+		else
+			redirect_to user_path(@user.id)
+		end
 	end
 
 	def edit

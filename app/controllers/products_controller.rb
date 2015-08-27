@@ -5,9 +5,15 @@ class ProductsController < ApplicationController
   end
 
   def index 
-    # @products = Product.all
     @categories = Category.all
-    @products = Product.paginate(:page => params[:page], :per_page => 20)
+    if params[:category_id]
+      @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
+      flash[:notice] = Category.find(params[:category_id]).name
+
+    else
+      flash[:notice] = nil
+      @products = Product.paginate(:page => params[:page], :per_page => 20)
+    end
   end
 
   def edit
@@ -18,6 +24,8 @@ class ProductsController < ApplicationController
     product = Product.new(product_params)
     product.status = true
     product.user_id = current_user.id
+    location = Geocoder.search(remote_ip)
+    product.location = location[0].address
 
     if product.save
       flash[:errors] = ["Successfully added a new product!"]
@@ -40,8 +48,10 @@ class ProductsController < ApplicationController
     @seller = Product.find(params[:id]).user
     @product = Product.find(params[:id])
     @products = User.find(@seller.id).products
-    @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
     @followers = UserFollow.where(follow_id: @seller.id)
+    if current_user
+      @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
+    end
   end
 
   def watch

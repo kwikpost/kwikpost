@@ -1,4 +1,17 @@
-<div class="product box col3">
-	<p><%= link_to product.title, product_path(product) %>
-	<%= image_tag product.avatar.url(:medium) %></p>
-</div>
+<% if @product %>
+	<% if product.id != @product.id %>
+		<div class="product box col2">
+			<h4 class="text-center"><a href="/products/<%= product.id %>">
+			<%= image_tag product.avatar.url(:medium) %>
+				<%= product.title %> - <%= number_to_currency(product.price, precision:0) %><br>
+			</h4></a>
+		</div>
+	<% end %>
+<% else %>
+	<div class="product box col2">
+		<h4 class="text-center"><a href="/products/<%= product.id %>">
+		<%= image_tag product.avatar.url(:medium) %>
+			<%= product.title %> - <%= number_to_currency(product.price, precision:0) %><br>
+		</h4></a>
+	</div>
+<% end %>
