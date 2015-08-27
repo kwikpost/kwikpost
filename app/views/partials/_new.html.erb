@@ -1,38 +1,38 @@
 <%= form_for @product, :url => products_path, :html => {:multipart => true} do |f| %>
   <div class="form-group">
-	  <%= f.label :avatar, "picture" %>
+	  <%= f.label :avatar, "Upload Picture" %>
 	  <%= f.file_field :avatar%>
   </div>
   <div class="form-group">
-	  <%= f.label :title %>
-	  <%= f.text_field :title, class: "form-control" %>
+	  <%= f.label :title, "Title:" %>
+	  <%= f.text_field :title %>
   </div>
   <div class="form-group">
-	  <%= f.label :price %>
-		  <%= f.text_field :price, class: "form-control" %>
+	  <%= f.label :price, "Price:" %>
+		  <%= f.text_field :price %>
   </div>
   <div class="form-group">
-	  <%= f.label :description %>
-		  <%= f.text_field :description, class: "form-control" %>
+	  <%= f.label :description, "Description:" %>
+		  <%= f.text_field :description %>
   </div>
   <div class="form-group">
-	  <%= f.label :price_fixed %>
+	  <%= f.label :price_fixed, "Price fixed:" %>
 		  <%= f.select :price_fixed,
         options_for_select([ [ 'Yes', true], [ 'No', false] ], true),
-        {}, class: 'form-control'%>
+        {}%>
   </div>
   <div class="form-group">
-	  <%= f.label :category_id %>
-  	<%= f.select :category_id, options_for_select(categories_option), {}, class: 'form-control'  %>
+	  <%= f.label :category_id, "Category:" %>
+  	<%= f.select :category_id, options_for_select(categories_option), {}  %>
   </div>
   <div class="form-group">
-	  <%= f.label :condition_id %>
-		<%= f.select :condition_id, options_for_select(conditions_option), {}, class: 'form-control' %>
+	  <%= f.label :condition_id, "Condition:" %>
+		<%= f.select :condition_id, options_for_select(conditions_option), {} %>
   </div>
-  <button type="submit" name="commit" class="btn btn-primary form-control">Submit</button>
+  <button type="submit" name="commit" class="btn btn-primary">Submit</button>
 <% end %>
 <% if flash[:errors] %>
 	<% flash[:errors].each do |error| %>
-	<p><%= error %></p>
+  <div class="alert alert-success" role="alert"><%= error %></div>
 	<% end %>
 <% end %>

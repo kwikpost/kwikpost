@@ -15,6 +15,7 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 @import 'mains';
+@import 'products';
 /* PROFILE IMAGE ON NAV BAR */
 .profile-img {
   -moz-border-radius: 50%;
@@ -158,27 +159,27 @@ h3,h4,h5 {
 /* end theme */
 
 /* masonry CSS */
-/*
+
 .grid {
-  background: white;
-
-}*/
-
-/* clear fix */
-/*.grid:after {
-
-  : '';
-  display: block;
-  clear: both;
-
+  background: #DDD;
+  width:100%;
 }
 
- ---- .grid-item ---- 
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
 
-.grid-sizer,
+/* ---- .grid-item ---- */
+
+.grid-sizer{
+  width:100%;
+}
 
 .grid-item {
-   image margins on side for frame 
+  /* image margins on side for frame */
   width: 31%;
   margin: 10px;
 
@@ -192,15 +193,13 @@ h3,h4,h5 {
 .grid-item p {
   padding: 10px;
 }
-
+.grid-item{
+  max-width:100%;
+}
 .grid-item img {
   display: block;
-  max-width: 100%;
+  width: 100%;
 }
-*/
-
-
 #master_container{
   margin-top: 100px;
 }
-

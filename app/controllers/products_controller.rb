@@ -5,7 +5,13 @@ class ProductsController < ApplicationController
   end
 
   def index 
-    @products = Product.all
+    # @products = Product.all
+    @categories = Category.all
+    @products = Product.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def edit
@@ -36,7 +42,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-
+    @followers = UserFollow.where(user_id:current_user.id)
+    @followings = UserFollow.where(follow_id: current_user.id )
   end
 
   private

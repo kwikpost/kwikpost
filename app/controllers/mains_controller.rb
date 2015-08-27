@@ -1,7 +1,13 @@
 class MainsController < ApplicationController
 	def index
-		@products = Product.all.order(created_at: :desc)
-		@categories = Category.all
+		# @categories = Category.all
+		# @products = Product.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+		# respond_to do |format|
+		# 	format.html
+		# 	format.js
+		# end
+		# # Product.all.order(created_at: :desc)
+		
 	end
 
 	def show
@@ -13,6 +19,8 @@ class MainsController < ApplicationController
 		@products = Product.where(user_id: current_user.id)
 		@conditions = Condition.all
 		@categories = Category.all
+		@followings = UserFollow.where(user_id:current_user.id)
+	    @followers = UserFollow.where(follow_id:current_user.id)
 	end
 
 
