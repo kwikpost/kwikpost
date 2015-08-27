@@ -44,8 +44,10 @@ class ProductsController < ApplicationController
     @seller = Product.find(params[:id]).user
     @product = Product.find(params[:id])
     @products = User.find(@seller.id).products
-    @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
     @followers = UserFollow.where(follow_id: @seller.id)
+    if current_user
+      @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
+    end
   end
 
   private

@@ -68,16 +68,16 @@
 			    <h3 class="panel-title">Followers (<%= @followers.count %>)</h3>
 		 	</div>
 			<div class="panel-body">
-		    <% @followers.each do |follower| %>
-			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
-		    <% end %>
+			    <% @followers.each do |follower| %>
+				    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+			    <% end %>
 		  </div>
 		  <div class="panel-body">
-		  	<% if @following %>
-			  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
-		    <% else %>
-			  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
-			<% end %>
+			  	<% if @following %>
+				  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
+			    <% else %>
+				  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
+				<% end %>
 		  </div>
 		</div>
 	</div>
