@@ -149,17 +149,20 @@ $container.infinitescroll({
 		    <% end %>
 	  </div>
 	  <div class="panel-body">
+	  	<% if user_signed_in? %>
 		  	<% if @following %>
-              <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger"%>
+              <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger btn-block btn-lg"%>
             <% else %>
-              <%= link_to 'Follow', follow_user_path(product_id: @product.id ,:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary"%>
+              <%= link_to 'Follow', follow_user_path(product_id: @product.id ,:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary btn-block btn-lg"%>
             <% end %>
+        <% end %>
 	  </div>
 	</div>
 </div>
-
-<%= render 'products/ask' %>
-<%= render 'products/buy' %>
+<% if user_signed_in? %>
+	<%= render 'products/ask' %>
+	<%= render 'products/buy' %>
+<% end %>
 <%= render 'layouts/login' %>
 
 <!-- remove flash notice automatically -->
