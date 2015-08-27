@@ -12,8 +12,8 @@
 		  </div>
 		  <div class="panel-body">
 		  <div class="btn-group-vertical btn-group-lg" role="group" aria-label="...">
-			  <button type="button" class="btn btn-default">Buy</button>
-			  <button type="button" class="btn btn-default">Ask</button>
+			  <button type="button" class="btn btn-success">Buy</button>
+			  <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-primary" %>
 		  </div>
 		  </div>
 		</div>
@@ -28,5 +28,7 @@
 		</div>
 	</div>
 </div>
+
+<%= render 'products/ask' %>
 
 
