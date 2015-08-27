@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   get 'pages/:id' => 'pages#index'
   resources :products
 
+  post 'products/watch' => 'products#watch'
+  post 'products/unwatch' => 'products#unwatch'
+
   get 'products/:id' => 'products#show'
+
   # root :to => 'products#index'
 
   # ======= THESE GO TOGETHER =======
