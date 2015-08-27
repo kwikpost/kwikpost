@@ -35,6 +35,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'mailboxer'
 gem 'chosen-rails'
+gem 'geocoder'
 
 
 

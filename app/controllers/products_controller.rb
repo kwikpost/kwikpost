@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
     product = Product.new(product_params)
     product.status = true
     product.user_id = current_user.id
+    location = Geocoder.search(remote_ip)
+    product.location = location[0].address
 
     if product.save
       flash[:errors] = ["Successfully added a new product!"]
