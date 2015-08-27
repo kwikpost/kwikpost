@@ -15,7 +15,7 @@
 		<h3><%= @product.title  %></h3>
 		<h4>Description: <%= @product.description %></h4>
 		<h4>Condition: <%= @product.condition.name %></h4>
-		<div class="panel panel-default">
+		<div id="lol" class="panel panel-default">
 		  <div class="panel-body">
 			  <h4>My Other Offers</h4>
 		  </div>
@@ -75,7 +75,7 @@
 			    <h3 id="asking" class="panel-title text-center">Seller</h3>
 			</div>
 			<div class="panel-body">
-				<img src="<%= @seller.image %>" alt="<%= @seller.name %>" />
+				<a href="/users/<%= @seller.id %>/index"><img src="<%= @seller.image %>" alt="<%= @seller.name %>" /></a>
 				<h3><%= @seller.name %></h3>
 			</div>
 		</div>
