@@ -13,6 +13,8 @@ class MainsController < ApplicationController
 		@products = Product.where(user_id: current_user.id)
 		@conditions = Condition.all
 		@categories = Category.all
+		@followings = UserFollow.where(user_id:current_user.id)
+	    @followers = UserFollow.where(follow_id:current_user.id)
 	end
 
 
