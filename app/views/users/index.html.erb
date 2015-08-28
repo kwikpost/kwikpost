@@ -30,7 +30,7 @@
 				<h3 id="asking" class="panel-title text-center">Your Review</h3>
 		</div>
 		<div class="panel-body text-center">
-			<%= rating_for @seller, "user_review", :disable_after_rate => false %>
+			<%= rating_for_user @seller, current_user, "user_review", :disable_after_rate => false %>
 		</div>
 	</div>
 	<div class="panel panel-default">
