@@ -16,7 +16,7 @@
         <% if @product.price_fixed %>
           <div class="form-group">
             <%= f.label :message, ' Fixed price: '  %>
-            <%= f.text_field :message, :value => @product.price,  disabled: true,  class: "form-control" %> 
+            <%= f.text_field :message, :value => @product.price,  readonly: true,  class: "form-control" %> 
             <%= f.hidden_field :product_id, :value => @product.id %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
          </div>

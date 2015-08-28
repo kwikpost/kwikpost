@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
 	def index
+		@curuser = current_user;
 		@product = User.find(params[:id]).products.last
 		@products = User.find(params[:id]).products
 		@seller = User.find(params[:id])
 		@products = User.find(@seller.id).products
-		@following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
-        @followers = UserFollow.where(follow_id: @seller.id)
+		@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
+    @followers = UserFollow.where(follow_id: @seller.id)
+		@rating = Rate.find_by(rater_id: @curuser.id, rateable_id: params[:id], rateable_type: "User")
+		@rating_num = Rate.where(rateable_id: params[:id]).length
 	end
 	def show
 		# Testing purpose
@@ -44,8 +47,12 @@ class UsersController < ApplicationController
 	end
 
 	def review
+		fail
+		@reviewer = current_user
 		@user = User.find(params[:id])
-		@user.user_reviews.create(reviewuser: User.find(params[:user_id]), rating: params[:rating], review: params[:review])
+
+		# if user_reviews.find_by(reviewuser_id: @reviewer)
+		@user.user_reviews.create(reviewuser: @reviewer.id, review: params[:review])
 
 		redirect_to user_path(params[:user_id])
 	end

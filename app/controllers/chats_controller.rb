@@ -59,15 +59,16 @@ class ChatsController < ApplicationController
     @productChat = @product.productchats.find_by(user_id: current_user.id)
 
     if @productChat
-
-      @chat = @productChat.chats.new(user_id: chat_params["user_id"], message: chat_params["message"])
+      price = chat_params["message"]
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  #{price}"
+      @chat = @productChat.chats.new(user_id: chat_params["user_id"])
       @chat.message = "You have been offered #{chat_params["message"]} for your product"
 
     else
 
       @productChat = Productchat.new(user_id: current_user.id, product_id: chat_params["product_id"])
       @productChat.save
-      @chat = @productChat.chats.new(user_id: chat_params["user_id"], message: chat_params["message"])
+      @chat = @productChat.chats.new(user_id: chat_params["user_id"])
       @chat.message = "You have been offered #{chat_params["message"]} for your product"
 
     end
