@@ -19,7 +19,10 @@ class ProductsController < ApplicationController
     end
     # =============================================
 
-    if params[:search_location].present?
+    if params[:search_products].present?
+      params[:search_location] = nil
+      @products = Product.where("name like '%?%'", params[:search_products]).paginate(:page => params[:page], :per_page => 20)
+    elsif params[:search_location].present?
       @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
       @location = params[:search_location]
       flash[:notice] = params[:search_location]
@@ -32,6 +35,7 @@ class ProductsController < ApplicationController
         @products = Product.near(@location, 50).paginate(:page => params[:page], :per_page => 20)
       end
     end
+
   end
 
   def edit

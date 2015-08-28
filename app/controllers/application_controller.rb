@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   def remote_ip
     if request.remote_ip == '127.0.0.1'
-     '2601:602:8201:ded0:4016:1d49:7f23:9686'
+     # '2601:602:8201:ded0:4016:1d49:7f23:9686'
+     '2601:600:8a00:d600:693b:c2b5:40ed:3d08'
     else
       request.remote_ip
     end
