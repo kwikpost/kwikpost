@@ -5,17 +5,17 @@
       <div class="panel panel-default">
         <div class="panel-body">
             <ul class="nav nav-pills nav-stacked">
-            <li>
+           <li>
               <h3>
                   <em class="fa fa-inbox fa-lg"></em>
-                     <span><a href="/chats/<%= current_user.id %>">Selling</a></span>
+                  <span><a href="/chats/<%= current_user.id %>">Selling</a></span>
                 </h3>
             </li>
             <hr>
             <li>
               <h3>
                   <em class="fa fa-paper-plane-o fa-lg"></em>
-                  <span><a href="#">Sent</a></span>
+                  <span><a href="/chats/buying/<%= current_user.id  %>">Buying</a></span>
                 </h3>
             </li>
           <hr>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="col-md-8" style="margin-top: 10px;">
-      <div class="panel panel-default">
+      <div class="panel panel-default" style="background: #c2ebff;">
           <div class="panel-body">
 
           <br>
