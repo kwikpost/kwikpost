@@ -41,6 +41,7 @@ gem 'geocoder'
 
 gem 'slim'
 gem 'bootstrap-will_paginate'
+gem 'bootstrap-tooltip-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate'

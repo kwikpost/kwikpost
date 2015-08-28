@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require bootstrap/bootstrap-tooltip
 //= require chosen-jquery
 //= require turbolinks
 //= require bootstrap

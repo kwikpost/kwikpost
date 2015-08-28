@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @productcount = Product.all.count
+    @categories = Product.group(:category).order("category_id asc").count; #Category.all
+
     # @location = Geocoder.search(remote_ip)[0].address
 
     # ======= Hard code because unstable API ======
