@@ -2,8 +2,7 @@ class UserReview < ActiveRecord::Base
   belongs_to :user, class_name: 'User'
   belongs_to :reviewuser, class_name: 'User'
 
-  validates :user, :reviewuser, :rating, :review, presence: true
-  validates :rating, inclusion: { in: 1..5 }
+  validates :user, :reviewuser, :review, presence: true
   validate :no_review_self
 
   def no_review_self
