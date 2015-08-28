@@ -33,11 +33,7 @@
 					<h3 id="asking" class="panel-title text-center">Your Review</h3>
 			</div>
 			<div class="panel-body text-center">
-				<% if @rating %>
-					<%= rating_for_user @seller, current_user, "user_review", :disable_after_rate => false, stars: 5 %>
-				<% else %>
-					<%= rating_for @seller, "user_review", :disable_after_rate => false %>
-				<% end %>
+				<%= rating_for @seller, "user_review", :disable_after_rate => false, stars: 5 %>	
 				<h4>Detail Review</h4>
 				<form action="/users/<%=@seller.id%>/review" method="post">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
