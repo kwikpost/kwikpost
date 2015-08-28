@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
 
   def show
     @seller = Product.find(params[:id]).user
-    @rating = Rate.find_by(rater_id: current_user.id, rateable_id: params[:id], rateable_type: "User")
+    @rating = Rate.find_by(rater_id: current_user.id, rateable_id: @seller.id, rateable_type: "User")
     @location = "Bellevue, WA 98004, United States"
     # Format location for readability
     21.times do
