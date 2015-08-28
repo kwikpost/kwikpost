@@ -72,16 +72,18 @@
 	 	</div>
 		<div class="panel-body">
 	    <% @followers.each do |follower| %>
-		    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+		    <a href="/users/<%= follower.user.id %>/index"><img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" /></a>
 	    <% end %>
 	  </div>
 	  <div class="panel-body">
-	  	<% if @following %>
-		  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
-	    <% else %>
-		  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
-		<% end %>
-	  </div>
+		  	<% if user_signed_in? && current_user.id != @seller.id %>
+			  	<% if @following %>
+	              <%= link_to 'Unfollow', follow_user_path(:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger btn-block btn-lg"%>
+	            <% else %>
+	              <%= link_to 'Follow', follow_user_path(:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary btn-block btn-lg"%>
+	            <% end %>
+	        <% end %>
+		</div>
 	</div>
 </div>
 <script>
