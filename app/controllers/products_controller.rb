@@ -11,8 +11,8 @@ class ProductsController < ApplicationController
     # @location = Geocoder.search(remote_ip)[0].address
 
     # ======= Hard code because unstable API ======
-    # @location = "Bellevue, WA 98004, United States"
-    @location = current_location
+    @location = "Bellevue, WA 98004, United States"
+    # @location = current_location
     # Format location for readability
     21.times do
       @location.chop!
