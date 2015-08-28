@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     registrations: 'registrations' }
   resources :users, only: [:show, :edit]
 
-  get '/users/:id/index' => 'users#index'
+  get '/users/:id/index' => 'users#index' , as: :user_profile
 
   post 'users/:id/follow' => 'users#follow', as: :follow_user
   delete 'users/:id/follow' => 'users#unfollow'

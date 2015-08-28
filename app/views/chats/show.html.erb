@@ -1,7 +1,10 @@
-<div class="container" id="master_container">
+<div class="row">
+<div id="master_container" class="col-sm-7 col-md-offset-1">
 
 	<h1><strong>Chat</strong></h1>
-	<h2>Product: <%= @productchats.product.title %></h2>
+	<p><a href="/products/<%= @productchats.product.id %>"><%= image_tag @productchats.product.avatar.url(:thumb)  %></a></p>	
+	<h4>Product: <strong><%= @productchats.product.title %></strong> Price: $<strong><%= @productchats.product.price  %></strong></h4>
+	<hr>
 	<%  @productchats.chats.each do |c| %>
 		<h4><%= c.user.name  %>: <strong><%= c.message %></strong><span class="pull-right"><%= c.created_at.to_s(:short)  %></span></h4>
 		<hr>
@@ -30,5 +33,5 @@
 	</p>
 	</div>
 
-
+</div>
 </div>

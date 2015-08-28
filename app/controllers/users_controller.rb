@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 	    21.times do
 	      @location.chop!
 	    end
+
+	    @search_location = Geocoder.coordinates(@location)
 	    # =============================================
 
 		@curuser = current_user;
