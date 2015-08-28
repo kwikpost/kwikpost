@@ -1,5 +1,5 @@
 Geocoder.configure(
- :timeout => 15,
+ :timeout => 20,
  :always_raise => [TimeoutError]
  # ip_lookup: :telize
  # lookup: :google

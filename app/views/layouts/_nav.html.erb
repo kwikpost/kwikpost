@@ -13,15 +13,20 @@
     <ul class="nav navbar-nav navbar-left">
 
       <%= form_tag products_path, :method => :get, class: 'navbar-form', role:'search' do %>
-      <a href="">
-        <i class="fa fa-map-marker fa-lg" style="color: black"></i>
-      </a>
       <div class="form-group">
-        <%= text_field_tag :search_location, params[:search_location], :id => 'geo-input', class: 'form-control', :style => 'border-radius: 10px', :value => @location %>
-        <%= submit_tag "Search", :name => nil, class: 'btn btn-default btn-sm form-control', :style => 'border-radius: 10px' %>
+        <%= text_field_tag :search_products, params[:search_products], :id => 'search-input', class: 'form-control', :style => 'border-radius:10px'%>
       </div>
-      <% end %>
 
+      <div class="form-group">
+        <a href="">
+          <i class="fa fa-map-marker fa-lg" style="color: black"></i>
+        </a>
+        <%= text_field_tag :search_location, params[:search_location], :id => 'geo-input', class: 'form-control', :style => 'border-radius: 10px', :value => @location %>
+      </div>
+
+      <%= submit_tag "Search", :name => nil, class: 'btn btn-default btn-sm form-control', :style => 'border-radius:10px'%>
+
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>

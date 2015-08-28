@@ -14,8 +14,11 @@ class UsersController < ApplicationController
 
 		@curuser = current_user;
 		@seller = User.find(params[:id])
+		@product = User.find(@curuser.id).products.last
 		@products = User.find(@seller.id).products
-		@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
+		if current_user
+			@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
+		end
 		@followers = UserFollow.where(follow_id: @seller.id)
 		@rating = Rate.find_by(rater_id: @curuser.id, rateable_id: params[:id], rateable_type: "User")
 		@review = @seller.user_reviews.find_by(reviewuser_id: @curuser.id)
@@ -40,7 +43,7 @@ class UsersController < ApplicationController
 			puts "product"
 			redirect_to product_path(params[:product_id])
 		else
-			redirect_to user_path(@user.id)
+			redirect_to "/users/#{params[:follow]}/index"
 		end
 	end
 
@@ -53,7 +56,7 @@ class UsersController < ApplicationController
 			puts "product"
 			redirect_to product_path(params[:product_id])
 		else
-			redirect_to user_path(@user.id)
+			rredirect_to "/users/#{params[:follow]}/index"
 		end
 	end
 
