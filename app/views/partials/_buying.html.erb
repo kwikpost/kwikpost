@@ -1,8 +1,5 @@
 <h1>Buying</h1>
 
-<% @user_chats.each do |chats| %>
-	<h3>
-		<%= image_tag chats.product.avatar.url(:thumb) %>
-		<a href="/chats/new?product_id=<%= chats.product.id %>"><%= chats.product.title  %></a>
-	</h3>
-<% end %>
+<div id="masonry-container" class="transitions-enabled clearfix centered">
+	<%= render current_user.buyproducts %>
+</div>

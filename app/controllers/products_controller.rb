@@ -98,6 +98,11 @@ class ProductsController < ApplicationController
     flash[:notice] = "Watching"
     flash[:color] = "info"
     redirect_to "/products/#{watch_params[:product_id]}"
+    # if watch_params[:index]
+    #   redirect_to "/products/#{watch_params[:product_id]}"
+    # else
+    #   redirect_to "/"
+    # end
   end
 
   def unwatch
@@ -107,6 +112,11 @@ class ProductsController < ApplicationController
     flash[:notice] = "Unwatching"
     flash[:color] = "info"
     redirect_to "/products/#{watch_params[:product_id]}"
+    # if watch_params[:index]
+    #   redirect_to "/products/#{watch_params[:product_id]}"
+    # else
+    #   redirect_to "/"
+    # end
   end
 
   private

@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 			puts "product"
 			redirect_to product_path(params[:product_id])
 		else
-			rredirect_to "/users/#{params[:follow]}/index"
+			redirect_to "/users/#{params[:follow]}/index"
 		end
 	end
 
