@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
     <title>Kwikpost</title>
     <meta name="generator" content="Bootply" />
@@ -8,20 +10,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
-<script>
-  $( document ).ready(function() {
-    $('#btnToggle').click(function(){
-      if ($(this).hasClass('on')) {
-        $('#main .col-md-6').addClass('col-md-4').removeClass('col-md-6');
-        $(this).removeClass('on');
-      }
-      else {
-        $('#main .col-md-4').addClass('col-md-6').removeClass('col-md-4');
-        $(this).addClass('on');
-      }
-    });
-  });
-</script>
 
 </head>
 
@@ -29,7 +17,10 @@
   <div id="top_nav" class="header">
     <%= render 'layouts/nav' %>
   </div>
+  
   <%= yield %>
+
   <%= render 'layouts/signup' %>
   <%= render 'layouts/login' %>
 </body>
+</html>

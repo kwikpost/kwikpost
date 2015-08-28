@@ -4,4 +4,10 @@ class Rate < ActiveRecord::Base
 
   #attr_accessible :rate, :dimension
 
+  # validate :no_rate_self
+
+  def no_rate_self
+    errors.add(:rateable, "can't rate yourself") if rateable.is_a?(rateable_type) and user.id == rateable.id
+  end
+
 end

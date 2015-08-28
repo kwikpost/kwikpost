@@ -1,15 +1,16 @@
 class ProductsController < ApplicationController
-  
+
   def new
     @product = Product.new
   end
 
-  def index 
+  def index
     @categories = Category.all
     # @location = Geocoder.search(remote_ip)[0].address
     
     # ======= Hard code because unstable API ======
-    @location = "Bellevue, WA 98004, United States"
+    # @location = "Bellevue, WA 98004, United States"
+    @location = current_location
     # Format location for readability
     21.times do
       @location.chop!
@@ -19,11 +20,11 @@ class ProductsController < ApplicationController
     if params[:search_location].present?
       @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
       @location = params[:search_location]
+      flash[:notice] = params[:search_location]
     else
       if params[:category_id]
         @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
         flash[:notice] = Category.find(params[:category_id]).name
-
       else
         flash[:notice] = nil
         @products = Product.near(@location, 50).paginate(:page => params[:page], :per_page => 20)
@@ -61,10 +62,12 @@ class ProductsController < ApplicationController
 
   def show
     @seller = Product.find(params[:id]).user
+    @rating = Rate.find_by(rater_id: current_user.id, rateable_id: @seller.id, rateable_type: "User")
     
 
     # ======= Hard code because unstable API ======
-    @location = "Bellevue, WA 98004, United States"
+    # @location = "Bellevue, WA 98004, United States"
+    @location = current_location
     # Format location for readability
     21.times do
       @location.chop!
@@ -82,7 +85,7 @@ class ProductsController < ApplicationController
   def watch
     @watchlist = Watchlist.new(watch_params)
     @watchlist.save
-    flash[:notice] = "You successfully added this item to Watchlist"
+    flash[:notice] = "Watching"
     flash[:color] = "info"
     redirect_to "/products/#{watch_params[:product_id]}"
   end
@@ -91,7 +94,7 @@ class ProductsController < ApplicationController
     @user = User.find(current_user.id)
     @watchlist = @user.watchlists.find_by(product_id: watch_params[:product_id])
     @watchlist.destroy
-    flash[:notice] = "You successfully removed this item from Watchlist"
+    flash[:notice] = "Unwatching"
     flash[:color] = "info"
     redirect_to "/products/#{watch_params[:product_id]}"
   end
