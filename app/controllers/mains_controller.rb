@@ -15,6 +15,15 @@ class MainsController < ApplicationController
 	end
 
 	def posts
+
+		# ======= Hard code because unstable API ======
+	    @location = "Bellevue, WA 98004, United States"
+	    # Format location for readability
+	    21.times do
+	      @location.chop!
+	    end
+	    # =============================================
+		
 		@product = Product.new
 		@products = Product.where(user_id: current_user.id)
 		@user_chats = Productchat.where(user_id: current_user.id)

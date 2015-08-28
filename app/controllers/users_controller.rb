@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
 	def index
+		
+		# ======= Hard code because unstable API ======
+	    @location = "Bellevue, WA 98004, United States"
+	    # Format location for readability
+	    21.times do
+	      @location.chop!
+	    end
+	    # =============================================
+
+
 		@product = User.find(params[:id]).products.last
 		@products = User.find(params[:id]).products
 		@seller = User.find(params[:id])

@@ -7,11 +7,14 @@ class ProductsController < ApplicationController
   def index 
     @categories = Category.all
     # @location = Geocoder.search(remote_ip)[0].address
+    
+    # ======= Hard code because unstable API ======
     @location = "Bellevue, WA 98004, United States"
     # Format location for readability
     21.times do
       @location.chop!
     end
+    # =============================================
 
     if params[:search_location].present?
       @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
@@ -57,11 +60,16 @@ class ProductsController < ApplicationController
 
   def show
     @seller = Product.find(params[:id]).user
+    
+
+    # ======= Hard code because unstable API ======
     @location = "Bellevue, WA 98004, United States"
     # Format location for readability
     21.times do
       @location.chop!
     end
+    # =============================================
+
     @product = Product.find(params[:id])
     @products = User.find(@seller.id).products.where.not(id:params[:id])
     @followers = UserFollow.where(follow_id: @seller.id)
