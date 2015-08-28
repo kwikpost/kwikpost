@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
   def watch
     @watchlist = Watchlist.new(watch_params)
     @watchlist.save
-    flash[:notice] = "You successfully added this item to Watchlist"
+    flash[:notice] = "Watching"
     flash[:color] = "info"
     redirect_to "/products/#{watch_params[:product_id]}"
   end
@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
     @user = User.find(current_user.id)
     @watchlist = @user.watchlists.find_by(product_id: watch_params[:product_id])
     @watchlist.destroy
-    flash[:notice] = "You successfully removed this item from Watchlist"
+    flash[:notice] = "Unwatching"
     flash[:color] = "info"
     redirect_to "/products/#{watch_params[:product_id]}"
   end

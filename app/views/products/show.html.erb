@@ -1,11 +1,4 @@
 <div id="master_container" class="col-sm-6 col-md-offset-1">
-	<% if flash[:notice] %>
-		<div class="row">
-			<div class="col-md-4 col-xs-12	alert alert-<%= flash[:color]%>">
-				<p><%= flash[:notice]  %></p>
-			</div>
-		</div>
-	<% end %>
 	<p><%= image_tag @product.avatar.url(:large), class: "image"  %></p>
 	<h3><%= @product.title  %></h3>
 	<h4>Description: <%= @product.description %></h4>
@@ -15,41 +8,64 @@
 		  <h4>My Other Offers</h4>
 	  </div>
 	</div>
-  <div class="scroll panel panel-default">
-    <div id="masonry-container" class="transitions-enabled clearfix">
-      <%= render @products %>
-    </div>
-  </div>
+  	<div class="scroll panel panel-default">
+    	<div id="masonry-container" class="transitions-enabled clearfix">
+        	<%= render @products %>    
+    	</div>          
+	</div>
 </div>
+
 <div id="master_container" class="col-sm-3 col-sm-offset-1">
+	<div class="col-sm-12" id="alert_message">
+				<% if flash[:notice] %>
+					<br>
+					<div class="alert alert-<%= flash[:color]%>" style="width:100%;">
+						<p><%= flash[:notice]  %></p>
+					</div>
+				
+				<% end %>
+	</div>
+
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 id="asking" class="panel-title text-center">Asking</h3>
 	  </div>
 
-	  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
+	  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %>
+	  </h4>
 	  <div class="panel-body">
 
-			  <!-- <button type="button" class="btn btn-success btn-lg btn-block">Buy</button> -->
-			  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
- 			 	Buy
-				</button>
-			   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
-			   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
- 			 	Ask
-				</button>
+			  <% if current_user.id == @product.user.id %>
+			  <% else %>
+				  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
+	 			 	Buy
+					</button> 
+				   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
+	 			 	Ask
+					</button>
 
-		  </div>
+		</div>
 	</div>
-	<div class="panel panel-default">
-	  <div class="panel-body">
-	  <% if user_signed_in? %>
-		<% if product_watch(@product.id, current_user.id)  %>
-			<%= form_for(:watch, :url=>{:controller => 'products', :action=>'unwatch'}, :html=>{:style => "display:inline"}) do |f|   %>
-				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.hidden_field :product_id, :value => @product.id  %>
-				<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
-				  <i class="fa fa-star-o"></i> Unwatch
+	
+
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		  <% if user_signed_in? %>
+			<% if product_watch(@product.id, current_user.id)  %>
+				<%= form_for(:watch, :url=>{:controller => 'products', :action=>'unwatch'}, :html=>{:style => "display:inline"}) do |f|   %>
+					<%= f.hidden_field :user_id, :value => current_user.id %>
+					<%= f.hidden_field :product_id, :value => @product.id  %>
+					<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
+					  <i class="fa fa-star-o"></i> Unwatch 
+					<% end %>			
+				<% end %>
+			<% else %>
+			  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
+					<%= f.hidden_field :user_id, :value => current_user.id %>
+					<%= f.hidden_field :product_id, :value => @product.id  %>
+					<%= button_tag( :class => "btn btn-lg btn-default btn-block") do %>
+					  <i class="fa fa-star"></i> Watch 
+					<% end %>
 				<% end %>
 			<% end %>
 
@@ -61,12 +77,12 @@
 				  <i class="fa fa-star"></i> Watch
 				<% end %>
 			<% end %>
+			
 		<% end %>
-	<% else %>
-		<a href="#loginModal" role="button" data-toggle="modal" id="font_color" class="btn btn-lg btn-default btn-block">Watch</a>
-		<% end %>
+	<% end %>	
 	  </div>
 	</div>
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 		    <h3 id="asking" class="panel-title text-center">Seller</h3>
@@ -102,7 +118,7 @@
 		    <% end %>
 	  </div>
 	  <% if !current_user.id == @seller.id %>
-	  <div class="panel-body">
+	  	<div class="panel-body">
 	  	<% if user_signed_in? || current_user.id == @seller.id %>
 		  	<% if @following %>
               <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger btn-block btn-lg"%>
@@ -113,6 +129,7 @@
 	  </div>
 	  <% end %>
 	</div>
+
 </div>
 <% if user_signed_in? %>
 	<%= render 'products/ask' %>
