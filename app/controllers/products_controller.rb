@@ -8,8 +8,6 @@ class ProductsController < ApplicationController
     @productcount = Product.all.count
     @categories = Product.group(:category).order("category_id asc").count; #Category.all
 
-    # @location = Geocoder.search(remote_ip)[0].address
-
     # ======= Hard code because unstable API ======
     @location = "Bellevue, WA 98004, United States"
     # @location = current_location
@@ -18,15 +16,14 @@ class ProductsController < ApplicationController
       @location.chop!
     end
     # =============================================
-    @search_location = Geocoder.coordinates(@location)
+    @search_coordinates = Geocoder.coordinates(@location)
 
     if params[:search_location].present?
       puts "============="
-      @search_location = Geocoder.coordinates(params[:search_location])
-      puts @search_location
+      @search_coordinates = Geocoder.coordinates(params[:search_location])
+      puts @search_coordinates
       puts "============="
-      @products = Product.near(@search_location, 50).paginate(:page => params[:page], :per_page => 20)
-      # @products = Product.paginate(:page => params[:page], :per_page => 20)
+      @products = Product.near(@search_coordinates, 50).paginate(:page => params[:page], :per_page => 20)
       @location = params[:search_location]
       flash[:notice] = params[:search_location]
     else
@@ -34,9 +31,8 @@ class ProductsController < ApplicationController
         @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
         flash[:notice] = Category.find(params[:category_id]).name
       else
-        # search_location = Geocoder.coordinates(@location)
         flash[:notice] = nil
-        @products = Product.near(@search_location, 50).paginate(:page => params[:page], :per_page => 20)
+        @products = Product.near(@search_coordinates, 50).paginate(:page => params[:page], :per_page => 20)
       end
     end
   end
@@ -81,7 +77,7 @@ class ProductsController < ApplicationController
     21.times do
       @location.chop!
     end
-    @search_location = Geocoder.coordinates(@location)
+    @search_coordinates = Geocoder.coordinates(@location)
 
 
     @products = @seller.products.where.not(id:params[:id])

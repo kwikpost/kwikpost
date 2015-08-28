@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	      @location.chop!
 	    end
 
-	    @search_location = Geocoder.coordinates(@location)
+	    @search_coordinates = Geocoder.coordinates(@location)
 	    # =============================================
 
 		@curuser = current_user;
