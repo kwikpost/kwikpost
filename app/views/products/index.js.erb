@@ -7,8 +7,3 @@ preparePagination(delimiter);
 <% unless @products.next_page %>
 $('#infinite-scrolling .pagination').remove();
 <% end %>
-
-
-$(function(){
-  $("a[rel='tooltip']").tooltip();
-})
