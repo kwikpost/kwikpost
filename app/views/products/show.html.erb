@@ -124,14 +124,14 @@
 	  </div>
 
 	  	<div class="panel-body">
-	  	<% if user_signed_in? && current_user.id != @seller.id %>
-		  	<% if @following %>
-              <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger btn-block btn-lg"%>
-            <% else %>
-              <%= link_to 'Follow', follow_user_path(product_id: @product.id ,:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary btn-block btn-lg"%>
-            <% end %>
-        <% end %>
-	  </div>
+		  	<% if user_signed_in? && current_user.id != @seller.id %>
+			  	<% if @following %>
+	              <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger btn-block btn-lg"%>
+	            <% else %>
+	              <%= link_to 'Follow', follow_user_path(product_id: @product.id ,:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary btn-block btn-lg"%>
+	            <% end %>
+	        <% end %>
+		</div>
 	 
 	</div>
 
