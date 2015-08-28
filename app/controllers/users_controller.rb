@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def index
-	
+
 		# ======= Hard code because unstable API ======
 	    # @location = "Bellevue, WA 98004, United States"
 	    # Format location for readability
@@ -11,8 +11,6 @@ class UsersController < ApplicationController
 	    # =============================================
 
 		@curuser = current_user;
-		@product = User.find(params[:id]).products.last
-		@products = User.find(params[:id]).products
 		@seller = User.find(params[:id])
 		@products = User.find(@seller.id).products
 		@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
