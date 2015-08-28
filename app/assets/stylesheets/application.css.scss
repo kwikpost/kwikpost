@@ -103,7 +103,7 @@ button {
 }
 textarea {
  resize: none;
- outline: 0; 
+ outline: 0;
 }
 p {
   font-size:12px;
@@ -161,6 +161,12 @@ p {
 
 }
 
+.rating_star {
+  display: inline;
+}
 
-
-
+.rating_star > div > p{
+  font-size: 1.5rem !important;
+  color: white !important;
+  font-weight: bold !important; 
+}

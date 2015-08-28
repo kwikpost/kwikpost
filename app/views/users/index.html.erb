@@ -3,7 +3,7 @@
 		  <div id="header" class="panel-body">
 			  <h4><%= @seller.name %>'s Offers</h4>
 		  </div>
-	</div>	
+	</div>
 		<div class="scroll panel panel-default">
 	    	<div id="masonry-container" class="transitions-enabled clearfix">
 	          	<%= render @products %>
@@ -18,6 +18,14 @@
 		<div class="panel-body text-center">
 			<img src="<%= @seller.image %>" alt="<%= @seller.name %>" />
 			<h3><%= @seller.name %></h3>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+				<h3 id="asking" class="panel-title text-center">Reviews</h3>
+		</div>
+		<div class="panel-body text-center">
+			<%= rating_for @seller, "user_review", :disable_after_rate => false %>
 		</div>
 	</div>
 	<div class="panel panel-default">
@@ -62,7 +70,7 @@ $container.imagesLoaded(function(){
 });
 
 $container.infinitescroll({
-  navSelector  : '.pagination',    // selector for the paged navigation 
+  navSelector  : '.pagination',    // selector for the paged navigation
   nextSelector : '.pagination .next_page a',  // selector for the NEXT link (to page 2)
   itemSelector : '.box',     // selector for all items you'll retrieve
   loading: {
@@ -78,7 +86,7 @@ $container.infinitescroll({
     $newElems.imagesLoaded(function(){
       // show elems now they're ready
       $newElems.animate({ opacity: 1 });
-      $container.masonry( 'appended', $newElems, true ); 
+      $container.masonry( 'appended', $newElems, true );
     });
   }
 );
