@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   get 'chats/new'
   get 'chats/show/:id' => 'chats#show'
+   get'chats/buying/:id' => 'chats#buying'
 
   post 'chats' => 'chats#create'
   post 'chats/reply' => 'chats#reply'
   post 'chats/buy' => 'chats#buy'
-  get 'chats/:id' => 'chats#index'
+  get 'chats/:id' => 'chats#index', :as => 'chats_inbox'
 
   get 'chats/update'
 
