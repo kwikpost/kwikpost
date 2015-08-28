@@ -1,13 +1,19 @@
 <h1>Selling</h1>
-<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
-	<div class="box col3">
-	<% @products.each do |product| %>
-        <div class="grid-item">
-        <a href="/products/<%= product.id %>">
-		  <%= image_tag product.avatar.url(:medium) %>
-        <p><%= product.title %></p></a>  
-        </div>
-	<% end %>
-  </div>
+
+<div id="masonry-container" class="transitions-enabled clearfix centered">
+	<%= render @products %>
 </div>
-</div>
+
+<script>
+$(function(){
+
+var $container = $('#masonry-container');
+
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector: '.box',
+  });
+});
+
+});
+</script>

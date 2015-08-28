@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
 
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'chats/new'
+  get 'chats/show/:id' => 'chats#show'
 
-  post '/chats' => 'chats#create'
+  post 'chats' => 'chats#create'
+  post 'chats/reply' => 'chats#reply'
+  post 'chats/buy' => 'chats#buy'
+  get 'chats/:id' => 'chats#index'
 
   get 'chats/update'
 
   get 'chats/destroy'
 
-  get 'chats/show'
 
   # get 'users/:id' => 'users#show'
   get 'pages/:id' => 'pages#index'
@@ -26,7 +30,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
     registrations: 'registrations' }
   resources :users, only: [:show, :edit]
-  
+
   get '/users/:id/index' => 'users#index'
 
   post 'users/:id/follow' => 'users#follow', as: :follow_user
