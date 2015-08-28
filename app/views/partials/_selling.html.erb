@@ -3,17 +3,3 @@
 <div id="masonry-container" class="transitions-enabled clearfix centered">
 	<%= render @products %>
 </div>
-
-<script>
-$(function(){
-
-var $container = $('#masonry-container');
-
-$container.imagesLoaded(function(){
-  $container.masonry({
-    itemSelector: '.box',
-  });
-});
-
-});
-</script>

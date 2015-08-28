@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+
+
   def index
     @productcount = Product.all.count
     @categories = Product.group(:category).order("category_id asc").count; #Category.all
@@ -20,25 +22,32 @@ class ProductsController < ApplicationController
     # =============================================
     @search_location = Geocoder.coordinates(@location)
 
-    if params[:search_location].present?
+    if params[:search_products].present?
+        params[:search_location] = nil
+        @products = Product.where("lower(title) like ?", "%#{params[:search_products].downcase}%").paginate(:page => params[:page], :per_page => 20)
+        flash[:notice] = params[:search_products]
+
+    #if search location
+    elsif params[:search_location].present?
       puts "============="
       @search_location = Geocoder.coordinates(params[:search_location])
       puts @search_location
       puts "============="
       @products = Product.near(@search_location, 50).paginate(:page => params[:page], :per_page => 20)
-      # @products = Product.paginate(:page => params[:page], :per_page => 20)
       @location = params[:search_location]
       flash[:notice] = params[:search_location]
-    else
-      if params[:category_id]
+
+    #if category id search
+    elsif params[:category_id]
         @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
         flash[:notice] = Category.find(params[:category_id]).name
-      else
+    else
         # search_location = Geocoder.coordinates(@location)
+        #Else show all products
         flash[:notice] = nil
         @products = Product.near(@search_location, 50).paginate(:page => params[:page], :per_page => 20)
-      end
     end
+    
   end
 
   def edit
