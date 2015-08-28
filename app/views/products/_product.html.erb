@@ -1,17 +1,39 @@
 <% if @product %>
 	<% if product.id != @product.id %>
 		<div class="product box col2">
-			<h4 class="text-center"><a href="/products/<%= product.id %>">
-			<%= image_tag product.avatar.url(:medium) %>
-				<%= product.title %> - <%= number_to_currency(product.price, precision:0) %><br>
-			</h4></a>
+			<h4 class="text-center">
+				<a href="/products/<%= product.id %>">
+				<%= image_tag product.avatar.url(:medium) %>
+				<%= product.title %> - <%= number_to_currency(product.price, precision:0) %>
+				</a>
+			</h4>
+
+			<% 21.times do %>
+				<% product.location.chop! %>
+			<% end %>
+		
+			<p style="color: #BA5624; font-weight: bold; margin: 0px auto">
+				<i class="fa fa-map-marker fa-lg"></i>
+				<%= product.distance_to(@location).round(2) %> miles - <%= product.location %>
+			</p>
 		</div>
 	<% end %>
 <% else %>
 	<div class="product box col2">
-		<h4 class="text-center"><a href="/products/<%= product.id %>">
-		<%= image_tag product.avatar.url(:medium) %>
-			<%= product.title %> - <%= number_to_currency(product.price, precision:0) %><br>
-		</h4></a>
+		<h4 class="text-center">
+			<a href="/products/<%= product.id %>">
+				<%= image_tag product.avatar.url(:medium) %>
+				<%= product.title %> - <%= number_to_currency(product.price, precision:0) %>
+			</a>
+		</h4>
+		
+		<% 21.times do %>
+		<% product.location.chop! %>
+		<% end %>
+		
+		<p style="color: #BA5624; font-weight: bold; margin: 0px auto">
+			<i class="fa fa-map-marker fa-lg"></i>
+			<%= product.distance_to(@location).round(2) %> miles - <%= product.location %>
+		</p>
 	</div>
 <% end %>

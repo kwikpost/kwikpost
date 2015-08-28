@@ -8,7 +8,7 @@
 			<a id="watching" href="">Watching</a> |
 			<a href="/chats/<%= current_user.id  %>">Messages</a>
 		</div>
-		<div class="col-sm-10">
+		<div id="product_nav" class="well col-sm-12">
 			<div id='partials'></div>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 		  </div>
 		  <div class="panel-body">
 		    <% @followers.each do |follower| %>
-			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+			    <a href="/users/<%= follower.user.id %>/index"><img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" /></a>
 		    <% end %>
 		  </div>
 		</div>
@@ -31,7 +31,7 @@
 		  </div>
 		  <div class="panel-body">
 		    <% @followings.each do |following| %>
-			    <img id='seller' src="<%= following.follow.image %>" alt="<%= following.follow.name %>" />
+			    <a href="/users/<%= following.follow.id %>/index"><img id='seller' src="<%= following.follow.image %>" alt="<%= following.follow.name %>" /></a>
 		    <% end %>
 		  </div>
 		</div>

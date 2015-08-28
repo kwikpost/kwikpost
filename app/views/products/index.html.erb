@@ -8,9 +8,9 @@
           <div class="panel-heading" id="cat_back"><h4>Categories</h4></div>
             <div class="panel-body">
               <div class="list-group">
-                <a id="All_search" href="/">All</a><br>
+                <a id="All_search" style="font-size:1.5em" href="/">All</a><br>
                 <% @categories.each do |category| %>
-                  <a href="/?category_id=<%= category.id %>"><%= category.name %></a> <br>
+                  <a style="font-size:1.5em" href="/?category_id=<%= category.id %>"><%= category.name %></a><br>
                 <% end %>
               </div>
             </div>
@@ -21,7 +21,7 @@
     <% if flash[:notice] %>
     <h3 class="alert alert-dismissable alert-success" id="category_div"><button id="clear" type="button">×</button><%= flash[:notice] %></h3>
     <% end %>
-    <div id="masonry-container" class="transitions-enabled clearfix">
+    <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix centered">
        
           <%= render @products %>
         
@@ -44,8 +44,7 @@
     
     $container.imagesLoaded(function(){
       $container.masonry({
-        itemSelector: '.box',
-        columnWidth: 100
+        itemSelector: '.box'
       });
     });
     

@@ -1,72 +1,27 @@
 <div id="master_container" class="col-sm-6 col-md-offset-1">
 	<p><%= image_tag @product.avatar.url(:large), class: "image"  %></p>
-		<h3><%= @product.title  %></h3>
-		<h4>Description: <%= @product.description %></h4>
-		<h4>Condition: <%= @product.condition.name %></h4>
-		<div id="lol" class="panel panel-default">
-		  <div class="panel-body">
-			  <h4>My Other Offers</h4>
-		  </div>
-		</div>
-
-	  <div class="scroll panel panel-default">
-
-	    <div id="masonry-container" class="transitions-enabled clearfix">
-	       
-	          <%= render @products %>
-	        
-	    </div>
-	          
+	<h3><%= @product.title  %></h3>
+	<h4>Description: <%= @product.description %></h4>
+	<h4>Condition: <%= @product.condition.name %></h4>
+	<div id="lol" class="panel panel-default">
+	  <div class="panel-body">
+		  <h4>My Other Offers</h4>
 	  </div>
+	</div>
+  	<div class="scroll panel panel-default">
+    	<div id="masonry-container" class="transitions-enabled clearfix">
+        	<%= render @products %>    
+    	</div>          
+	</div>
 </div>
 
-
-<script>
-$(function(){
-
-var $container = $('#masonry-container');
-
-$container.imagesLoaded(function(){
-  $container.masonry({
-    itemSelector: '.box',
-    columnWidth: 100
-  });
-});
-
-$container.infinitescroll({
-  navSelector  : '.pagination',    // selector for the paged navigation 
-  nextSelector : '.pagination .next_page a',  // selector for the NEXT link (to page 2)
-  itemSelector : '.box',     // selector for all items you'll retrieve
-  loading: {
-      finishedMsg: 'No more pages to load.',
-      img: 'http://i.imgur.com/6RMhx.gif'
-    }
-  },
-  // trigger Masonry as a callback
-  function( newElements ) {
-    // hide new items while they are loading
-    var $newElems = $( newElements ).css({ opacity: 0 });
-    // ensure that images load before adding to masonry layout
-    $newElems.imagesLoaded(function(){
-      // show elems now they're ready
-      $newElems.animate({ opacity: 1 });
-      $container.masonry( 'appended', $newElems, true ); 
-    });
-  }
-);
-
-});
-</script>
-
-</div>
 <div id="master_container" class="col-sm-3 col-sm-offset-1">
-
 	<div class="col-sm-12" id="alert_message">
 				<% if flash[:notice] %>
 					<br>
 					<div class="alert alert-<%= flash[:color]%>" style="width:100%;">
-							<p><%= flash[:notice]  %></p>
-						</div>
+						<p><%= flash[:notice]  %></p>
+					</div>
 				
 				<% end %>
 	</div>
@@ -76,10 +31,10 @@ $container.infinitescroll({
 	    <h3 id="asking" class="panel-title text-center">Asking</h3>
 	  </div>
 
-	  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %></h4>
+	  <h4 class="text-center"><%= number_to_currency(@product.price, precision: 0) %>
+	  </h4>
 	  <div class="panel-body">
 
-			  <!-- <button type="button" class="btn btn-success btn-lg btn-block">Buy</button> -->
 			  <% if current_user.id == @product.user.id %>
 			  <% else %>
 				  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
@@ -88,10 +43,11 @@ $container.infinitescroll({
 				   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
 	 			 	Ask
 					</button>
-		  </div>
+
 		</div>
 	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
+	
+
 		<div class="panel panel-default">
 		  <div class="panel-body">
 		  <% if user_signed_in? %>
@@ -112,65 +68,91 @@ $container.infinitescroll({
 					<% end %>
 				<% end %>
 			<% end %>
+
 		<% else %>
-			<a href="#loginModal" role="button" data-toggle="modal" id="font_color" class="btn btn-lg btn-default btn-block">Watch</a>
+		  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.hidden_field :product_id, :value => @product.id  %>
+				<%= button_tag( :class => "btn btn-lg btn-default btn-block") do %>
+				  <i class="fa fa-star"></i> Watch
+				<% end %>
 			<% end %>
 			
-		<% end %>	
-		  </div>
-		</div>
+		<% end %>
+	<% end %>	
+	  </div>
 	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			    <h3 id="asking" class="panel-title text-center">Seller</h3>
-			</div>
-			<div class="panel-body">
-				<a href="/users/<%= @seller.id %>/index"><img src="<%= @seller.image %>" alt="<%= @seller.name %>" /></a>
-				<h3><%= @seller.name %></h3>
-			</div>
-		</div>
-	</div>
-</div>
-<div id="right_container" class="col-sm-3 col-sm-offset-1">
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
-		    <h3 id="asking" class="panel-title text-center">Location</h3>
+		    <h3 id="asking" class="panel-title text-center">Seller</h3>
 		</div>
-		<div class="panel-body">
-			<h3>MAP</h3>
+		<div class="panel-body text-center">
+			<a href="/users/<%= @seller.id %>/index"><img src='https://graph.facebook.com/<%= @seller.uid %>/picture?type=large' alt='picture'></a>
+			<h3>
+				<div class="rating_star" style="display:inline-block;">
+					<%= rating_for @seller, "user_review", disable_after_rate: true, imdb_avg: true %>
+				</div>
+				<%= @seller.name %>
+			</h3>
 		</div>
 	</div>
-</div>
-<div id="right_container" class="col-sm-3 col-sm-offset-1">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+
+			<% 21.times do %>
+			<% @product.location.chop! %>
+			<% end %>
+
+		    <h3 id="location" class="panel-title text-center"><%= @product.location %></h3>
+		</div>
+		<div id="googleMap" class="panel-body" style="height:300px"></div>
+	</div>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 		    <h3 class="panel-title">Followers (<%= @followers.count %>)</h3>
 	 	</div>
 		<div class="panel-body">
 		    <% @followers.each do |follower| %>
-			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+			    <a href="/users/<%= follower.user.id %>/index"><img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" /></a>
 		    <% end %>
 	  </div>
-	  <div class="panel-body">
+	  <% if !current_user.id == @seller.id %>
+	  	<div class="panel-body">
+	  	<% if user_signed_in? || current_user.id == @seller.id %>
 		  	<% if @following %>
-              <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger"%>
+              <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger btn-block btn-lg"%>
             <% else %>
-              <%= link_to 'Follow', follow_user_path(product_id: @product.id ,:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary"%>
+              <%= link_to 'Follow', follow_user_path(product_id: @product.id ,:id => current_user.id, :follow => @seller.id), method: :post, class:"btn btn-primary btn-block btn-lg"%>
             <% end %>
+        <% end %>
 	  </div>
+	  <% end %>
 	</div>
-</div>
 
-<%= render 'products/ask' %>
-<%= render 'products/buy' %>
+</div>
+<% if user_signed_in? %>
+	<%= render 'products/ask' %>
+	<%= render 'products/buy' %>
+<% end %>
 <%= render 'layouts/login' %>
 
 <!-- remove flash notice automatically -->
 <script>
-window.setTimeout(function() {
-$("#alert_message").fadeTo(300, 0).slideUp(300, function(){
-$(this).remove(); 
+$(function(){
+	var $container = $('#masonry-container');
+	$container.imagesLoaded(function(){
+	  $container.masonry({
+	    itemSelector: '.box',
+	  });
+	});
 });
+
+$("#googleMap").html("<%= escape_javascript(render partial: 'partials/googleMap') %>");
+
+window.setTimeout(function() {
+	$("#alert_message").fadeTo(300, 0).slideUp(300, function(){
+		$(this).remove();
+	});
 }, 800);
 </script>
