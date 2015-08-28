@@ -1,17 +1,66 @@
 <div class="row">
-<div id="master_container" class="col-sm-7 col-md-offset-1">
+<div class="spacer"></div>
+<div id="master_container" class="col-sm-11 col-md-offset-1">
+  <div class="col-md-4" style="margin-top: 10px;">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+            <li>
+              <h3>
+                  <em class="fa fa-inbox fa-lg"></em>
+                  <span><a href="#">Inbox</a></span>
+                </h3>
+            </li>
+            <hr>
+            <li>
+              <h3>
+                  <em class="fa fa-paper-plane-o fa-lg"></em>
+                  <span><a href="#">Sent</a></span>
+                </h3>
+            </li>
+          <hr>
+            <li>
+              <h3>
+                <em class="fa fa-trash-o fa-lg"></em>
+                <span><a href="#">Trash</a></span>
+            </h3>
+          </li>
+        </ul>
+          </div>
+      </div>
+  </div>
 
-	<h1><strong>Chat</strong></h1>
-	<p><a href="/products/<%= @productchats.product.id %>"><%= image_tag @productchats.product.avatar.url(:thumb)  %></a></p>	
-	<h4>Product: <strong><%= @productchats.product.title %></strong> Price: $<strong><%= @productchats.product.price  %></strong></h4>
-	<hr>
-	<%  @productchats.chats.each do |c| %>
-		<h4><%= c.user.name  %>: <strong><%= c.message %></strong><span class="pull-right"><%= c.created_at.to_s(:short)  %></span></h4>
-		<hr>
-	<% end %>
+  <div class="col-md-8" style="margin-top: 10px;">
+      <div class="panel panel-default">
+          <div class="panel-body">
 
-	<div class="col sm-10">
-		<%= form_for(:reply, :url=>{:controller => 'chats', :action=>'reply'}, method: :post, :html => {:class => "form-horizontal"}) do |f|   %>
+          <br>
+          <div class="media">
+
+            <div class="media-left">
+              <a href="/products/<%= @productchats.product.id %>">
+                <%= image_tag @productchats.product.avatar.url(:thumb)  %>
+              </a>
+            </div>
+
+            <div class="media-body">
+              <h4 class="media-heading">
+                Product: <strong><%= @productchats.product.title %></strong> Price: $<strong><%= @productchats.product.price  %></strong>
+              </h4>
+
+            </div>
+
+
+        
+  <h4>Product: <strong><%= @productchats.product.title %></strong> Price: $<strong><%= @productchats.product.price  %></strong></h4>
+  <hr>
+  <%  @productchats.chats.each do |c| %>
+    <h4><%= c.user.name  %>: <strong><%= c.message %></strong><span class="pull-right"><%= c.created_at.to_s(:short)  %></span></h4>
+    <hr>
+  <% end %>
+
+  <div class="col sm-10">
+    <%= form_for(:reply, :url=>{:controller => 'chats', :action=>'reply'}, method: :post, :html => {:class => "form-horizontal"}) do |f|   %>
 
       <div class="form-group">
         <div class="col-md-12 col-xs-12">
@@ -29,9 +78,14 @@
         
       <% end %>
       <p>
-		<a href="/chats/<%= current_user.id %>">Back to messages</a>
-	</p>
-	</div>
+    <a href="/chats/<%= current_user.id %>">Back to messages</a>
+  </p>
+  </div>
 
 </div>
+        
+        </div>
+      </div>
+  </div>
+  </div>
 </div>
