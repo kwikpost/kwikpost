@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'chats' => 'chats#create'
   post 'chats/reply' => 'chats#reply'
   post 'chats/buy' => 'chats#buy'
-  get 'chats/:id' => 'chats#index'
+  get 'chats/:id' => 'chats#index', :as => 'chats_inbox'
 
   get 'chats/update'
 

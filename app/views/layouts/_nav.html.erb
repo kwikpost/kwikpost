@@ -39,7 +39,7 @@
         </a>
         <ul class="dropdown-menu">
           <li><%= link_to "Profile", user_profile_path(current_user) %></li>
-          <li><%= link_to "Inbox", mailbox_inbox_path %></li>
+          <li><%= link_to "Inbox", chats_inbox_path(current_user) %></li>
           <li><%= link_to "Settings", edit_user_registration_path %></li>
           <li class="divider"></li>
           <li>
