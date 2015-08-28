@@ -71,8 +71,8 @@
 		<div class="panel-heading">
 		    <h3 id="asking" class="panel-title text-center">Seller</h3>
 		</div>
-		<div class="panel-body">
-			<a href="/users/<%= @seller.id %>/index"><img src="<%= @seller.image %>" alt="<%= @seller.name %>" /></a>
+		<div class="panel-body text-center">
+			<a href="/users/<%= @seller.id %>/index"><img src='https://graph.facebook.com/<%= @seller.uid %>/picture?type=large' alt='picture'></a>
 			<h3><%= @seller.name %></h3>
 		</div>
 	</div>
