@@ -2,12 +2,14 @@ class UsersController < ApplicationController
 	def index
 
 		# ======= Hard code because unstable API ======
-	    # @location = "Bellevue, WA 98004, United States"
+	    @location = "Bellevue, WA 98004, United States"
 	    # Format location for readability
-	    @location = current_location
+	    # @location = current_location
 	    21.times do
 	      @location.chop!
 	    end
+
+	    @search_location = Geocoder.coordinates(@location)
 	    # =============================================
 
 		@curuser = current_user;

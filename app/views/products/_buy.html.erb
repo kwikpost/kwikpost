@@ -14,6 +14,7 @@
       <%= form_for(:chat, :url=>{:controller => 'chats', :action=>'buy'}, method: :post, :html => {:class => "form-horizontal"}) do |f|   %>
       
         <% if @product.price_fixed %>
+      
           <div class="form-group">
             <%= f.label :message, ' Fixed price: '  %>
             <%= f.text_field :message, :value => @product.price,  readonly: true,  class: "form-control" %> 
