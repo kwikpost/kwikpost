@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :productchats, dependent: :destroy
   has_many :chats, through: :productchat
 
+  has_many :watchproducts , through: :watchlists, source: :product
+
   has_many :user_follows, dependent: :destroy
   has_many :follows, through: :user_follows, source: :follow
 
