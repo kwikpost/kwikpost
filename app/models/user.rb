@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-
+  ratyrate_rater
+  ratyrate_rateable "user_review"
+  
   has_many :products
   has_many :watchlists
   has_many :productchats, dependent: :destroy
