@@ -6,9 +6,10 @@ class UsersController < ApplicationController
 		@seller = User.find(params[:id])
 		@products = User.find(@seller.id).products
 		@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
-    @followers = UserFollow.where(follow_id: @seller.id)
+		@followers = UserFollow.where(follow_id: @seller.id)
 		@rating = Rate.find_by(rater_id: @curuser.id, rateable_id: params[:id], rateable_type: "User")
-		@rating_num = Rate.where(rateable_id: params[:id]).length
+		@review = @seller.user_reviews.find_by(reviewuser_id: @curuser.id)
+		@reviews = @seller.user_reviews.limit(10).order("updated_at DESC")
 	end
 	def show
 		# Testing purpose
@@ -47,14 +48,15 @@ class UsersController < ApplicationController
 	end
 
 	def review
-		fail
 		@reviewer = current_user
 		@user = User.find(params[:id])
-
-		# if user_reviews.find_by(reviewuser_id: @reviewer)
-		@user.user_reviews.create(reviewuser: @reviewer.id, review: params[:review])
-
-		redirect_to user_path(params[:user_id])
+		@review = @user.user_reviews.find_by(reviewuser_id: @reviewer.id)
+		if @review
+			@review.update(review: params[:review])
+		else
+			@user.user_reviews.create(reviewuser_id: @reviewer.id, review: params[:review])
+		end
+		redirect_to :back
 	end
 
 	def edit
