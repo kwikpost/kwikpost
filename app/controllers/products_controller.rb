@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
 
     if params[:search_location].present?
       @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
+      @location = params[:search_location]
     else
       if params[:category_id]
         @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
