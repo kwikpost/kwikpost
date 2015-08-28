@@ -17,12 +17,13 @@ class MainsController < ApplicationController
 	def posts
 
 		# ======= Hard code because unstable API ======
-	    # @location = "Bellevue, WA 98004, United States"
+	    @location = "Bellevue, WA 98004, United States"
+	    # @location = current_location
 	    # Format location for readability
-	    @location = current_location
 	    21.times do
 	      @location.chop!
 	    end
+	    @search_location = Geocoder.coordinates(@location)
 	    # =============================================
 
 		@product = Product.new
@@ -31,7 +32,7 @@ class MainsController < ApplicationController
 		@conditions = Condition.all
 		@categories = Category.all
 		@followings = UserFollow.where(user_id:current_user.id)
-	  @followers = UserFollow.where(follow_id:current_user.id)
+	  	@followers = UserFollow.where(follow_id:current_user.id)
 	end
 
 
