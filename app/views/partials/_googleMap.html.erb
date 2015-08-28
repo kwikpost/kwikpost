@@ -18,7 +18,7 @@
 // First, create an object containing LatLng and population for each city.
 var citymap = {
   location: {
-    center: {lat: <%= @product.latitude %>, lng: <%= @product.longitude %>}
+    center: {lat: <%= @product.latitude if @product %>, lng: <%= @product.longitude if @product %>}
   }
 };
 
@@ -26,7 +26,7 @@ function initMap() {
   // Create the map.
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
-    center: {lat: <%= @product.latitude %>, lng: <%= @product.longitude %>},
+    center: {lat: <%= @product.latitude if @product %>, lng: <%= @product.longitude if @product%>},
     mapTypeControl: false,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
