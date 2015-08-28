@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'chats/new'
 
   post '/chats' => 'chats#create'
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "sessions",
     registrations: 'registrations' }
   resources :users, only: [:show, :edit]
-  
+
   get '/users/:id/index' => 'users#index'
 
   post 'users/:id/follow' => 'users#follow', as: :follow_user

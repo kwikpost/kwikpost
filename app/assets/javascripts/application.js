@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require chosen-jquery
 //= require turbolinks
@@ -19,5 +20,6 @@
 //= require masonry/jquery.infinitescroll.min
 
 
-
 //= require_tree .
+//= require jquery.raty
+//= require ratyrate

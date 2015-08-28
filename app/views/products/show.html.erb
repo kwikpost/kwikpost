@@ -18,7 +18,7 @@
   <div class="scroll panel panel-default">
     <div id="masonry-container" class="transitions-enabled clearfix">
       <%= render @products %>
-    </div> 
+    </div>
   </div>
 </div>
 <div id="master_container" class="col-sm-3 col-sm-offset-1">
@@ -38,7 +38,7 @@
 			   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
  			 	Ask
 				</button>
-			  
+
 		  </div>
 	</div>
 	<div class="panel panel-default">
@@ -49,8 +49,8 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.hidden_field :product_id, :value => @product.id  %>
 				<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
-				  <i class="fa fa-star-o"></i> Unwatch 
-				<% end %>			
+				  <i class="fa fa-star-o"></i> Unwatch
+				<% end %>
 			<% end %>
 
 		<% else %>
@@ -58,7 +58,7 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.hidden_field :product_id, :value => @product.id  %>
 				<%= button_tag( :class => "btn btn-lg btn-default btn-block") do %>
-				  <i class="fa fa-star"></i> Watch 
+				  <i class="fa fa-star"></i> Watch
 				<% end %>
 			<% end %>
 		<% end %>
@@ -73,7 +73,12 @@
 		</div>
 		<div class="panel-body text-center">
 			<a href="/users/<%= @seller.id %>/index"><img src='https://graph.facebook.com/<%= @seller.uid %>/picture?type=large' alt='picture'></a>
-			<h3><%= @seller.name %></h3>
+			<h3>
+				<div class="rating_star" style="display:inline-block;">
+					<%= rating_for @seller, "user_review", disable_after_rate: true, imdb_avg: true %>
+				</div>
+				<%= @seller.name %>
+			</h3>
 		</div>
 	</div>
 	<div class="panel panel-default">
@@ -130,7 +135,7 @@ $("#googleMap").html("<%= escape_javascript(render partial: 'partials/googleMap'
 
 window.setTimeout(function() {
 	$("#alert_message").fadeTo(300, 0).slideUp(300, function(){
-		$(this).remove(); 
+		$(this).remove();
 	});
 }, 800);
 </script>
