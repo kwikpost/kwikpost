@@ -1,0 +1,14 @@
+<div class="container" id="master_container">
+	<h1>Messages</h1>
+	<%  @productchats.each do |p| %>
+	<h4>
+		<%= image_tag p.user.image %> <%= p.user.name %> wrote about 
+		<a href="/chats/show/<%= p.id %>">
+			<%= p.product.title  %>
+		</a>
+		<span class="pull-right"> <%= p.created_at.to_s(:short)  %></span>
+	</h4> 
+	<hr>
+	<% end %>
+
+</div>

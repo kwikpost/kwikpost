@@ -5,7 +5,8 @@
 			<a id="new" href="">New</a> | 
 			<a id="selling" href="">Selling</a> | 
 			<a id="buying" href="">Buying</a> | 
-			<a id="watching" href="">Watching</a>
+			<a id="watching" href="">Watching</a> |
+			<a href="/chats/<%= current_user.id  %>">Messages</a>
 		</div>
 		<div class="col-sm-10">
 			<div id='partials'></div>
@@ -55,4 +56,5 @@
 		$("#partials").html("<%= escape_javascript(render partial: 'partials/watching') %>");
 		return false;
 	})
+
 </script>

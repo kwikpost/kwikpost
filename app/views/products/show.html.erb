@@ -1,15 +1,5 @@
 <div id="master_container" class="col-sm-6 col-md-offset-1">
-	<div class="col-sm-10" id="alert_message">
-	<% if flash[:notice] %>
-		<div class="row">
-			<div class="col-md-4 col-xs-12	alert alert-<%= flash[:color]%>">
-				<p><%= flash[:notice]  %></p>
-			</div>
-		</div>
-	<% end %>
-	</div>
-
-		<p><%= image_tag @product.avatar.url(:large), class: "image"  %></p>
+	<p><%= image_tag @product.avatar.url(:large), class: "image"  %></p>
 		<h3><%= @product.title  %></h3>
 		<h4>Description: <%= @product.description %></h4>
 		<h4>Condition: <%= @product.condition.name %></h4>
@@ -70,6 +60,17 @@ $container.infinitescroll({
 
 </div>
 <div id="master_container" class="col-sm-3 col-sm-offset-1">
+
+	<div class="col-sm-12" id="alert_message">
+				<% if flash[:notice] %>
+					<br>
+					<div class="alert alert-<%= flash[:color]%>" style="width:100%;">
+							<p><%= flash[:notice]  %></p>
+						</div>
+				
+				<% end %>
+	</div>
+
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 id="asking" class="panel-title text-center">Asking</h3>
@@ -79,14 +80,14 @@ $container.infinitescroll({
 	  <div class="panel-body">
 
 			  <!-- <button type="button" class="btn btn-success btn-lg btn-block">Buy</button> -->
-			  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
- 			 	Buy
-				</button>
-			   <%= link_to "Ask", chats_new_path(:product_id => @product.id), class: "btn btn-lg btn-primary btn-block" %>
-			   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
- 			 	Ask
-				</button>
-			  
+			  <% if current_user.id == @product.user.id %>
+			  <% else %>
+				  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
+	 			 	Buy
+					</button> 
+				   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
+	 			 	Ask
+					</button>
 		  </div>
 		</div>
 	</div>
@@ -102,7 +103,6 @@ $container.infinitescroll({
 					  <i class="fa fa-star-o"></i> Unwatch 
 					<% end %>			
 				<% end %>
-
 			<% else %>
 			  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
 					<%= f.hidden_field :user_id, :value => current_user.id %>
@@ -115,6 +115,8 @@ $container.infinitescroll({
 		<% else %>
 			<a href="#loginModal" role="button" data-toggle="modal" id="font_color" class="btn btn-lg btn-default btn-block">Watch</a>
 			<% end %>
+			
+		<% end %>	
 		  </div>
 		</div>
 	</div>
