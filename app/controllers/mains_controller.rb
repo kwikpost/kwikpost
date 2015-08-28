@@ -7,7 +7,7 @@ class MainsController < ApplicationController
 		# 	format.js
 		# end
 		# # Product.all.order(created_at: :desc)
-		
+
 	end
 
 	def show
@@ -21,7 +21,7 @@ class MainsController < ApplicationController
 		@conditions = Condition.all
 		@categories = Category.all
 		@followings = UserFollow.where(user_id:current_user.id)
-	    @followers = UserFollow.where(follow_id:current_user.id)
+	  @followers = UserFollow.where(follow_id:current_user.id)
 	end
 
 
