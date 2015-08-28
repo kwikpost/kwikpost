@@ -12,5 +12,5 @@
 !/log/.keep
 /tmp
 
-/.lock
-/public
+*.lock
+public
