@@ -1,23 +1,55 @@
-<div class='row'>
-	<div id="master_container" class="col-sm-7 col-md-offset-1">
-	<div class="col-md-10">
+<div id="master_container" class="col-sm-6 col-md-offset-1">
 	<div class="panel panel-default">
 		  <div id="header" class="panel-body">
 			  <h4><%= @seller.name %>'s Offers</h4>
 		  </div>
-	</div>
-		
+	</div>	
 		<div class="scroll panel panel-default">
-
 	    	<div id="masonry-container" class="transitions-enabled clearfix">
-	       
 	          	<%= render @products %>
-	        
 	    	</div>
-	          
 	  	</div>
+</div>
+<div id="master_container" class="col-sm-3 col-sm-offset-1">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		    <h3 id="asking" class="panel-title text-center">Seller</h3>
+		</div>
+		<div class="panel-body text-center">
+			<img src="<%= @seller.image %>" alt="<%= @seller.name %>" />
+			<h3><%= @seller.name %></h3>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<% 21.times do %>
+				<% @product.location.chop! %>
+			<% end %>
+		    <h3 class="panel-title text-center"><%= @product.location %></h3>
+		</div>
+		<div id="googleMap" class="panel-body" style="height:300px"></div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		    <h3 class="panel-title text-center">Followers (<%= @followers.count %>)</h3>
+	 	</div>
+		<div class="panel-body">
+	    <% @followers.each do |follower| %>
+		    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
+	    <% end %>
+	  </div>
+	  <div class="panel-body">
+	  	<% if @following %>
+		  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
+	    <% else %>
+		  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
+		<% end %>
+	  </div>
+	</div>
+</div>
+<script>
+$("#googleMap").html("<%= escape_javascript(render partial: 'partials/googleMap') %>");
 
-		<script>
 $(function(){
 
 var $container = $('#masonry-container');
@@ -53,46 +85,3 @@ $container.infinitescroll({
 
 });
 </script>
-	</div>
-</div>
-	<div id="master_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			    <h3 id="asking" class="panel-title text-center">Seller</h3>
-			</div>
-			<div class="panel-body text-center">
-				<img src="<%= @seller.image %>" alt="<%= @seller.name %>" />
-				<h3><%= @seller.name %></h3>
-			</div>
-		</div>
-	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			    <h3 id="asking" class="panel-title text-center">Location</h3>
-			</div>
-			<div class="panel-body">
-				<h3>MAP</h3>
-			</div>
-		</div>
-	</div>
-	<div id="right_container" class="col-sm-3 col-sm-offset-1">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			    <h3 class="panel-title text-center">Followers (<%= @followers.count %>)</h3>
-		 	</div>
-			<div class="panel-body">
-		    <% @followers.each do |follower| %>
-			    <img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" />
-		    <% end %>
-		  </div>
-		  <div class="panel-body">
-		  	<% if @following %>
-			  <a href=""><button type="button" class="btn btn-lg btn-block">Following</button></a>
-		    <% else %>
-			  <a href=""><button type="button" class="btn btn-lg btn-block">Follow</button></a>
-			<% end %>
-		  </div>
-		</div>
-	</div>
-</div>

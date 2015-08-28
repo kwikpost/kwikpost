@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
   def show
     @seller = Product.find(params[:id]).user
     @product = Product.find(params[:id])
-    @products = User.find(@seller.id).products
+    @products = User.find(@seller.id).products.where.not(id:params[:id])
     @followers = UserFollow.where(follow_id: @seller.id)
     if current_user
       @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
@@ -81,8 +81,6 @@ class ProductsController < ApplicationController
     flash[:color] = "info"
     redirect_to "/products/#{watch_params[:product_id]}"
   end
-
-
 
   private
   def product_params

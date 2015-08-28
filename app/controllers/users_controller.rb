@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	def index
+		@product = User.find(params[:id]).products.last
 		@products = User.find(params[:id]).products
 		@seller = User.find(params[:id])
 		@products = User.find(@seller.id).products
