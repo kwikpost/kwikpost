@@ -23,7 +23,6 @@ class UsersController < ApplicationController
 	def show
 		# Testing purpose
 		@user = User.find(params[:id])
-
 		@users = User.all.includes(:user_reviews)
 		@follows = @user.follows
 		@followmes = UserFollow.includes(:user).where(follow_id: params[:id])
