@@ -18,7 +18,7 @@
 		<div class="panel-body text-center">
 			<img src='https://graph.facebook.com/<%= @seller.uid %>/picture?type=large' alt='picture'>
 			<h3>
-				<% if @rating %>
+				<% if @rating_num != 0 %>
 					<div class="rating_star" style="display:inline-block;">
 						<%= rating_for @seller, "user_review", imdb_avg: true %>
 					</div>
