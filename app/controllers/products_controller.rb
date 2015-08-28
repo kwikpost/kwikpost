@@ -27,10 +27,7 @@ class ProductsController < ApplicationController
 
     #if search location
     elsif params[:search_location].present?
-      puts "============="
       @search_coordinates = Geocoder.coordinates(params[:search_location])
-      puts @search_coordinates
-      puts "============="
       @products = Product.near(@search_coordinates, 50).paginate(:page => params[:page], :per_page => 20)
       @location = params[:search_location]
       flash[:notice] = params[:search_location]
