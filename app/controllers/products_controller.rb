@@ -6,13 +6,24 @@ class ProductsController < ApplicationController
 
   def index 
     @categories = Category.all
-    if params[:category_id]
-      @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
-      flash[:notice] = Category.find(params[:category_id]).name
+    @location = Geocoder.search(remote_ip)[0].address
 
+    # Format location for readability
+    21.times do
+      @location.chop!
+    end
+
+    if params[:search_location].present?
+      @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
     else
-      flash[:notice] = nil
-      @products = Product.paginate(:page => params[:page], :per_page => 20)
+      if params[:category_id]
+        @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
+        flash[:notice] = Category.find(params[:category_id]).name
+
+      else
+        flash[:notice] = nil
+        @products = Product.paginate(:page => params[:page], :per_page => 20)
+      end
     end
   end
 
@@ -79,5 +90,4 @@ class ProductsController < ApplicationController
   def watch_params
     params.require(:watch).permit(:product_id, :user_id)
   end
-
 end

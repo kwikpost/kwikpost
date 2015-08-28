@@ -7,11 +7,13 @@ class UsersController < ApplicationController
         @followers = UserFollow.where(follow_id: @seller.id)
 	end
 	def show
+		# Testing purpose
 		@user = User.find(params[:id])
 
-		@users = User.all
+		@users = User.all.includes(:user_reviews)
 		@follows = @user.follows
 		@followmes = UserFollow.includes(:user).where(follow_id: params[:id])
+		@myreviews = UserReview.includes(:user).where(user_id: params[:id])
 	end
 
 	def follow
@@ -38,6 +40,13 @@ class UsersController < ApplicationController
 		else
 			redirect_to user_path(@user.id)
 		end
+	end
+
+	def review
+		@user = User.find(params[:id])
+		@user.user_reviews.create(reviewuser: User.find(params[:user_id]), rating: params[:rating], review: params[:review])
+
+		redirect_to user_path(params[:user_id])
 	end
 
 	def edit

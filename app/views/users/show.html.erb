@@ -11,33 +11,57 @@
         </td>
       </tr>
     </table>
+    <% @myreviews.each do |r| %>
+      <%= r.reviewuser.name %> : <%= r.review %> [<%= r.rating %> Starts]
+    <% end %>
   </div>
 
   <div class="row">
     <h2>All Other Users:</h2>
-    <table class="table">
     <% @users.each do |u| %>
       <% if u.id != @user.id %>
-        <tr>
-          <td>
-            <img src="<%= u.image %>" alt="<%= u.name %>" />
-          </td>
-          <td>
-            <h4>
-              <%= link_to u.name, user_path(u)%>
-            </h4>
-          </td>
-          <td>
-            <% if @follows and @follows.exists?(id: u.id) %>
-              <%= link_to 'Unfollow', follow_user_path(:follow => u), method: :delete, class:"btn btn-danger"%>
-            <% else %>
-              <%= link_to 'Follow', follow_user_path(:follow => u), method: :post, class:"btn btn-primary"%>
+        <table class="table">
+          <tr>
+            <td>
+              <img src="<%= u.image %>" alt="<%= u.name %>" />
+            </td>
+            <td>
+              <h4>
+                <%= link_to u.name, user_path(u)%>
+              </h4>
+            </td>
+            <td>
+              <% if @follows and @follows.exists?(id: u.id) %>
+                <%= link_to 'Unfollow', follow_user_path(:follow => u), method: :delete, class:"btn btn-danger"%>
+              <% else %>
+                <%= link_to 'Follow', follow_user_path(:follow => u), method: :post, class:"btn btn-primary"%>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        <div class="row">
+
+          <div class="col-md-3">
+            <form action="/users/<%=u.id%>/review" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="user_id" value="<%=@user.id%>">
+              <input type="number" name="rating" value="" class="form-control">
+              <textarea name="review"rows="8" cols="40" class="form-control"></textarea>
+              <input type="submit" value="New Review" class="form-control">
+            </form>
+          </div>
+
+          <div class="col-md-6">
+            <% u.user_reviews.each do |r| %>
+              <div>
+                <%= r.reviewuser.name %> : <%= r.review %> [<%= r.rating %> Starts]
+              </div>
             <% end %>
-          </td>
-        </tr>
+          </div>
+
+        </div>
       <% end %>
     <% end %>
-    </table>
   </div>
 
   <div class="row">

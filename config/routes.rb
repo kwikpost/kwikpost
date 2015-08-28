@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   post 'users/:id/follow' => 'users#follow', as: :follow_user
   delete 'users/:id/follow' => 'users#unfollow'
+
+  post 'users/:id/review' => 'users#review', as: :review_user
   # =================================
 
   # :id is current user's id

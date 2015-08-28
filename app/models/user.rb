@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :user_follows, dependent: :destroy
   has_many :follows, through: :user_follows, source: :follow
 
+  has_many :user_reviews, dependent: :destroy
+  has_many :reviewers, through: :user_reviews, source: :reviewuser
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

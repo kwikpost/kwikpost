@@ -2,9 +2,9 @@
     <title>Kwikpost</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-     <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
@@ -24,16 +24,14 @@
 </script>
 
 </head>
-<div id="top_nav" class="header">
-
-  <%= render 'layouts/nav' %>
-
-</div>
 
 <body>
+  <div id="top_nav" class="header">
+    <%= render 'layouts/nav' %>
+  </div>
+  <div style="padding-top: 75px;">
     <%= yield %>
-
-<%= render 'layouts/signup' %>
-<%= render 'layouts/login' %>
+  </div>
+  <%= render 'layouts/signup' %>
+  <%= render 'layouts/login' %>
 </body>
-
