@@ -9,16 +9,22 @@ class ProductsController < ApplicationController
     # @location = Geocoder.search(remote_ip)[0].address
 
     # ======= Hard code because unstable API ======
-    # @location = "Bellevue, WA 98004, United States"
-    @location = current_location
+    @location = "Bellevue, WA 98004, United States"
+    # @location = current_location
     # Format location for readability
     21.times do
       @location.chop!
     end
     # =============================================
+    @search_location = Geocoder.coordinates(@location)
 
     if params[:search_location].present?
-      @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
+      puts "============="
+      @search_location = Geocoder.coordinates(params[:search_location])
+      puts @search_location
+      puts "============="
+      @products = Product.near(@search_location, 50).paginate(:page => params[:page], :per_page => 20)
+      # @products = Product.paginate(:page => params[:page], :per_page => 20)
       @location = params[:search_location]
       flash[:notice] = params[:search_location]
     else
@@ -26,8 +32,9 @@ class ProductsController < ApplicationController
         @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
         flash[:notice] = Category.find(params[:category_id]).name
       else
+        # search_location = Geocoder.coordinates(@location)
         flash[:notice] = nil
-        @products = Product.near(@location, 50).paginate(:page => params[:page], :per_page => 20)
+        @products = Product.near(@search_location, 50).paginate(:page => params[:page], :per_page => 20)
       end
     end
   end
@@ -65,11 +72,16 @@ class ProductsController < ApplicationController
     @seller = @product.user
     @curuser = current_user
     @rating = Rate.find_by(rater_id: @curuser.id, rateable_id: @seller.id, rateable_type: "User")
+
     @location = "Bellevue, WA 98004, United States"
+    # @location = current_location
     # Format location for readability
     21.times do
       @location.chop!
     end
+    @search_location = Geocoder.coordinates(@location)
+
+
     @products = @seller.products.where.not(id:params[:id])
     @followers = UserFollow.includes(:user).where(follow_id: @seller.id)
     if @curuse
