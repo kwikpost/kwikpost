@@ -9,7 +9,7 @@
 	  </div>
 	</div>
   	<div class="scroll panel panel-default">
-    	<div id="masonry-container" class="transitions-enabled clearfix">
+    	<div id="masonry-container" class="transitions-enabled clearfix" style="padding:7px">
         	<%= render @products %>
     	</div>
 	</div>
@@ -80,7 +80,7 @@
 
 		<% end %>
 
-	<% end %>	
+	<% end %>
 	 </div>
 
 	</div>
@@ -121,9 +121,9 @@
 			    <a href="/users/<%= follower.user.id %>/index"><img src="<%= follower.user.image %>" alt="<%=  follower.user.name %>" /></a>
 		    <% end %>
 	  </div>
-	  <% if !current_user.id == @seller.id %>
+
 	  	<div class="panel-body">
-	  	<% if user_signed_in? || current_user.id == @seller.id %>
+	  	<% if user_signed_in? && current_user.id != @seller.id %>
 		  	<% if @following %>
               <%= link_to 'Unfollow', follow_user_path(product_id: @product.id ,:id => current_user.id , :follow => @seller.id), method: :delete, class:"btn btn-danger btn-block btn-lg"%>
             <% else %>
@@ -131,7 +131,7 @@
             <% end %>
         <% end %>
 	  </div>
-	  <% end %>
+	 
 	</div>
 
 </div>

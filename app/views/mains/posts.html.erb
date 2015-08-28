@@ -2,11 +2,11 @@
 	<div id="master_container" class="col-sm-7 col-md-offset-1">
 		<h1>My Offers</h1>
 		<div id="product_nav" class="well col-sm-12">
-			<a id="new" href="">New</a> | 
-			<a id="selling" href="">Selling</a> | 
-			<a id="buying" href="">Buying</a> | 
-			<a id="watching" href="">Watching</a> |
-			<a href="/chats/<%= current_user.id  %>">Messages</a>
+			<a id="new" class="btn btn-default btn-lg"><i class="fa fa-plus-square-o"></i> New</a>
+			<a id="selling" class="btn btn-default btn-lg"><i class="fa fa-bullhorn"></i> Selling</a>
+			<a id="buying" class="btn btn-default btn-lg"><i class="fa fa-shopping-cart"></i> Buying</a>
+			<a id="watching" class="btn btn-default btn-lg"><i class="fa fa-eye"></i> Watching</a>
+			<a href="/chats/<%= current_user.id %>" class="btn btn-default btn-lg"><i class="fa fa-envelope"></i> Messages</a>
 		</div>
 		<div id="product_nav" class="well col-sm-12">
 			<div id='partials'></div>

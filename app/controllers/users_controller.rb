@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
 	def index
+
+		# ======= Hard code because unstable API ======
+	    # @location = "Bellevue, WA 98004, United States"
+	    # Format location for readability
+	    @location = current_location
+	    21.times do
+	      @location.chop!
+	    end
+	    # =============================================
+
 		@curuser = current_user;
-		@product = User.find(params[:id]).products.last
-		@products = User.find(params[:id]).products
 		@seller = User.find(params[:id])
 		@products = User.find(@seller.id).products
 		@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
@@ -11,10 +19,10 @@ class UsersController < ApplicationController
 		@review = @seller.user_reviews.find_by(reviewuser_id: @curuser.id)
 		@reviews = @seller.user_reviews.limit(10).order("updated_at DESC")
 	end
+
 	def show
 		# Testing purpose
 		@user = User.find(params[:id])
-
 		@users = User.all.includes(:user_reviews)
 		@follows = @user.follows
 		@followmes = UserFollow.includes(:user).where(follow_id: params[:id])

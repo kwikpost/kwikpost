@@ -5,22 +5,28 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @productcount = Product.all.count
+    @categories = Product.group(:category).order("category_id asc").count; #Category.all
+
     # @location = Geocoder.search(remote_ip)[0].address
-    @location = "Bellevue, WA 98004, United States"
+
+    # ======= Hard code because unstable API ======
+    # @location = "Bellevue, WA 98004, United States"
+    @location = current_location
     # Format location for readability
     21.times do
       @location.chop!
     end
+    # =============================================
 
     if params[:search_location].present?
       @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
+      @location = params[:search_location]
       flash[:notice] = params[:search_location]
     else
       if params[:category_id]
         @products = Product.where(:category_id => params[:category_id]).paginate(:page => params[:page], :per_page => 20)
         flash[:notice] = Category.find(params[:category_id]).name
-
       else
         flash[:notice] = nil
         @products = Product.near(@location, 50).paginate(:page => params[:page], :per_page => 20)
@@ -57,18 +63,19 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @seller = Product.find(params[:id]).user
-    @rating = Rate.find_by(rater_id: current_user.id, rateable_id: @seller.id, rateable_type: "User")
+    @product = Product.includes(:user).find(params[:id])
+    @seller = @product.user
+    @curuser = current_user
+    @rating = Rate.find_by(rater_id: @curuser.id, rateable_id: @seller.id, rateable_type: "User")
     @location = "Bellevue, WA 98004, United States"
     # Format location for readability
     21.times do
       @location.chop!
     end
-    @product = Product.find(params[:id])
-    @products = User.find(@seller.id).products.where.not(id:params[:id])
-    @followers = UserFollow.where(follow_id: @seller.id)
-    if current_user
-      @following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
+    @products = @seller.products.where.not(id:params[:id])
+    @followers = UserFollow.includes(:user).where(follow_id: @seller.id)
+    if @curuser
+      @following = @followers.find_by(user_id: @curuser.id)#UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
     end
   end
 
