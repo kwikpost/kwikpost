@@ -21,7 +21,7 @@
     <% if flash[:notice] %>
     <h3 class="alert alert-dismissable alert-success" id="category_div"><button id="clear" type="button">×</button><%= flash[:notice] %></h3>
     <% end %>
-    <div id="masonry-container" class="transitions-enabled clearfix centered">
+    <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix centered">
        
           <%= render @products %>
         
@@ -44,8 +44,7 @@
     
     $container.imagesLoaded(function(){
       $container.masonry({
-        itemSelector: '.box',
-        columnWidth: 100
+        itemSelector: '.box'
       });
     });
     

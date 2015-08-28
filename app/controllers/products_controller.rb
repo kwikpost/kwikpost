@@ -6,6 +6,12 @@ class ProductsController < ApplicationController
 
   def index 
     @categories = Category.all
+    @location = Geocoder.search(remote_ip)[0].address
+
+    # Format location for readability
+    21.times do
+      @location.chop!
+    end
 
     if params[:search_location].present?
       @products = Product.near(params[:search_location], 50).paginate(:page => params[:page], :per_page => 20)
