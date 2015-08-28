@@ -41,12 +41,26 @@
 				<h4>Detail Review</h4>
 				<form action="/users/<%=@seller.id%>/review" method="post">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
-					<textarea name="review" rows="4" col="20" style="width:100%; border-radius:5px;padding:5px;margin: 5px 0;" class="form-control"></textarea>
+					<textarea name="review" rows="4" col="20" style="width:100%; border-radius:5px;padding:5px;margin: 5px 0;" class="form-control"><%= @review.review if @review %></textarea>
 					<input type="submit" value="Update Review" class="form-control btn btn-primary" style="border-radius: 5px">
 				</form>
 			</div>
 		</div>
 	<% end %>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+				<h3 id="asking" class="panel-title text-center">Top 10 Recent Reviews</h3>
+		</div>
+		<div class="panel-body text-center">
+			<% @reviews.each do |r| %>
+			<div>
+				<i>-- <%= r.review %></i>
+			</div>
+			<% end %>
+		</div>
+	</div>
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<% 21.times do %>
