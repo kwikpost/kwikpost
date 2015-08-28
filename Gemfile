@@ -38,7 +38,6 @@ gem 'chosen-rails'
 gem 'geocoder'
 
 
-
 gem 'slim'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-tooltip-rails'

@@ -6,6 +6,12 @@ Geocoder.configure(
 )
 
 # Geocoder.configure(
+# 	ip_lookup: :maxmind_local, 
+# 	maxmind_local: {
+# 		file: File.join('vendor/assets', 'GeoLiteCity.dat')})
+
+
+# Geocoder.configure(
 
 #   :timeout=>20,
 
