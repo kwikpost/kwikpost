@@ -6,8 +6,8 @@ class ProductsController < ApplicationController
 
   def index 
     @categories = Category.all
-    @location = Geocoder.search(remote_ip)[0].address
-
+    # @location = Geocoder.search(remote_ip)[0].address
+    @location = "Bellevue, WA 98004, United States"
     # Format location for readability
     21.times do
       @location.chop!
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
 
       else
         flash[:notice] = nil
-        @products = Product.paginate(:page => params[:page], :per_page => 20)
+        @products = Product.near(@location, 50).paginate(:page => params[:page], :per_page => 20)
       end
     end
   end
@@ -57,6 +57,11 @@ class ProductsController < ApplicationController
 
   def show
     @seller = Product.find(params[:id]).user
+    @location = "Bellevue, WA 98004, United States"
+    # Format location for readability
+    21.times do
+      @location.chop!
+    end
     @product = Product.find(params[:id])
     @products = User.find(@seller.id).products.where.not(id:params[:id])
     @followers = UserFollow.where(follow_id: @seller.id)
