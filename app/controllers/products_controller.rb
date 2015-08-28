@@ -57,6 +57,11 @@ class ProductsController < ApplicationController
 
   def show
     @seller = Product.find(params[:id]).user
+    @location = "Bellevue, WA 98004, United States"
+    # Format location for readability
+    21.times do
+      @location.chop!
+    end
     @product = Product.find(params[:id])
     @products = User.find(@seller.id).products.where.not(id:params[:id])
     @followers = UserFollow.where(follow_id: @seller.id)
