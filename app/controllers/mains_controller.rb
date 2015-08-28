@@ -23,7 +23,7 @@ class MainsController < ApplicationController
 	    21.times do
 	      @location.chop!
 	    end
-	    @search_location = Geocoder.coordinates(@location)
+	    @search_coordinates = Geocoder.coordinates(@location)
 	    # =============================================
 
 		@product = Product.new

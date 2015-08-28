@@ -58,9 +58,9 @@
 					<%= f.hidden_field :product_id, :value => @product.id  %>
 					<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
 					  <i class="fa fa-star-o"></i> Unwatch
-					<% end %>
 				<% end %>
-			<% else %>
+			<% end %>
+		<% else %>
 			  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
 					<%= f.hidden_field :user_id, :value => current_user.id %>
 					<%= f.hidden_field :product_id, :value => @product.id  %>

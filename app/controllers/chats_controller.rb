@@ -92,6 +92,10 @@ class ChatsController < ApplicationController
     @productchats = Productchat.find(params[:id])
   end
 
+  def buying
+    @user_chats = Productchat.where(user_id: params[:id])
+  end
+
   def chat_params
     params.require(:chat).permit(:message, :user_id, :product_id)
   end

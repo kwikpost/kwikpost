@@ -18,7 +18,7 @@
 
 			<p style="color: #BA5624; font-weight: bold; margin: 0px auto; text-align: center;">
 				<i class="fa fa-map-marker fa-lg"></i>
-				<%= product.distance_to(@search_location).round(2) %> miles - <%= product.location %>
+				<%= product.distance_to(@search_coordinates).round(2) %> miles - <%= product.location %>
 			</p>
 		</div>
 	<% end %>
@@ -39,7 +39,7 @@
 
 		<p style="color: #BA5624; font-weight: bold; margin: 0px auto; text-align: center;">
 			<i class="fa fa-map-marker fa-lg"></i>
-			<%= product.distance_to(@search_location).round(2) %> miles - <%= product.location %>
+			<%= product.distance_to(@search_coordinates).round(2) %> miles - <%= product.location %>
 		</p>
 	</div>
 <% end %>

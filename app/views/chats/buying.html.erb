@@ -33,45 +33,46 @@
 	<div class="col-md-8" style="margin-top: 10px;">
 	    <div class="panel panel-default">
 	      	<div class="panel-body">
-	      	<div style="padding: 5px; background: #c2ebff;">
-	      			<h4 class="text-center">Selling messages</h4>
+	      		<div style="padding: 5px; background: #c0df85;">
+	      			<h4 class="text-center">Buying messages</h4>
 				</div>
-	        	
-        	<% if @productchats.any? %>
-				<%  @productchats.each do |p| %>
+				<% if @user_chats.any? %>
+				<%  @user_chats.each do |chats| %>
 		        	<div class="media">
 					  <div class="media-left">
 					    <a href="#">
-					      <%= image_tag p.user.image %>
+					      <%= image_tag chats.product.avatar.url(:thumb) %>
 					    </a>
 					  </div>
 					  <div class="media-body">
 					    <h4 class="media-heading">
 					    	<small>
-					    		<b>From:</b>
-						      		<%= p.user.name %> 
+					    		<b>Owner:</b>
+						      		<%= chats.product.user.name %> 
 						    </small> 		
 						     <br>
 					      	<small>
 					      			<b>Product: </b>
 							</small>
-					      			<a href="/chats/show/<%= p.id %>">
-										<b><%= p.product.title  %></b>
-									</a>
+					      			<a href="/chats/new?product_id=<%= chats.product.id %>">
+					      			<strong><%= chats.product.title  %></strong></a>
 							<br>
 					      	<small>
-					      		<b>Date: </b><%= p.created_at.to_s(:short)  %>
+					      		<b>Date: </b><%= chats.created_at.to_s(:short)  %>
 					      	</small>
 					    </h4>
-					    <a href="/chats/show/<%= p.id %>">
-					    	View
-						</a>
+					    <a href="/chats/new?product_id=<%= chats.product.id %>">
+					      View
+					      </a>
 					  </div>
 					</div>
 					<hr>
 				<% end %>
 	    	<% end %>
-	      
+				
+
+
+	        	      
 	      </div>
 	   	</div>
 	</div>
