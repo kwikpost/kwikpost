@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
 
       else
         flash[:notice] = nil
-        @products = Product.paginate(:page => params[:page], :per_page => 20)
+        @products = Product.near(@location, 50, :order => :distance).paginate(:page => params[:page], :per_page => 20)
       end
     end
   end
