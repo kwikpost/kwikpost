@@ -1,18 +1,21 @@
 <div class="container">
+  <div style="margin-top:75px">
+
+  </div>
   <div class="row">
     <h2>Current User:</h2>
     <table class="table">
       <tr>
-        <td class="">
+        <td class="col-md-1">
           <img src="<%=  @user.image %>" alt="<%=  @user.name %>" />
         </td>
-        <td>
+        <td class="col-md-1">
           <h4><%=  @user.name %></h4>
         </td>
       </tr>
     </table>
     <% @myreviews.each do |r| %>
-      <%= r.reviewuser.name %> : <%= r.review %> [<%= r.rating %> Starts]
+      <%= r.reviewuser.name %> : <%= r.review %>
     <% end %>
   </div>
 
@@ -22,15 +25,15 @@
       <% if u.id != @user.id %>
         <table class="table">
           <tr>
-            <td>
+            <td class="col-md-1">
               <img src="<%= u.image %>" alt="<%= u.name %>" />
             </td>
-            <td>
+            <td class="col-md-1">
               <h4>
                 <%= link_to u.name, user_path(u)%>
               </h4>
             </td>
-            <td>
+            <td class="col-md-1">
               <% if @follows and @follows.exists?(id: u.id) %>
                 <%= link_to 'Unfollow', follow_user_path(:follow => u), method: :delete, class:"btn btn-danger"%>
               <% else %>
@@ -39,27 +42,29 @@
             </td>
           </tr>
         </table>
-        <div class="row">
+        <!-- <% if false %>
+          <div class="row">
 
-          <div class="col-md-3">
-            <form action="/users/<%=u.id%>/review" method="post">
-              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-              <input type="hidden" name="user_id" value="<%=@user.id%>">
-              <input type="number" name="rating" value="" class="form-control">
-              <textarea name="review"rows="8" cols="40" class="form-control"></textarea>
-              <input type="submit" value="New Review" class="form-control">
-            </form>
+            <div class="col-md-3">
+              <form action="/users/<%=u.id%>/review" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="user_id" value="<%=@user.id%>">
+                <textarea name="review"rows="3" cols="40" class="form-control"></textarea>
+                <input type="submit" value="New Review" class="form-control">
+              </form>
+            </div>
+
+            <div class="col-md-6">
+              <% u.user_reviews.each do |r| %>
+                <div>
+                  <% if r.reviewuser %>
+                    <%= r.reviewuser.name %> : <%= r.review %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
-
-          <div class="col-md-6">
-            <% u.user_reviews.each do |r| %>
-              <div>
-                <%= r.reviewuser.name %> : <%= r.review %> [<%= r.rating %> Starts]
-              </div>
-            <% end %>
-          </div>
-
-        </div>
+        <% end %> -->
       <% end %>
     <% end %>
   </div>
@@ -69,10 +74,10 @@
     <table class="table">
     <% @follows.each do |u| %>
       <tr>
-        <td>
+        <td class="col-md-1">
           <img src="<%= u.image %>" alt="<%= u.name %>" />
         </td>
-        <td>
+        <td class="col-md-1">
           <h4><%= u.name %></h4>
         </td>
       </tr>
