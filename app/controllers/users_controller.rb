@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
 		@curuser = current_user;
 		@seller = User.find(params[:id])
+		@product = User.find(@curuser.id).products.last
 		@products = User.find(@seller.id).products
 		if current_user
 			@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)

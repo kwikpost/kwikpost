@@ -1,10 +1,4 @@
 <h1>Watching</h1>
-<% if current_user.watchlists %>
-	<% current_user.watchlists.each do |w| %>
-	<p><a href="/products/<%= w.product.id  %>">
-		<%= image_tag w.product.avatar.url(:thumb) %> - 
-		<%= w.product.title %> - $ <%= w.product.price   %>
-		</a>
-	</p>
-	<% end %>
-<% end %>
+<div id="masonry-container" class="transitions-enabled clearfix centered">
+	<%= render current_user.watchproducts %>
+</div>
