@@ -8,7 +8,7 @@
             <li>
               <h3>
                   <em class="fa fa-inbox fa-lg"></em>
-                  <span><a href="#">Inbox</a></span>
+                     <span><a href="/chats/<%= current_user.id %>">Selling</a></span>
                 </h3>
             </li>
             <hr>
@@ -43,46 +43,55 @@
               </a>
             </div>
 
-            <div class="media-body">
+          <div class="media-body">
               <h4 class="media-heading">
-                Product: <strong><%= @productchats.product.title %></strong> Price: $<strong><%= @productchats.product.price  %></strong>
+                Product: <strong><%= @productchats.product.title %></strong> 
+                <br>
+                Price: $<strong><%= @productchats.product.price  %></strong>
               </h4>
+              <hr>
+             <!--  <h4><strong>Messages:</strong></h4> -->
+                
+                <%  @productchats.chats.each do |c| %>
+                  <h5>
+                    <a href="/users/<%= c.user.id %>/index">
+                      <%= c.user.name  %>:
+                    </a> 
+                    <strong><%= c.message %></strong>
 
+                    <span class="pull-right"><%= c.created_at.to_s(:short)  %></span>
+                  </h5>
+                  <hr>
+                <% end %>
+
+          <div class="col sm-10">
+
+            <%= form_for(:reply, :url=>{:controller => 'chats', :action=>'reply'}, method: :post, :html => {:class => "form-horizontal"}) do |f|   %>
+
+              <div class="form-group">
+                 <div class="col-md-12 col-xs-12">
+                  <%= f.text_area :message, class: "form-control"  %>
+                  <%= f.hidden_field :productchat_id, :value => @productchats.id %>
+                  <%= f.hidden_field :user_id, :value => current_user.id %>
+                </div>
+              </div>
+
+            <div class="form-group">
+              <div class="col-md-6 col-md-offset-6 col-xs-12">
+              <%= f.submit :Send, class: "btn btn-primary pull-right col-md-6"  %>
+              </div>
             </div>
-
-
         
-  <h4>Product: <strong><%= @productchats.product.title %></strong> Price: $<strong><%= @productchats.product.price  %></strong></h4>
-  <hr>
-  <%  @productchats.chats.each do |c| %>
-    <h4><%= c.user.name  %>: <strong><%= c.message %></strong><span class="pull-right"><%= c.created_at.to_s(:short)  %></span></h4>
-    <hr>
-  <% end %>
-
-  <div class="col sm-10">
-    <%= form_for(:reply, :url=>{:controller => 'chats', :action=>'reply'}, method: :post, :html => {:class => "form-horizontal"}) do |f|   %>
-
-      <div class="form-group">
-        <div class="col-md-12 col-xs-12">
-          <%= f.text_area :message, class: "form-control"  %>
-          <%= f.hidden_field :productchat_id, :value => @productchats.id %>
-          <%= f.hidden_field :user_id, :value => current_user.id %>
+            <% end %>
+            
+          </div>
+          
+          <h4>
+            <a href="/chats/<%= current_user.id %>">Back to messages</a>
+          </h4>
         </div>
 
       </div>
-      <div class="form-group">
-        <div class="col-md-6 col-md-offset-6 col-xs-12">
-        <%= f.submit :Send, class: "btn btn-primary pull-right col-md-6"  %>
-        </div>
-      </div>
-        
-      <% end %>
-      <p>
-    <a href="/chats/<%= current_user.id %>">Back to messages</a>
-  </p>
-  </div>
-
-</div>
         
         </div>
       </div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   get 'chats/new'
   get 'chats/show/:id' => 'chats#show'
+   get'chats/buying/:id' => 'chats#buying'
 
   post 'chats' => 'chats#create'
   post 'chats/reply' => 'chats#reply'
