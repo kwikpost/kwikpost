@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 	def index
+		@curuser = current_user;
 		@product = User.find(params[:id]).products.last
 		@products = User.find(params[:id]).products
 		@seller = User.find(params[:id])
 		@products = User.find(@seller.id).products
-		@following = UserFollow.find_by(user_id: current_user.id, follow_id: @seller.id)
-        @followers = UserFollow.where(follow_id: @seller.id)
+		@following = UserFollow.find_by(user_id: @curuser.id, follow_id: @seller.id)
+    @followers = UserFollow.where(follow_id: @seller.id)
+		@rating = Rate.find_by(rater_id: @curuser.id, rateable_id: params[:id], rateable_type: "User")
 	end
 	def show
 		# Testing purpose

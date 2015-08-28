@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-  
+
   def new
     @product = Product.new
   end
 
-  def index 
+  def index
     @categories = Category.all
     # @location = Geocoder.search(remote_ip)[0].address
     @location = "Bellevue, WA 98004, United States"
@@ -57,6 +57,7 @@ class ProductsController < ApplicationController
 
   def show
     @seller = Product.find(params[:id]).user
+    @rating = Rate.find_by(rater_id: current_user.id, rateable_id: params[:id], rateable_type: "User")
     @location = "Bellevue, WA 98004, United States"
     # Format location for readability
     21.times do

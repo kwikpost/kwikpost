@@ -18,22 +18,26 @@
 		<div class="panel-body text-center">
 			<img src='https://graph.facebook.com/<%= @seller.uid %>/picture?type=large' alt='picture'>
 			<h3>
-				<div class="rating_star" style="display:inline-block;">
-					<% if @seller.user_reviews.length != 0 %>
-						<%= rating_for @seller, "user_review", :disable_after_rate => false, imdb_avg: true %>
-					<% end %>
-				</div>
+				<% if @rating %>
+					<div class="rating_star" style="display:inline-block;">
+						<%= rating_for @seller, "user_review", imdb_avg: true %>
+					</div>
+				<% end %>
 				<%= @seller.name %>
 			</h3>
 		</div>
 	</div>
-	<% if current_user != @seller %>
+	<% if @seller != current_user %>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 					<h3 id="asking" class="panel-title text-center">Your Review</h3>
 			</div>
 			<div class="panel-body text-center">
+				<% if @rating %>
 					<%= rating_for_user @seller, current_user, "user_review", :disable_after_rate => false, stars: 5 %>
+				<% else %>
+					<%= rating_for @seller, "user_review", :disable_after_rate => false %>
+				<% end %>
 				<h4>Detail Review</h4>
 				<form action="/users/<%=@seller.id%>/review" method="post">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">

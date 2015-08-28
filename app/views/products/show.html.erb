@@ -10,8 +10,8 @@
 	</div>
   	<div class="scroll panel panel-default">
     	<div id="masonry-container" class="transitions-enabled clearfix">
-        	<%= render @products %>    
-    	</div>          
+        	<%= render @products %>
+    	</div>
 	</div>
 </div>
 
@@ -22,7 +22,7 @@
 					<div class="alert alert-<%= flash[:color]%>" style="width:100%;">
 						<p><%= flash[:notice]  %></p>
 					</div>
-				
+
 				<% end %>
 	</div>
 
@@ -39,14 +39,14 @@
 			  <% else %>
 				  <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#buyModal">
 	 			 	Buy
-					</button> 
+					</button>
 				   <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#askModal">
 	 			 	Ask
 					</button>
 
 		</div>
 	</div>
-	
+
 
 		<div class="panel panel-default">
 		  <div class="panel-body">
@@ -56,15 +56,15 @@
 					<%= f.hidden_field :user_id, :value => current_user.id %>
 					<%= f.hidden_field :product_id, :value => @product.id  %>
 					<%= button_tag( :class => "btn btn-lg btn-warning btn-block") do %>
-					  <i class="fa fa-star-o"></i> Unwatch 
-					<% end %>			
+					  <i class="fa fa-star-o"></i> Unwatch
+					<% end %>
 				<% end %>
 			<% else %>
 			  <%= form_for(:watch, :url=>{:controller => 'products', :action=>'watch'}, :html=>{:style => "display:inline"}) do |f|   %>
 					<%= f.hidden_field :user_id, :value => current_user.id %>
 					<%= f.hidden_field :product_id, :value => @product.id  %>
 					<%= button_tag( :class => "btn btn-lg btn-default btn-block") do %>
-					  <i class="fa fa-star"></i> Watch 
+					  <i class="fa fa-star"></i> Watch
 					<% end %>
 				<% end %>
 			<% end %>
@@ -77,9 +77,9 @@
 				  <i class="fa fa-star"></i> Watch
 				<% end %>
 			<% end %>
-			
+
 		<% end %>
-	<% end %>	
+	<% end %>
 	  </div>
 	</div>
 
@@ -90,9 +90,11 @@
 		<div class="panel-body text-center">
 			<a href="/users/<%= @seller.id %>/index"><img src='https://graph.facebook.com/<%= @seller.uid %>/picture?type=large' alt='picture'></a>
 			<h3>
-				<div class="rating_star" style="display:inline-block;">
-					<%= rating_for @seller, "user_review", disable_after_rate: true, imdb_avg: true %>
-				</div>
+				<% if @rating %>
+					<div class="rating_star" style="display:inline-block;">
+						<%= rating_for @seller, "user_review", imdb_avg: true %>
+					</div>
+				<% end %>
 				<%= @seller.name %>
 			</h3>
 		</div>
