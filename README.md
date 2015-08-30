@@ -1,6 +1,20 @@
 # kwikpost
 Convenient and quick way to buy and sell locally
 
+## To Run  
+```
+# Install Gem Files
+bundle install
+```
+```
+# Precompile Assets for Asset Pipeline
+rake assets:precompile
+```
+```
+# Run the Server
+rails s
+```
+
 ## Demo
 Editing...
 
