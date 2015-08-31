@@ -1,6 +1,19 @@
 # kwikpost
 Convenient and quick way to buy and sell locally
 
+
+## Technology stack
+```
+Ruby on Rails
+PostgreSQL
+Javascript / AJAX / JSON
+Bootstrap-SASS
+Google Maps API
+OmniAuth
+
+```
+
+
 ## To Run  
 ```
 # Install Gem Files
@@ -16,10 +29,24 @@ rails s
 ```
 
 ## Demo
-Editing...
+Here is prototype version of website deployed on Heroku - **[Demo]**
 
 ## Screenshots
-Editing...
+__Main page:__
+![pic1](/screenshots/01_main.png?raw=true)
+
+__Search result page:__
+![pic2](/screenshots/02_search.png?raw=true)
+
+__Infinite scroll:__
+![pic10](/screenshots/10_infiniteload.png?raw=true)
+
+__User can add offers:__
+
+
+
+
+
 
 ## Team Members:
 **[Austin Chang]**  
@@ -29,7 +56,8 @@ Editing...
 **[Jack Chang]**  
 **[Malik Nur]**
 
-[CodingDojo 2015]: http://codingdojo.com
+
+[Demo]: http://kwikpost.herokuapp.com/
 [Austin Chang]: https://github.com/achang0406
 [Austin Kihara]: https://github.com/codecat223
 [Augustine Kim]: https://github.com/hkim2171
