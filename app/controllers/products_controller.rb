@@ -73,9 +73,10 @@ class ProductsController < ApplicationController
   def show
     @product = Product.includes(:user).find(params[:id])
     @seller = @product.user
-    @curuser = current_user
-    @rating = Rate.find_by(rater_id: @curuser.id, rateable_id: @seller.id, rateable_type: "User")
-
+    if current_user
+      @curuser = current_user
+      @rating = Rate.find_by(rater_id: @curuser.id, rateable_id: @seller.id, rateable_type: "User")
+    end
     @location = "Bellevue, WA 98004, United States"
     # @location = current_location
     # Format location for readability
