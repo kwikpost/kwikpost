@@ -42,10 +42,25 @@ __Infinite scroll:__
 ![pic10](/screenshots/10_infiniteload.png?raw=true)
 
 __User can add offers:__
+![pic3](/screenshots/03_addpost.png?raw=true)
 
+__User's selling items list:__
+![pic4](/screenshots/04_selling.png?raw=true)
 
+__User's watching list:__
+![pic5](/screenshots/04_watching.png?raw=true)
 
+__Product show page:__
+![pic6](/screenshots/06_productpage.png?raw=true)
 
+__User can ask questions from owner:__
+![pic9](/screenshots/09_ask.png?raw=true)
+
+__Users can get rating from other users:__
+![pic11](/screenshots/11_userrating.png?raw=true)
+
+__User's messagebox:__
+![pic07](/screenshots/07_sellingmessages.png?raw=true)
 
 
 ## Team Members:
