@@ -12,5 +12,6 @@
 !/log/.keep
 /tmp
 
-*.lock
+
 public
+.DS_Store
