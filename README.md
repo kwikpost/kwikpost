@@ -1,5 +1,5 @@
-# Kwikpost
-![Kwikpost](/app/assets/images/logo.png?raw=true) is C2C marketplace that allows users to buy and sell locally
+# ![Kwikpost](/app/assets/images/logo.png?raw=true)  
+It is C2C marketplace that enables users to buy and sell locally
 
 
 ## Technology used
@@ -15,7 +15,7 @@ OmniAuth
 ```
 
 
-## To Run  
+## To Run Locally
 ```
 # Install Gem Files
 bundle install
@@ -30,7 +30,7 @@ rails s
 ```
 
 ## Live Demo
-Here is prototype version of website deployed on Heroku - **[Demo]**
+Here is prototype version of website deployed on Heroku : **[Live Demo]**
 
 ## Screenshots
 __Main page:__
@@ -73,7 +73,7 @@ __User's messagebox:__
 **[Malik Nur]**
 
 
-[Demo]: http://kwikpost.herokuapp.com/
+[Live Demo]: http://kwikpost.herokuapp.com/
 [Austin Chang]: https://github.com/achang0406
 [Austin Kihara]: https://github.com/codecat223
 [Augustine Kim]: https://github.com/hkim2171
