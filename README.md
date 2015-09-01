@@ -2,7 +2,7 @@
 It is C2C marketplace that enables users to buy and sell locally
 
 
-## Technology used
+## Technology Stack
 ```
 Ruby on Rails
 PostgreSQL
