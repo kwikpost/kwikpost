@@ -1,16 +1,17 @@
-# kwikpost
-A C2C marketplace that allows users to buy and sell locally
+# Kwikpost
+![Kwikpost](/app/assets/images/logo.png?raw=true) is C2C marketplace that allows users to buy and sell locally
 
 
-## Technology stack
+## Technology used
 ```
 Ruby on Rails
 PostgreSQL
 Javascript / AJAX / JSON
-Bootstrap-SASS
-Google Maps API
+Bootstrap
+PaperClip
+Google Maps
+GeoCoder
 OmniAuth
-
 ```
 
 
@@ -28,7 +29,7 @@ rake assets:precompile
 rails s
 ```
 
-## Demo
+## Live Demo
 Here is prototype version of website deployed on Heroku - **[Demo]**
 
 ## Screenshots
