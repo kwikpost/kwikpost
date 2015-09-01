@@ -48,7 +48,7 @@ __User's selling items list:__
 ![pic4](/screenshots/04_selling.png?raw=true)
 
 __User's watching list:__
-![pic5](/screenshots/04_watching.png?raw=true)
+![pic5](/screenshots/05_watching.png?raw=true)
 
 __Product show page:__
 ![pic6](/screenshots/06_productpage.png?raw=true)
