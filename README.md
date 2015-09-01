@@ -1,5 +1,5 @@
 # kwikpost
-Convenient and quick way to buy and sell locally
+A C2C marketplace that allows users to buy and sell locally
 
 
 ## Technology stack
