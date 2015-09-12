@@ -65,7 +65,7 @@ __User's messagebox:__
 
 
 ## Team Members:
-**[Austin Chang]**  
+**[Chanzue (Austin) Chang]**  
 **[Austin Kihara]**  
 **[Augustine Kim]**  
 **[Chris Tran]**  
@@ -74,7 +74,7 @@ __User's messagebox:__
 
 
 [Live Demo]: http://kwikpost.herokuapp.com/
-[Austin Chang]: https://github.com/achang0406
+[Chanzue (Austin) Chang]: https://github.com/achang0406
 [Austin Kihara]: https://github.com/codecat223
 [Augustine Kim]: https://github.com/hkim2171
 [Chris Tran]: https://github.com/christ-huytran
